@@ -203,14 +203,14 @@ if __name__ == '__main__':
     # pretrain_model = KeyedVectors.load_word2vec_format('D:/workplace_py/Install Package/GoogleNews-vectors-negative300.bin', binary=True)
     tfidf_sim_list_train = make_tfidf_sim("train")
     tfidf_sim_list_test = make_tfidf_sim("test")
-    # ne_w2v_train = read_w2v(True, 'ne')
-    # ne_w2v_test = read_w2v(False, 'ne')[0:]
-    # noun_w2v_train = read_w2v(True, 'noun')
-    # noun_w2v_test = read_w2v(False, 'noun')[1600:]
-    # adj_w2v_train = read_w2v(True, 'adj')
-    # adj_w2v_test = read_w2v(False, 'adj')[1600:]
-    # verb_w2v_train = read_w2v(True, 'v')
-    # verb_w2v_test = read_w2v(False, 'v')[1600:]
+    ne_w2v_train = read_w2v(True, 'ne')
+    ne_w2v_test = read_w2v(False, 'ne')[0:]
+    noun_w2v_train = read_w2v(True, 'noun')
+    noun_w2v_test = read_w2v(False, 'noun')[1600:]
+    adj_w2v_train = read_w2v(True, 'adj')
+    adj_w2v_test = read_w2v(False, 'adj')[1600:]
+    verb_w2v_train = read_w2v(True, 'v')
+    verb_w2v_test = read_w2v(False, 'v')[1600:]
     rte_classifier()
     # ne_word2vec_sim(pretrain_model)
 

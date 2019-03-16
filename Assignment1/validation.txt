@@ -1,0 +1,302 @@
+C:\ProgramData\Anaconda2\python.exe D:/workplace_py/TestWN/Assignment1/DataPreprocessing.py
+=====START PROCESSING=====
+Overview:  [['John', 'ate', 'an', 'apple', '.']]
+[('John', 'NNP'), ('ate', 'VBP'), ('an', 'DT'), ('apple', 'NN'), ('.', '.')]
+(ROOT
+  (S (NP (NNP John)) (VP (VBP ate) (NP (DT an) (NN apple))) (. .)))
+John
+an apple
+------FINISHED A SENTENCE------
+Overview:  [['John', 'ate', 'the', 'apple', 'at', 'the', 'table', '.']]
+[('John', 'NNP'), ('ate', 'VBP'), ('the', 'DT'), ('apple', 'NN'), ('at', 'IN'), ('the', 'DT'), ('table', 'NN'), ('.', '.')]
+(ROOT
+  (S
+    (NP (NNP John))
+    (VP
+      (VBP ate)
+      (NP
+        (NP (DT the) (NN apple))
+        (PP (IN at) (NP (DT the) (NN table)))))
+    (. .)))
+John
+the apple
+the table
+------FINISHED A SENTENCE------
+Overview:  [['On', 'Monday', ',', 'John', 'ate', 'the', 'apple', 'in', 'the', 'fridge', '.']]
+[('On', 'IN'), ('Monday', 'NNP'), (',', ','), ('John', 'NNP'), ('ate', 'VBP'), ('the', 'DT'), ('apple', 'NN'), ('in', 'IN'), ('the', 'DT'), ('fridge', 'NN'), ('.', '.')]
+(ROOT
+  (S
+    (PP (IN On) (NP (NNP Monday)))
+    (, ,)
+    (NP (NNP John))
+    (VP
+      (VBP ate)
+      (NP
+        (NP (DT the) (NN apple))
+        (PP (IN in) (NP (DT the) (NN fridge)))))
+    (. .)))
+Monday
+John
+the apple
+the fridge
+------FINISHED A SENTENCE------
+Overview:  [['On', 'Monday', ',', 'John', 'ate', 'the', 'apple', 'in', 'his', 'office', '.']]
+[('On', 'IN'), ('Monday', 'NNP'), (',', ','), ('John', 'NNP'), ('ate', 'VBP'), ('the', 'DT'), ('apple', 'NN'), ('in', 'IN'), ('his', 'PRP$'), ('office', 'NN'), ('.', '.')]
+(ROOT
+  (S
+    (PP (IN On) (NP (NNP Monday)))
+    (, ,)
+    (NP (NNP John))
+    (VP
+      (VBP ate)
+      (NP
+        (NP (DT the) (NN apple))
+        (PP (IN in) (NP (PRP$ his) (NN office)))))
+    (. .)))
+Monday
+John
+the apple
+his office
+------FINISHED A SENTENCE------
+Overview:  [['On', 'Monday', ',', 'John', 'ate', 'refrigerator', 'apple', 'in', 'his', 'office', '.']]
+[('On', 'IN'), ('Monday', 'NNP'), (',', ','), ('John', 'NNP'), ('ate', 'NN'), ('refrigerator', 'NN'), ('apple', 'NN'), ('in', 'IN'), ('his', 'PRP$'), ('office', 'NN'), ('.', '.')]
+(ROOT
+  (FRAG
+    (PP (IN On) (NP (NNP Monday)))
+    (, ,)
+    (NP
+      (NP (NNP John) (NN ate) (NN refrigerator) (NN apple))
+      (PP (IN in) (NP (PRP$ his) (NN office))))
+    (. .)))
+Monday
+John ate refrigerator apple
+his office
+------FINISHED A SENTENCE------
+Overview:  [['Last', 'week', ',', 'on', 'Monday', ',', 'John', 'finally', 'took', 'the', 'apple', 'from', 'the', 'fridge', 'to', 'his', 'office', '.']]
+[('Last', 'JJ'), ('week', 'NN'), (',', ','), ('on', 'IN'), ('Monday', 'NNP'), (',', ','), ('John', 'NNP'), ('finally', 'RB'), ('took', 'VBD'), ('the', 'DT'), ('apple', 'NN'), ('from', 'IN'), ('the', 'DT'), ('fridge', 'NN'), ('to', 'TO'), ('his', 'PRP$'), ('office', 'NN'), ('.', '.')]
+(ROOT
+  (S
+    (NP (JJ Last) (NN week))
+    (, ,)
+    (PP (IN on) (NP (NNP Monday)))
+    (, ,)
+    (NP (NNP John))
+    (ADVP (RB finally))
+    (VP
+      (VBD took)
+      (NP (DT the) (NN apple))
+      (PP (IN from) (NP (DT the) (NN fridge)))
+      (PP (TO to) (NP (PRP$ his) (NN office))))
+    (. .)))
+Last week
+Monday
+John
+the apple
+the fridge
+his office
+------FINISHED A SENTENCE------
+Overview:  [['Last', 'Monday', ',', 'John', 'promised', 'that', 'he', 'will', 'put', 'an', 'apple', 'in', 'the', 'fridge', '.'], ['He', 'will', 'eat', 'it', 'on', 'Tuesday', 'at', 'his', 'desk', '.'], ['It', 'will', 'be', 'crunchy', '.']]
+[('Last', 'JJ'), ('Monday', 'NNP'), (',', ','), ('John', 'NNP'), ('promised', 'VBD'), ('that', 'IN'), ('he', 'PRP'), ('will', 'MD'), ('put', 'VB'), ('an', 'DT'), ('apple', 'NN'), ('in', 'IN'), ('the', 'DT'), ('fridge', 'NN'), ('.', '.')]
+(ROOT
+  (S
+    (NP (JJ Last) (NNP Monday))
+    (, ,)
+    (NP (NNP John))
+    (VP
+      (VBD promised)
+      (SBAR
+        (IN that)
+        (S
+          (NP (PRP he))
+          (VP
+            (MD will)
+            (VP
+              (VB put)
+              (NP
+                (NP (DT an) (NN apple))
+                (PP (IN in) (NP (DT the) (NN fridge)))))))))
+    (. .)))
+Last Monday
+John
+he
+an apple
+the fridge
+------FINISHED A SENTENCE------
+[('He', 'PRP'), ('will', 'MD'), ('eat', 'VB'), ('it', 'PRP'), ('on', 'IN'), ('Tuesday', 'NNP'), ('at', 'IN'), ('his', 'PRP$'), ('desk', 'NN'), ('.', '.')]
+(ROOT
+  (S
+    (NP (PRP He))
+    (VP
+      (MD will)
+      (VP
+        (VB eat)
+        (NP (PRP it))
+        (PP (IN on) (NP (NNP Tuesday)))
+        (PP (IN at) (NP (PRP$ his) (NN desk)))))
+    (. .)))
+He
+it
+Tuesday
+his desk
+------FINISHED A SENTENCE------
+[('It', 'PRP'), ('will', 'MD'), ('be', 'VB'), ('crunchy', 'VBN'), ('.', '.')]
+(ROOT
+  (S
+    (NP (PRP It))
+    (VP (MD will) (VP (VB be) (VP (VBN crunchy))))
+    (. .)))
+It
+------FINISHED A SENTENCE------
+Overview:  [['On', 'Monday', ',', 'September', '17', ',', '2018', ',', 'John', "O'Malley", 'promised', 'his', 'colleague', 'Mary', 'that', 'he', 'would', 'put', 'a', 'replacement', 'apple', 'in', 'the', 'office', 'fridge', '.'], ["O'Malley", 'intended', 'to', 'share', 'it', 'with', 'her', 'on', 'Tuesday', 'at', 'his', 'desk', 'and', 'anticipated', 'that', 'the', 'crunchy', 'treat', 'would', 'delight', 'them', 'both', '.'], ['But', 'she', 'was', 'sick', 'that', 'day', '.']]
+[('On', 'IN'), ('Monday', 'NNP'), (',', ','), ('September', 'NNP'), ('17', 'CD'), (',', ','), ('2018', 'CD'), (',', ','), ('John', 'NNP'), ("O'Malley", 'NNP'), ('promised', 'VBD'), ('his', 'PRP$'), ('colleague', 'NN'), ('Mary', 'NNP'), ('that', 'IN'), ('he', 'PRP'), ('would', 'MD'), ('put', 'VB'), ('a', 'DT'), ('replacement', 'NN'), ('apple', 'NN'), ('in', 'IN'), ('the', 'DT'), ('office', 'NN'), ('fridge', 'NN'), ('.', '.')]
+(ROOT
+  (S
+    (PP
+      (IN On)
+      (NP
+        (NNP Monday)
+        (, ,)
+        (NNP September)
+        (CD 17)
+        (, ,)
+        (CD 2018)
+        (, ,)))
+    (NP (NNP John) (NNP O'Malley))
+    (VP
+      (VBD promised)
+      (NP (PRP$ his) (NN colleague))
+      (NP
+        (NP (NNP Mary))
+        (SBAR
+          (IN that)
+          (S
+            (NP (PRP he))
+            (VP
+              (MD would)
+              (VP
+                (VB put)
+                (NP (DT a) (NN replacement) (NN apple))
+                (PP (IN in) (NP (DT the) (NN office) (NN fridge)))))))))
+    (. .)))
+Monday , September 17 , 2018 ,
+John O'Malley
+his colleague
+Mary
+he
+a replacement apple
+the office fridge
+------FINISHED A SENTENCE------
+[("O'Malley", 'NNP'), ('intended', 'VBD'), ('to', 'TO'), ('share', 'NN'), ('it', 'PRP'), ('with', 'IN'), ('her', 'PRP'), ('on', 'IN'), ('Tuesday', 'NNP'), ('at', 'IN'), ('his', 'PRP$'), ('desk', 'NN'), ('and', 'CC'), ('anticipated', 'VBD'), ('that', 'IN'), ('the', 'DT'), ('crunchy', 'NN'), ('treat', 'NN'), ('would', 'MD'), ('delight', 'VB'), ('them', 'PRP'), ('both', 'DT'), ('.', '.')]
+(ROOT
+  (S
+    (NP (NNP O'Malley))
+    (VP
+      (VP
+        (VBD intended)
+        (PP (TO to) (NP (NN share)))
+        (PP (NP (PRP it)) (IN with) (NP (PRP her)))
+        (PP
+          (IN on)
+          (NP
+            (NP (NNP Tuesday))
+            (PP (IN at) (NP (PRP$ his) (NN desk))))))
+      (CC and)
+      (VP
+        (VBD anticipated)
+        (SBAR
+          (IN that)
+          (S
+            (NP (DT the) (NN crunchy) (NN treat))
+            (VP
+              (MD would)
+              (VP (VB delight) (S (NP (PRP them)) (NP (DT both)))))))))
+    (. .)))
+O'Malley
+share
+it
+her
+Tuesday
+his desk
+the crunchy treat
+them
+both
+------FINISHED A SENTENCE------
+[('But', 'CC'), ('she', 'PRP'), ('was', 'VBD'), ('sick', 'JJ'), ('that', 'DT'), ('day', 'NN'), ('.', '.')]
+(ROOT
+  (S
+    (CC But)
+    (NP (PRP she))
+    (VP (VBD was) (ADJP (JJ sick)) (NP (DT that) (NN day)))
+    (. .)))
+she
+that day
+------FINISHED A SENTENCE------
+Overview:  [['Sue', 'said', 'that', 'on', 'Monday', ',', 'September', '17', ',', '2018', ',', 'John', "O'Malley", 'promised', 'his', 'colleague', 'Mary', 'that', 'he', 'would', 'put', 'a', 'replacement', 'apple', 'in', 'the', 'office', 'fridge', 'and', 'that', "O'Malley", 'intended', 'to', 'share', 'it', 'with', 'her', 'on', 'Tuesday', 'at', 'his', 'desk', '.']]
+[('Sue', 'NNP'), ('said', 'VBD'), ('that', 'IN'), ('on', 'IN'), ('Monday', 'NNP'), (',', ','), ('September', 'NNP'), ('17', 'CD'), (',', ','), ('2018', 'CD'), (',', ','), ('John', 'NNP'), ("O'Malley", 'NNP'), ('promised', 'VBD'), ('his', 'PRP$'), ('colleague', 'NN'), ('Mary', 'NNP'), ('that', 'IN'), ('he', 'PRP'), ('would', 'MD'), ('put', 'VB'), ('a', 'DT'), ('replacement', 'NN'), ('apple', 'NN'), ('in', 'IN'), ('the', 'DT'), ('office', 'NN'), ('fridge', 'NN'), ('and', 'CC'), ('that', 'IN'), ("O'Malley", 'NNP'), ('intended', 'VBD'), ('to', 'TO'), ('share', 'NN'), ('it', 'PRP'), ('with', 'IN'), ('her', 'PRP'), ('on', 'IN'), ('Tuesday', 'NNP'), ('at', 'IN'), ('his', 'PRP$'), ('desk', 'NN'), ('.', '.')]
+(ROOT
+  (S
+    (NP (NNP Sue))
+    (VP
+      (VBD said)
+      (SBAR
+        (IN that)
+        (S
+          (PP
+            (IN on)
+            (NP
+              (NNP Monday)
+              (, ,)
+              (NNP September)
+              (CD 17)
+              (, ,)
+              (CD 2018)
+              (, ,)))
+          (NP (NNP John) (NNP O'Malley))
+          (VP
+            (VBD promised)
+            (NP (PRP$ his) (NN colleague))
+            (NP
+              (NP (NNP Mary))
+              (SBAR
+                (SBAR
+                  (IN that)
+                  (S
+                    (NP (PRP he))
+                    (VP
+                      (MD would)
+                      (VP
+                        (VB put)
+                        (NP (DT a) (NN replacement) (NN apple))
+                        (PP
+                          (IN in)
+                          (NP (DT the) (NN office) (NN fridge)))))))
+                (CC and)
+                (SBAR
+                  (IN that)
+                  (S
+                    (NP (NNP O'Malley))
+                    (VP
+                      (VBD intended)
+                      (PP (TO to) (NP (NN share)))
+                      (NP (PRP it))
+                      (PP (IN with) (NP (PRP her)))
+                      (PP (IN on) (NP (NNP Tuesday)))
+                      (PP (IN at) (NP (PRP$ his) (NN desk))))))))))))
+    (. .)))
+Sue
+Monday , September 17 , 2018 ,
+John O'Malley
+his colleague
+Mary
+he
+a replacement apple
+the office fridge
+O'Malley
+share
+it
+her
+Tuesday
+his desk
+------FINISHED A SENTENCE------
+
+Process finished with exit code 0

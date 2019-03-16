@@ -1,0 +1,2143 @@
+C:\ProgramData\Anaconda2\python.exe D:/workplace_py/TestWN/Assignment1/DataPreprocessing.py
+=====READ IN CORPUS!=====
+                                       content_sents label        para_name  \
+0  ([plot, :, two, teen, couples, go, to, a, chur...   neg  cv000_29416.txt
+1  ([the, happy, bastard, ', s, quick, movie, rev...   neg  cv001_19502.txt
+2  ([it, is, movies, like, these, that, make, a, ...   neg  cv002_17424.txt
+3  ([", quest, for, camelot, ", is, warner, bros,...   neg  cv003_12683.txt
+4  ([synopsis, :, a, mentally, unstable, man, und...   neg  cv004_12641.txt
+
+                                            raw_text
+0  plot : two teen couples go to a church party ,...
+1  the happy bastard's quick movie review \ndamn ...
+2  it is movies like these that make a jaded movi...
+3   " quest for camelot " is warner bros . ' firs...
+4  synopsis : a mentally unstable man undergoing ...
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 5 entries, 0 to 4
+Data columns (total 4 columns):
+content_sents    5 non-null object
+label            5 non-null object
+para_name        5 non-null object
+raw_text         5 non-null object
+dtypes: object(4)
+memory usage: 232.0+ bytes
+=====START PROCESSING=====
+[u'plot : two teen couples go to a church party , drink and then drive .', u'they get into an accident .', u'one of the guys dies , but his girlfriend continues to see him in her life , and has nightmares .', u"what's the deal ?", u'watch the movie and " sorta " find out . . .', u'critique : a mind-fuck movie for the teen generation that touches on a very cool idea , but presents it in a very bad package .', u"which is what makes this review an even harder one to write , since i generally applaud films which attempt to break the mold , mess with your head and such ( lost highway & memento ) , but there are good and bad ways of making all types of films , and these folks just didn't snag this one correctly .", u'they seem to have taken this pretty neat concept , but executed it terribly .', u'so what are the problems with the movie ?', u"well , its main problem is that it's simply too jumbled .", u'it starts off " normal " but then downshifts into this " fantasy " world in which you , as an audience member , have no idea what\'s going on .', u'there are dreams , there are characters coming back from the dead , there are others who look like the dead , there are strange apparitions , there are disappearances , there are a looooot of chase scenes , there are tons of weird things that happen , and most of it is simply not explained .', u"now i personally don't mind trying to unravel a film every now and then , but when all it does is give me the same clue over and over again , i get kind of fed up after a while , which is this film's biggest problem .", u"it's obviously got this big secret to hide , but it seems to want to hide it completely until its final five minutes .", u'and do they make things entertaining , thrilling or even engaging , in the meantime ?', u'not really .', u"the sad part is that the arrow and i both dig on flicks like this , so we actually figured most of it out by the half-way point , so all of the strangeness after that did start to make a little bit of sense , but it still didn't the make the film all that more entertaining .", u'i guess the bottom line with movies like this is that you should always make sure that the audience is " into it " even before they are given the secret password to enter your world of understanding .', u'i mean , showing melissa sagemiller running away from visions for about 20 minutes throughout the movie is just plain lazy !', u'okay , we get it . . .', u"there \nare people chasing her and we don't know who they are .", u'do we really need to see it over and over again ?', u'how about giving us different scenes offering further insight into all of the strangeness going down in the movie ?', u'apparently , the studio took this film away from its director and chopped it up themselves , and it shows .', u'there might\'ve been a pretty decent teen mind-fuck movie in here somewhere , but i guess " the suits " decided that turning it into a music video with little edge , would make more sense .', u'the actors are pretty good for the most part , although wes bentley just seemed to be playing the exact same character that he did in american beauty , only in a new neighborhood .', u"but my biggest kudos go out to sagemiller , who holds her own throughout the entire film , and actually has you feeling her character's unraveling .", u"overall , the film doesn't stick because it doesn't entertain , it's confusing , it rarely excites and it feels pretty redundant for most of its runtime , despite a pretty cool ending and explanation to all of the craziness that came before it .", u'oh , and by the way , this is not a horror or teen slasher flick . . .', u"it's \njust packaged to look that way because someone is apparently assuming that the genre is still hot with the kids .", u'it also wrapped production two years ago and has been sitting on the shelves ever since .', u'whatever . . .', u'skip \nit !', u"where's joblo coming from ?"]
+Overview:  [[u'plot', u':', u'two', u'teen', u'couples', u'go', u'to', u'a', u'church', u'party', u',', u'drink', u'and', u'then', u'drive', u'.'], [u'they', u'get', u'into', u'an', u'accident', u'.'], [u'one', u'of', u'the', u'guys', u'dies', u',', u'but', u'his', u'girlfriend', u'continues', u'to', u'see', u'him', u'in', u'her', u'life', u',', u'and', u'has', u'nightmares', u'.'], [u'what', u"'s", u'the', u'deal', u'?'], [u'watch', u'the', u'movie', u'and', u'"', u'sorta', u'"', u'find', u'out', u'...'], [u'critique', u':', u'a', u'mind-fuck', u'movie', u'for', u'the', u'teen', u'generation', u'that', u'touches', u'on', u'a', u'very', u'cool', u'idea', u',', u'but', u'presents', u'it', u'in', u'a', u'very', u'bad', u'package', u'.'], [u'which', u'is', u'what', u'makes', u'this', u'review', u'an', u'even', u'harder', u'one', u'to', u'write', u',', u'since', u'i', u'generally', u'applaud', u'films', u'which', u'attempt', u'to', u'break', u'the', u'mold', u',', u'mess', u'with', u'your', u'head', u'and', u'such', u'(', u'lost', u'highway', u'&', u'memento', u')', u',', u'but', u'there', u'are', u'good', u'and', u'bad', u'ways', u'of', u'making', u'all', u'types', u'of', u'films', u',', u'and', u'these', u'folks', u'just', u'did', u"n't", u'snag', u'this', u'one', u'correctly', u'.'], [u'they', u'seem', u'to', u'have', u'taken', u'this', u'pretty', u'neat', u'concept', u',', u'but', u'executed', u'it', u'terribly', u'.'], [u'so', u'what', u'are', u'the', u'problems', u'with', u'the', u'movie', u'?'], [u'well', u',', u'its', u'main', u'problem', u'is', u'that', u'it', u"'s", u'simply', u'too', u'jumbled', u'.'], [u'it', u'starts', u'off', u'"', u'normal', u'"', u'but', u'then', u'downshifts', u'into', u'this', u'"', u'fantasy', u'"', u'world', u'in', u'which', u'you', u',', u'as', u'an', u'audience', u'member', u',', u'have', u'no', u'idea', u'what', u"'s", u'going', u'on', u'.'], [u'there', u'are', u'dreams', u',', u'there', u'are', u'characters', u'coming', u'back', u'from', u'the', u'dead', u',', u'there', u'are', u'others', u'who', u'look', u'like', u'the', u'dead', u',', u'there', u'are', u'strange', u'apparitions', u',', u'there', u'are', u'disappearances', u',', u'there', u'are', u'a', u'looooot', u'of', u'chase', u'scenes', u',', u'there', u'are', u'tons', u'of', u'weird', u'things', u'that', u'happen', u',', u'and', u'most', u'of', u'it', u'is', u'simply', u'not', u'explained', u'.'], [u'now', u'i', u'personally', u'do', u"n't", u'mind', u'trying', u'to', u'unravel', u'a', u'film', u'every', u'now', u'and', u'then', u',', u'but', u'when', u'all', u'it', u'does', u'is', u'give', u'me', u'the', u'same', u'clue', u'over', u'and', u'over', u'again', u',', u'i', u'get', u'kind', u'of', u'fed', u'up', u'after', u'a', u'while', u',', u'which', u'is', u'this', u'film', u"'s", u'biggest', u'problem', u'.'], [u'it', u"'s", u'obviously', u'got', u'this', u'big', u'secret', u'to', u'hide', u',', u'but', u'it', u'seems', u'to', u'want', u'to', u'hide', u'it', u'completely', u'until', u'its', u'final', u'five', u'minutes', u'.'], [u'and', u'do', u'they', u'make', u'things', u'entertaining', u',', u'thrilling', u'or', u'even', u'engaging', u',', u'in', u'the', u'meantime', u'?'], [u'not', u'really', u'.'], [u'the', u'sad', u'part', u'is', u'that', u'the', u'arrow', u'and', u'i', u'both', u'dig', u'on', u'flicks', u'like', u'this', u',', u'so', u'we', u'actually', u'figured', u'most', u'of', u'it', u'out', u'by', u'the', u'half-way', u'point', u',', u'so', u'all', u'of', u'the', u'strangeness', u'after', u'that', u'did', u'start', u'to', u'make', u'a', u'little', u'bit', u'of', u'sense', u',', u'but', u'it', u'still', u'did', u"n't", u'the', u'make', u'the', u'film', u'all', u'that', u'more', u'entertaining', u'.'], [u'i', u'guess', u'the', u'bottom', u'line', u'with', u'movies', u'like', u'this', u'is', u'that', u'you', u'should', u'always', u'make', u'sure', u'that', u'the', u'audience', u'is', u'"', u'into', u'it', u'"', u'even', u'before', u'they', u'are', u'given', u'the', u'secret', u'password', u'to', u'enter', u'your', u'world', u'of', u'understanding', u'.'], [u'i', u'mean', u',', u'showing', u'melissa', u'sagemiller', u'running', u'away', u'from', u'visions', u'for', u'about', u'20', u'minutes', u'throughout', u'the', u'movie', u'is', u'just', u'plain', u'lazy', u'!'], [u'okay', u',', u'we', u'get', u'it', u'...'], [u'there', u'are', u'people', u'chasing', u'her', u'and', u'we', u'do', u"n't", u'know', u'who', u'they', u'are', u'.'], [u'do', u'we', u'really', u'need', u'to', u'see', u'it', u'over', u'and', u'over', u'again', u'?'], [u'how', u'about', u'giving', u'us', u'different', u'scenes', u'offering', u'further', u'insight', u'into', u'all', u'of', u'the', u'strangeness', u'going', u'down', u'in', u'the', u'movie', u'?'], [u'apparently', u',', u'the', u'studio', u'took', u'this', u'film', u'away', u'from', u'its', u'director', u'and', u'chopped', u'it', u'up', u'themselves', u',', u'and', u'it', u'shows', u'.'], [u'there', u'might', u"'ve", u'been', u'a', u'pretty', u'decent', u'teen', u'mind-fuck', u'movie', u'in', u'here', u'somewhere', u',', u'but', u'i', u'guess', u'"', u'the', u'suits', u'"', u'decided', u'that', u'turning', u'it', u'into', u'a', u'music', u'video', u'with', u'little', u'edge', u',', u'would', u'make', u'more', u'sense', u'.'], [u'the', u'actors', u'are', u'pretty', u'good', u'for', u'the', u'most', u'part', u',', u'although', u'wes', u'bentley', u'just', u'seemed', u'to', u'be', u'playing', u'the', u'exact', u'same', u'character', u'that', u'he', u'did', u'in', u'american', u'beauty', u',', u'only', u'in', u'a', u'new', u'neighborhood', u'.'], [u'but', u'my', u'biggest', u'kudos', u'go', u'out', u'to', u'sagemiller', u',', u'who', u'holds', u'her', u'own', u'throughout', u'the', u'entire', u'film', u',', u'and', u'actually', u'has', u'you', u'feeling', u'her', u'character', u"'s", u'unraveling', u'.'], [u'overall', u',', u'the', u'film', u'does', u"n't", u'stick', u'because', u'it', u'does', u"n't", u'entertain', u',', u'it', u"'s", u'confusing', u',', u'it', u'rarely', u'excites', u'and', u'it', u'feels', u'pretty', u'redundant', u'for', u'most', u'of', u'its', u'runtime', u',', u'despite', u'a', u'pretty', u'cool', u'ending', u'and', u'explanation', u'to', u'all', u'of', u'the', u'craziness', u'that', u'came', u'before', u'it', u'.'], [u'oh', u',', u'and', u'by', u'the', u'way', u',', u'this', u'is', u'not', u'a', u'horror', u'or', u'teen', u'slasher', u'flick', u'...'], [u'it', u"'s", u'just', u'packaged', u'to', u'look', u'that', u'way', u'because', u'someone', u'is', u'apparently', u'assuming', u'that', u'the', u'genre', u'is', u'still', u'hot', u'with', u'the', u'kids', u'.'], [u'it', u'also', u'wrapped', u'production', u'two', u'years', u'ago', u'and', u'has', u'been', u'sitting', u'on', u'the', u'shelves', u'ever', u'since', u'.'], [u'whatever', u'...'], [u'skip', u'it', u'!'], [u'where', u"'s", u'joblo', u'coming', u'from', u'?']]
+[(u'plot', 'NN'), (u':', ':'), (u'two', 'CD'), (u'teen', 'NN'), (u'couples', 'NNS'), (u'go', 'VBP'), (u'to', 'TO'), (u'a', 'DT'), (u'church', 'NN'), (u'party', 'NN'), (u',', ','), (u'drink', 'NN'), (u'and', 'CC'), (u'then', 'RB'), (u'drive', 'NN'), (u'.', '.')]
+(ROOT
+  (FRAG
+    (NP (NN plot))
+    (: :)
+    (S
+      (NP (CD two) (NN teen) (NNS couples))
+      (VP
+        (VBP go)
+        (PP
+          (TO to)
+          (NP
+            (NP (DT a) (NN church) (NN party))
+            (, ,)
+            (NP (NN drink))
+            (CC and)
+            (NP (RB then) (NN drive))))))
+    (. .)))
+plot
+two teen couples
+a church party
+drink
+then drive
+------FINISHED A SENTENCE------
+[(u'they', 'PRP'), (u'get', 'VBP'), (u'into', 'IN'), (u'an', 'DT'), (u'accident', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (NP (PRP they))
+    (VP (VBP get) (PP (IN into) (NP (DT an) (NN accident))))
+    (. .)))
+they
+an accident
+------FINISHED A SENTENCE------
+[(u'one', 'CD'), (u'of', 'IN'), (u'the', 'DT'), (u'guys', 'NN'), (u'dies', 'VBZ'), (u',', ','), (u'but', 'CC'), (u'his', 'PRP$'), (u'girlfriend', 'NN'), (u'continues', 'VBZ'), (u'to', 'TO'), (u'see', 'VB'), (u'him', 'PRP'), (u'in', 'IN'), (u'her', 'PRP$'), (u'life', 'NN'), (u',', ','), (u'and', 'CC'), (u'has', 'VBZ'), (u'nightmares', 'NNS'), (u'.', '.')]
+(ROOT
+  (S
+    (S
+      (NP (NP (CD one)) (PP (IN of) (NP (DT the) (NN guys))))
+      (VP (VBZ dies)))
+    (, ,)
+    (CC but)
+    (S
+      (NP (PRP$ his) (NN girlfriend))
+      (VP
+        (VP
+          (VBZ continues)
+          (S
+            (VP
+              (TO to)
+              (VP
+                (VB see)
+                (NP (PRP him))
+                (PP (IN in) (NP (PRP$ her) (NN life)))))))
+        (, ,)
+        (CC and)
+        (VP (VBZ has) (NP (NNS nightmares)))))
+    (. .)))
+one
+the guys
+his girlfriend
+him
+her life
+nightmares
+------FINISHED A SENTENCE------
+[(u'what', 'WP'), (u"'s", 'VBZ'), (u'the', 'DT'), (u'deal', 'NN'), (u'?', '.')]
+(ROOT
+  (SBARQ
+    (WHNP (WP what))
+    (SQ (VBZ 's) (NP (DT the) (NN deal)))
+    (. ?)))
+the deal
+------FINISHED A SENTENCE------
+[(u'watch', 'VB'), (u'the', 'DT'), (u'movie', 'NN'), (u'and', 'CC'), (u'"', '"'), (u'sorta', 'VBP'), (u'"', '"'), (u'find', 'VBP'), (u'out', 'RP'), (u'...', ':')]
+(ROOT
+  (S
+    (VP
+      (VB watch)
+      (SBAR
+        (S
+          (NP (DT the) (NN movie) (CC and) (" "))
+          (VP
+            (VBP sorta)
+            (SBAR (S (NP (" ")) (VP (VBP find) (PRT (RP out)))))))))
+    (: ...)))
+the movie and "
+"
+------FINISHED A SENTENCE------
+[(u'critique', 'NN'), (u':', ':'), (u'a', 'DT'), (u'mind-fuck', 'JJ'), (u'movie', 'NN'), (u'for', 'IN'), (u'the', 'DT'), (u'teen', 'JJ'), (u'generation', 'NN'), (u'that', 'WDT'), (u'touches', 'VBZ'), (u'on', 'IN'), (u'a', 'DT'), (u'very', 'RB'), (u'cool', 'JJ'), (u'idea', 'NN'), (u',', ','), (u'but', 'CC'), (u'presents', 'VBZ'), (u'it', 'PRP'), (u'in', 'IN'), (u'a', 'DT'), (u'very', 'RB'), (u'bad', 'JJ'), (u'package', 'NN'), (u'.', '.')]
+(ROOT
+  (NP
+    (NP (NN critique))
+    (: :)
+    (NP
+      (NP (DT a) (JJ mind-fuck) (NN movie))
+      (PP (IN for) (NP (DT the) (JJ teen) (NN generation)))
+      (SBAR
+        (WHNP (WDT that))
+        (S
+          (VP
+            (VP
+              (VBZ touches)
+              (PP
+                (IN on)
+                (NP (DT a) (ADJP (RB very) (JJ cool)) (NN idea))))
+            (, ,)
+            (CC but)
+            (VP
+              (VBZ presents)
+              (NP (PRP it))
+              (PP
+                (IN in)
+                (NP (DT a) (ADJP (RB very) (JJ bad)) (NN package))))))))
+    (. .)))
+critique
+a mind-fuck movie
+the teen generation
+it
+------FINISHED A SENTENCE------
+[(u'which', 'WDT'), (u'is', 'VBZ'), (u'what', 'WP'), (u'makes', 'VBZ'), (u'this', 'DT'), (u'review', 'NN'), (u'an', 'DT'), (u'even', 'RB'), (u'harder', 'RBR'), (u'one', 'CD'), (u'to', 'TO'), (u'write', 'VB'), (u',', ','), (u'since', 'IN'), (u'i', 'NN'), (u'generally', 'RB'), (u'applaud', 'VBP'), (u'films', 'NNS'), (u'which', 'WDT'), (u'attempt', 'VBP'), (u'to', 'TO'), (u'break', 'VB'), (u'the', 'DT'), (u'mold', 'NN'), (u',', ','), (u'mess', 'NN'), (u'with', 'IN'), (u'your', 'PRP$'), (u'head', 'NN'), (u'and', 'CC'), (u'such', 'JJ'), (u'(', '('), (u'lost', 'VBN'), (u'highway', 'NN'), (u'&', 'CC'), (u'memento', 'NN'), (u')', ')'), (u',', ','), (u'but', 'CC'), (u'there', 'EX'), (u'are', 'VBP'), (u'good', 'JJ'), (u'and', 'CC'), (u'bad', 'JJ'), (u'ways', 'NNS'), (u'of', 'IN'), (u'making', 'VBG'), (u'all', 'DT'), (u'types', 'NNS'), (u'of', 'IN'), (u'films', 'NNS'), (u',', ','), (u'and', 'CC'), (u'these', 'DT'), (u'folks', 'NNS'), (u'just', 'RB'), (u'did', 'VBD'), (u"n't", 'RB'), (u'snag', 'VB'), (u'this', 'DT'), (u'one', 'CD'), (u'correctly', 'RB'), (u'.', '.')]
+(ROOT
+  (S
+    (SBAR
+      (WHNP (WDT which))
+      (S
+        (VP
+          (VBZ is)
+          (SBAR
+            (WHNP (WP what))
+            (S
+              (VP
+                (VBZ makes)
+                (NP (DT this) (NN review))
+                (ADVP
+                  (ADVP (NP (DT an) (RB even)) (RBR harder))
+                  (NP (CD one)))
+                (S (VP (TO to) (VP (VB write))))))))))
+    (, ,)
+    (SBAR
+      (IN since)
+      (S
+        (NP (NN i))
+        (ADVP (RB generally))
+        (VP
+          (VBP applaud)
+          (NP
+            (NP (NNS films))
+            (SBAR
+              (WHNP (WDT which))
+              (S
+                (VP
+                  (VBP attempt)
+                  (S
+                    (VP
+                      (TO to)
+                      (VP (VB break) (NP (DT the) (NN mold))))))))))))
+    (, ,)
+    (S
+      (S
+        (NP
+          (NP (NN mess))
+          (PP
+            (IN with)
+            (NP (NP (PRP$ your) (NN head)) (CC and) (NP (JJ such)))))
+        (VP
+          (
+            (
+              ( )
+              (NP
+                (NP (VBN lost) (NN highway))
+                (CC &)
+                (NP (NN memento) ( )))))))
+      (, ,)
+      (CC but)
+      (S
+        (NP (EX there))
+        (VP
+          (VBP are)
+          (NP
+            (NP (ADJP (JJ good) (CC and) (JJ bad)) (NNS ways))
+            (PP
+              (IN of)
+              (S
+                (VP
+                  (VBG making)
+                  (NP
+                    (NP (DT all) (NNS types))
+                    (PP (IN of) (NP (NNS films)))))))))))
+    (, ,)
+    (CC and)
+    (S
+      (NP (DT these) (NNS folks))
+      (ADVP (RB just))
+      (VP
+        (VBD did)
+        (RB n't)
+        (VP (VB snag) (NP (DT this) (CD one)) (ADVP (RB correctly)))))
+    (. .)))
+this review
+an even
+one
+i
+films
+the mold
+mess
+your head
+such
+lost highway
+memento
+there
+all types
+films
+these folks
+this one
+------FINISHED A SENTENCE------
+[(u'they', 'PRP'), (u'seem', 'VBP'), (u'to', 'TO'), (u'have', 'VB'), (u'taken', 'VBN'), (u'this', 'DT'), (u'pretty', 'RB'), (u'neat', 'JJ'), (u'concept', 'NN'), (u',', ','), (u'but', 'CC'), (u'executed', 'VBD'), (u'it', 'PRP'), (u'terribly', 'RB'), (u'.', '.')]
+(ROOT
+  (S
+    (NP (PRP they))
+    (VP
+      (VP
+        (VBP seem)
+        (S
+          (VP
+            (TO to)
+            (VP
+              (VB have)
+              (VP
+                (VBN taken)
+                (NP
+                  (DT this)
+                  (ADJP (RB pretty) (JJ neat))
+                  (NN concept)))))))
+      (, ,)
+      (CC but)
+      (VP (VBD executed) (NP (PRP it)) (ADVP (RB terribly))))
+    (. .)))
+they
+it
+------FINISHED A SENTENCE------
+[(u'so', 'RB'), (u'what', 'WP'), (u'are', 'VBP'), (u'the', 'DT'), (u'problems', 'NNS'), (u'with', 'IN'), (u'the', 'DT'), (u'movie', 'NN'), (u'?', '.')]
+(ROOT
+  (SBARQ
+    (ADVP (RB so))
+    (WHNP (WP what))
+    (SQ
+      (VP
+        (VBP are)
+        (NP
+          (NP (DT the) (NNS problems))
+          (PP (IN with) (NP (DT the) (NN movie))))))
+    (. ?)))
+the problems
+the movie
+------FINISHED A SENTENCE------
+[(u'well', 'RB'), (u',', ','), (u'its', 'PRP$'), (u'main', 'JJ'), (u'problem', 'NN'), (u'is', 'VBZ'), (u'that', 'IN'), (u'it', 'PRP'), (u"'s", 'VBZ'), (u'simply', 'RB'), (u'too', 'RB'), (u'jumbled', 'VBN'), (u'.', '.')]
+(ROOT
+  (S
+    (ADVP (RB well))
+    (, ,)
+    (NP (PRP$ its) (JJ main) (NN problem))
+    (VP
+      (VBZ is)
+      (SBAR
+        (IN that)
+        (S
+          (NP (PRP it))
+          (VP
+            (VBZ 's)
+            (ADVP (RB simply))
+            (VP (ADVP (RB too)) (VBN jumbled))))))
+    (. .)))
+its main problem
+it
+------FINISHED A SENTENCE------
+[(u'it', 'PRP'), (u'starts', 'VBZ'), (u'off', 'IN'), (u'"', '"'), (u'normal', 'JJ'), (u'"', '"'), (u'but', 'CC'), (u'then', 'RB'), (u'downshifts', 'VBZ'), (u'into', 'IN'), (u'this', 'DT'), (u'"', '"'), (u'fantasy', 'NN'), (u'"', '"'), (u'world', 'NN'), (u'in', 'IN'), (u'which', 'WDT'), (u'you', 'PRP'), (u',', ','), (u'as', 'IN'), (u'an', 'DT'), (u'audience', 'NN'), (u'member', 'NN'), (u',', ','), (u'have', 'VBP'), (u'no', 'DT'), (u'idea', 'NN'), (u'what', 'WP'), (u"'s", 'VBZ'), (u'going', 'VBG'), (u'on', 'IN'), (u'.', '.')]
+(ROOT
+  (S
+    (NP (PRP it))
+    (VP
+      (VP (VBZ starts) (PP (IN off) (NP (" ") (JJ normal) (" "))))
+      (CC but)
+      (VP
+        (ADVP (RB then))
+        (VBZ downshifts)
+        (PP
+          (IN into)
+          (NP
+            (NP (DT this) (" ") (NN fantasy) (" ") (NN world))
+            (SBAR
+              (WHPP (IN in) (WHNP (WDT which)))
+              (S
+                (NP (PRP you))
+                (, ,)
+                (PP (IN as) (NP (DT an) (NN audience) (NN member)))
+                (, ,)
+                (VP
+                  (VBP have)
+                  (NP
+                    (NP (DT no) (NN idea))
+                    (SBAR
+                      (WHNP (WP what))
+                      (S (VP (VBZ 's) (VP (VBG going) (PP (IN on))))))))))))))
+    (. .)))
+it
+" normal "
+this " fantasy " world
+you
+an audience member
+no idea
+------FINISHED A SENTENCE------
+[(u'there', 'EX'), (u'are', 'VBP'), (u'dreams', 'NNS'), (u',', ','), (u'there', 'EX'), (u'are', 'VBP'), (u'characters', 'NNS'), (u'coming', 'VBG'), (u'back', 'RB'), (u'from', 'IN'), (u'the', 'DT'), (u'dead', 'JJ'), (u',', ','), (u'there', 'EX'), (u'are', 'VBP'), (u'others', 'NNS'), (u'who', 'WP'), (u'look', 'VBP'), (u'like', 'IN'), (u'the', 'DT'), (u'dead', 'JJ'), (u',', ','), (u'there', 'EX'), (u'are', 'VBP'), (u'strange', 'JJ'), (u'apparitions', 'NNS'), (u',', ','), (u'there', 'EX'), (u'are', 'VBP'), (u'disappearances', 'NNS'), (u',', ','), (u'there', 'EX'), (u'are', 'VBP'), (u'a', 'DT'), (u'looooot', 'NN'), (u'of', 'IN'), (u'chase', 'NN'), (u'scenes', 'NNS'), (u',', ','), (u'there', 'EX'), (u'are', 'VBP'), (u'tons', 'NNS'), (u'of', 'IN'), (u'weird', 'JJ'), (u'things', 'NNS'), (u'that', 'WDT'), (u'happen', 'VBP'), (u',', ','), (u'and', 'CC'), (u'most', 'JJS'), (u'of', 'IN'), (u'it', 'PRP'), (u'is', 'VBZ'), (u'simply', 'RB'), (u'not', 'RB'), (u'explained', 'VBN'), (u'.', '.')]
+(ROOT
+  (S
+    (S (NP (EX there)) (VP (VBP are) (NP (NNS dreams))))
+    (, ,)
+    (S
+      (NP (EX there))
+      (VP
+        (VBP are)
+        (NP
+          (NP (NNS characters))
+          (VP
+            (VBG coming)
+            (ADVP (RB back))
+            (PP (IN from) (NP (DT the) (JJ dead)))))))
+    (, ,)
+    (S
+      (NP (EX there))
+      (VP
+        (VBP are)
+        (NP
+          (NP (NNS others))
+          (SBAR
+            (WHNP (WP who))
+            (S
+              (VP (VBP look) (PP (IN like) (NP (DT the) (JJ dead)))))))))
+    (, ,)
+    (S
+      (NP (EX there))
+      (VP (VBP are) (NP (JJ strange) (NNS apparitions))))
+    (, ,)
+    (S (NP (EX there)) (VP (VBP are) (NP (NNS disappearances))))
+    (, ,)
+    (S
+      (NP (EX there))
+      (VP
+        (VBP are)
+        (NP
+          (NP (DT a) (NN looooot))
+          (PP (IN of) (NP (NN chase) (NNS scenes))))))
+    (, ,)
+    (S
+      (NP (EX there))
+      (VP
+        (VBP are)
+        (NP
+          (NP (NNS tons))
+          (PP (IN of) (NP (JJ weird) (NNS things)))
+          (SBAR (WHNP (WDT that)) (S (VP (VBP happen)))))))
+    (, ,)
+    (CC and)
+    (S
+      (NP (NP (JJS most)) (PP (IN of) (NP (PRP it))))
+      (VP (VBZ is) (ADVP (RB simply)) (VP (RB not) (VBN explained))))
+    (. .)))
+there
+dreams
+there
+characters
+the dead
+there
+others
+the dead
+there
+strange apparitions
+there
+disappearances
+there
+a looooot
+chase scenes
+there
+tons
+weird things
+most
+it
+------FINISHED A SENTENCE------
+[(u'now', 'RB'), (u'i', 'VBZ'), (u'personally', 'RB'), (u'do', 'VBP'), (u"n't", 'RB'), (u'mind', 'VB'), (u'trying', 'VBG'), (u'to', 'TO'), (u'unravel', 'VB'), (u'a', 'DT'), (u'film', 'NN'), (u'every', 'DT'), (u'now', 'RB'), (u'and', 'CC'), (u'then', 'RB'), (u',', ','), (u'but', 'CC'), (u'when', 'WRB'), (u'all', 'DT'), (u'it', 'PRP'), (u'does', 'VBZ'), (u'is', 'VBZ'), (u'give', 'VB'), (u'me', 'PRP'), (u'the', 'DT'), (u'same', 'JJ'), (u'clue', 'NN'), (u'over', 'IN'), (u'and', 'CC'), (u'over', 'RB'), (u'again', 'RB'), (u',', ','), (u'i', 'JJ'), (u'get', 'VBP'), (u'kind', 'NN'), (u'of', 'IN'), (u'fed', 'VBN'), (u'up', 'RP'), (u'after', 'IN'), (u'a', 'DT'), (u'while', 'NN'), (u',', ','), (u'which', 'WDT'), (u'is', 'VBZ'), (u'this', 'DT'), (u'film', 'NN'), (u"'s", 'POS'), (u'biggest', 'JJS'), (u'problem', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (S
+      (NP (NP (RB now)) (VP (VBZ i)))
+      (ADVP (RB personally))
+      (VP
+        (VBP do)
+        (RB n't)
+        (VP
+          (VB mind)
+          (S
+            (VP
+              (VBG trying)
+              (S
+                (VP
+                  (TO to)
+                  (VP
+                    (VB unravel)
+                    (NP (DT a) (NN film))
+                    (ADVP (DT every) (RB now) (CC and) (RB then))))))))))
+    (, ,)
+    (CC but)
+    (S
+      (SBAR
+        (WHADVP (WRB when))
+        (S
+          (NP (NP (DT all)) (SBAR (S (NP (PRP it)) (VP (VBZ does)))))
+          (VP
+            (VBZ is)
+            (VP
+              (VB give)
+              (NP (PRP me))
+              (NP (DT the) (JJ same) (NN clue))
+              (PP
+                (IN over)
+                (NP (QP (CC and) (RB over)))
+                (ADVP (RB again)))))))
+      (, ,)
+      (NP (JJ i))
+      (VP
+        (VBP get)
+        (ADVP (NN kind) (IN of))
+        (VP
+          (VBN fed)
+          (PRT (RP up))
+          (PP
+            (IN after)
+            (NP
+              (NP (DT a) (NN while))
+              (, ,)
+              (SBAR
+                (WHNP (WDT which))
+                (S
+                  (VP
+                    (VBZ is)
+                    (NP
+                      (NP (DT this) (NN film) (POS 's))
+                      (JJS biggest)
+                      (NN problem))))))))))
+    (. .)))
+now
+a film
+all
+it
+me
+the same clue
+i
+a while
+this film 's
+------FINISHED A SENTENCE------
+[(u'it', 'PRP'), (u"'s", 'VBZ'), (u'obviously', 'RB'), (u'got', 'VBD'), (u'this', 'DT'), (u'big', 'JJ'), (u'secret', 'NN'), (u'to', 'TO'), (u'hide', 'VB'), (u',', ','), (u'but', 'CC'), (u'it', 'PRP'), (u'seems', 'VBZ'), (u'to', 'TO'), (u'want', 'VB'), (u'to', 'TO'), (u'hide', 'VB'), (u'it', 'PRP'), (u'completely', 'RB'), (u'until', 'IN'), (u'its', 'PRP$'), (u'final', 'JJ'), (u'five', 'CD'), (u'minutes', 'NNS'), (u'.', '.')]
+(ROOT
+  (S
+    (S
+      (NP (PRP it))
+      (VP
+        (VBZ 's)
+        (ADVP (RB obviously))
+        (VP
+          (VBD got)
+          (NP (DT this) (JJ big) (NN secret))
+          (S (VP (TO to) (VP (VB hide)))))))
+    (, ,)
+    (CC but)
+    (S
+      (NP (PRP it))
+      (VP
+        (VBZ seems)
+        (S
+          (VP
+            (TO to)
+            (VP
+              (VB want)
+              (S
+                (VP
+                  (TO to)
+                  (VP
+                    (VB hide)
+                    (NP (PRP it))
+                    (ADVP (RB completely))
+                    (PP
+                      (IN until)
+                      (NP
+                        (PRP$ its)
+                        (JJ final)
+                        (CD five)
+                        (NNS minutes)))))))))))
+    (. .)))
+it
+this big secret
+it
+it
+its final five minutes
+------FINISHED A SENTENCE------
+[(u'and', 'CC'), (u'do', 'VBP'), (u'they', 'PRP'), (u'make', 'VB'), (u'things', 'NNS'), (u'entertaining', 'VBG'), (u',', ','), (u'thrilling', 'VBG'), (u'or', 'CC'), (u'even', 'RB'), (u'engaging', 'VBG'), (u',', ','), (u'in', 'IN'), (u'the', 'DT'), (u'meantime', 'NN'), (u'?', '.')]
+(ROOT
+  (SBARQ
+    (CC and)
+    (SQ
+      (VBP do)
+      (NP (PRP they))
+      (VP
+        (VB make)
+        (S (NP (NNS things)) (ADJP (VBG entertaining)))
+        (, ,)
+        (S
+          (VP
+            (VP (VBG thrilling))
+            (CC or)
+            (VP
+              (ADVP (RB even))
+              (VBG engaging)
+              (, ,)
+              (PP (IN in) (NP (DT the) (NN meantime))))))))
+    (. ?)))
+they
+things
+the meantime
+------FINISHED A SENTENCE------
+[(u'not', 'RB'), (u'really', 'RB'), (u'.', '.')]
+(ROOT (FRAG (RB not) (ADVP (RB really) (. .))))
+------FINISHED A SENTENCE------
+[(u'the', 'DT'), (u'sad', 'JJ'), (u'part', 'NN'), (u'is', 'VBZ'), (u'that', 'IN'), (u'the', 'DT'), (u'arrow', 'NN'), (u'and', 'CC'), (u'i', 'VB'), (u'both', 'DT'), (u'dig', 'NN'), (u'on', 'IN'), (u'flicks', 'NNS'), (u'like', 'IN'), (u'this', 'DT'), (u',', ','), (u'so', 'IN'), (u'we', 'PRP'), (u'actually', 'RB'), (u'figured', 'VBD'), (u'most', 'JJS'), (u'of', 'IN'), (u'it', 'PRP'), (u'out', 'RP'), (u'by', 'IN'), (u'the', 'DT'), (u'half-way', 'JJ'), (u'point', 'NN'), (u',', ','), (u'so', 'IN'), (u'all', 'DT'), (u'of', 'IN'), (u'the', 'DT'), (u'strangeness', 'NN'), (u'after', 'IN'), (u'that', 'DT'), (u'did', 'VBD'), (u'start', 'VB'), (u'to', 'TO'), (u'make', 'VB'), (u'a', 'DT'), (u'little', 'JJ'), (u'bit', 'NN'), (u'of', 'IN'), (u'sense', 'NN'), (u',', ','), (u'but', 'CC'), (u'it', 'PRP'), (u'still', 'RB'), (u'did', 'VBD'), (u"n't", 'RB'), (u'the', 'DT'), (u'make', 'VB'), (u'the', 'DT'), (u'film', 'NN'), (u'all', 'PDT'), (u'that', 'IN'), (u'more', 'JJR'), (u'entertaining', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (S
+      (NP (DT the) (JJ sad) (NN part))
+      (VP
+        (VBZ is)
+        (SBAR
+          (IN that)
+          (S
+            (NP
+              (NP (DT the) (NN arrow))
+              (CC and)
+              (NP
+                (VP
+                  (VB i)
+                  (NP (DT both) (NN dig))
+                  (PP
+                    (IN on)
+                    (NP
+                      (NP (NNS flicks))
+                      (PP (IN like) (NP (DT this)))))
+                  (, ,)
+                  (SBAR
+                    (IN so)
+                    (S
+                      (NP (PRP we))
+                      (ADVP (RB actually))
+                      (VP
+                        (VBD figured)
+                        (NP
+                          (NP (JJS most))
+                          (PP (IN of) (NP (PRP it))))
+                        (PP
+                          (RP out)
+                          (PP
+                            (IN by)
+                            (NP (DT the) (JJ half-way) (NN point))))
+                        (, ,)
+                        (ADVP (IN so) (DT all))))))
+                (PP
+                  (IN of)
+                  (NP
+                    (NP (DT the) (NN strangeness))
+                    (PP (IN after) (NP (DT that)))))))
+            (VP
+              (VBD did)
+              (VP
+                (VB start)
+                (S
+                  (VP
+                    (TO to)
+                    (VP
+                      (VB make)
+                      (NP
+                        (NP (DT a) (JJ little) (NN bit))
+                        (PP (IN of) (NP (NN sense)))))))))))))
+    (, ,)
+    (CC but)
+    (S
+      (NP (PRP it))
+      (ADVP (RB still))
+      (VP
+        (VBD did)
+        (RB n't)
+        (ADVP (DT the))
+        (VP
+          (VB make)
+          (S
+            (NP (DT the) (NN film))
+            (NP
+              (NP (PDT all))
+              (PP (IN that) (NP (JJR more) (NN entertaining))))))))
+    (. .)))
+the sad part
+the arrow
+both dig
+flicks
+this
+we
+most
+it
+the half-way point
+the strangeness
+that
+a little bit
+sense
+it
+the film
+all
+more entertaining
+------FINISHED A SENTENCE------
+[(u'i', 'NN'), (u'guess', 'VBP'), (u'the', 'DT'), (u'bottom', 'JJ'), (u'line', 'NN'), (u'with', 'IN'), (u'movies', 'NNS'), (u'like', 'IN'), (u'this', 'DT'), (u'is', 'VBZ'), (u'that', 'IN'), (u'you', 'PRP'), (u'should', 'MD'), (u'always', 'RB'), (u'make', 'VB'), (u'sure', 'JJ'), (u'that', 'IN'), (u'the', 'DT'), (u'audience', 'NN'), (u'is', 'VBZ'), (u'"', '"'), (u'into', 'IN'), (u'it', 'PRP'), (u'"', '"'), (u'even', 'RB'), (u'before', 'IN'), (u'they', 'PRP'), (u'are', 'VBP'), (u'given', 'VBN'), (u'the', 'DT'), (u'secret', 'JJ'), (u'password', 'NN'), (u'to', 'TO'), (u'enter', 'VB'), (u'your', 'PRP$'), (u'world', 'NN'), (u'of', 'IN'), (u'understanding', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (NP (NN i))
+    (VP
+      (VBP guess)
+      (NP
+        (NP (DT the) (JJ bottom) (NN line))
+        (PP (IN with) (NP (NNS movies))))
+      (SBAR
+        (IN like)
+        (S
+          (NP (DT this))
+          (VP
+            (VBZ is)
+            (SBAR
+              (IN that)
+              (S
+                (NP (PRP you))
+                (VP
+                  (MD should)
+                  (ADVP (RB always))
+                  (VP
+                    (VB make)
+                    (ADJP (JJ sure))
+                    (SBAR
+                      (IN that)
+                      (S
+                        (NP (DT the) (NN audience))
+                        (VP
+                          (VBZ is)
+                          (VP (" ") (PP (IN into) (NP (PRP it))))))))))))))
+      (" ")
+      (SBAR
+        (RB even)
+        (IN before)
+        (S
+          (NP (PRP they))
+          (VP
+            (VBP are)
+            (VP
+              (VBN given)
+              (NP (DT the) (JJ secret) (NN password))
+              (S
+                (VP
+                  (TO to)
+                  (VP
+                    (VB enter)
+                    (NP
+                      (NP (PRP$ your) (NN world))
+                      (PP (IN of) (NP (NN understanding))))))))))))
+    (. .)))
+i
+the bottom line
+movies
+this
+you
+the audience
+it
+they
+the secret password
+your world
+understanding
+------FINISHED A SENTENCE------
+[(u'i', 'JJ'), (u'mean', 'VBP'), (u',', ','), (u'showing', 'VBG'), (u'melissa', 'JJ'), (u'sagemiller', 'NN'), (u'running', 'VBG'), (u'away', 'RB'), (u'from', 'IN'), (u'visions', 'NNS'), (u'for', 'IN'), (u'about', 'IN'), (u'20', 'CD'), (u'minutes', 'NNS'), (u'throughout', 'IN'), (u'the', 'DT'), (u'movie', 'NN'), (u'is', 'VBZ'), (u'just', 'RB'), (u'plain', 'JJ'), (u'lazy', 'JJ'), (u'!', '.')]
+(ROOT
+  (S
+    (NP (JJ i))
+    (VP
+      (VBP mean)
+      (, ,)
+      (S
+        (VP
+          (VBG showing)
+          (SBAR
+            (S
+              (NP
+                (NP (JJ melissa) (NN sagemiller))
+                (VP
+                  (VBG running)
+                  (ADVP (RB away) (PP (IN from) (NP (NNS visions))))
+                  (PP
+                    (IN for)
+                    (IN about)
+                    (NP
+                      (NP (CD 20) (NNS minutes))
+                      (PP (IN throughout) (NP (DT the) (NN movie)))))))
+              (VP
+                (VBZ is)
+                (ADJP (ADVP (RB just) (JJ plain)) (JJ lazy))))))))
+    (. !)))
+i
+melissa sagemiller
+visions
+20 minutes
+the movie
+------FINISHED A SENTENCE------
+[(u'okay', 'RB'), (u',', ','), (u'we', 'PRP'), (u'get', 'VBP'), (u'it', 'PRP'), (u'...', ':')]
+(ROOT
+  (S
+    (ADVP (RB okay))
+    (, ,)
+    (NP (PRP we))
+    (VP (VBP get) (NP (PRP it)))
+    (: ...)))
+we
+it
+------FINISHED A SENTENCE------
+[(u'there', 'EX'), (u'are', 'VBP'), (u'people', 'NNS'), (u'chasing', 'VBG'), (u'her', 'PRP$'), (u'and', 'CC'), (u'we', 'PRP'), (u'do', 'VBP'), (u"n't", 'RB'), (u'know', 'VB'), (u'who', 'WP'), (u'they', 'PRP'), (u'are', 'VBP'), (u'.', '.')]
+(ROOT
+  (S
+    (S
+      (NP (EX there))
+      (VP
+        (VBP are)
+        (NP (NP (NNS people)) (VP (VBG chasing) (NP (PRP$ her))))))
+    (CC and)
+    (S
+      (NP (PRP we))
+      (VP
+        (VBP do)
+        (RB n't)
+        (VP
+          (VB know)
+          (SBAR (WHNP (WP who)) (S (NP (PRP they)) (VP (VBP are)))))))
+    (. .)))
+there
+people
+her
+we
+they
+------FINISHED A SENTENCE------
+[(u'do', 'VBP'), (u'we', 'PRP'), (u'really', 'RB'), (u'need', 'VB'), (u'to', 'TO'), (u'see', 'VB'), (u'it', 'PRP'), (u'over', 'IN'), (u'and', 'CC'), (u'over', 'RB'), (u'again', 'RB'), (u'?', '.')]
+(ROOT
+  (SQ
+    (VBP do)
+    (NP (PRP we))
+    (ADVP (RB really))
+    (VP
+      (VB need)
+      (S
+        (VP
+          (TO to)
+          (VP
+            (VB see)
+            (NP (PRP it))
+            (PP
+              (IN over)
+              (NP (QP (CC and) (RB over)))
+              (ADVP (RB again)))))))
+    (. ?)))
+we
+it
+------FINISHED A SENTENCE------
+[(u'how', 'WRB'), (u'about', 'IN'), (u'giving', 'VBG'), (u'us', 'PRP'), (u'different', 'JJ'), (u'scenes', 'NNS'), (u'offering', 'VBG'), (u'further', 'JJ'), (u'insight', 'NN'), (u'into', 'IN'), (u'all', 'DT'), (u'of', 'IN'), (u'the', 'DT'), (u'strangeness', 'NN'), (u'going', 'VBG'), (u'down', 'RP'), (u'in', 'IN'), (u'the', 'DT'), (u'movie', 'NN'), (u'?', '.')]
+(ROOT
+  (SBARQ
+    (WHADVP (WRB how) (ADJP (IN about)))
+    (SQ
+      (VP
+        (VBG giving)
+        (NP (PRP us))
+        (NP (JJ different) (NNS scenes))
+        (S (VP (VBG offering) (NP (JJ further) (NN insight))))
+        (PP
+          (IN into)
+          (NP
+            (NP (DT all))
+            (PP
+              (IN of)
+              (NP
+                (NP (DT the) (NN strangeness))
+                (VP
+                  (VBG going)
+                  (PRT (RP down))
+                  (PP (IN in) (NP (DT the) (NN movie))))))))))
+    (. ?)))
+us
+different scenes
+further insight
+all
+the strangeness
+the movie
+------FINISHED A SENTENCE------
+[(u'apparently', 'RB'), (u',', ','), (u'the', 'DT'), (u'studio', 'NN'), (u'took', 'VBD'), (u'this', 'DT'), (u'film', 'NN'), (u'away', 'RB'), (u'from', 'IN'), (u'its', 'PRP$'), (u'director', 'NN'), (u'and', 'CC'), (u'chopped', 'VBD'), (u'it', 'PRP'), (u'up', 'RP'), (u'themselves', 'PRP'), (u',', ','), (u'and', 'CC'), (u'it', 'PRP'), (u'shows', 'VBZ'), (u'.', '.')]
+(ROOT
+  (S
+    (ADVP (RB apparently))
+    (, ,)
+    (S
+      (NP (DT the) (NN studio))
+      (VP
+        (VP
+          (VBD took)
+          (ADVP (NP (DT this) (NN film)) (RB away))
+          (PP (IN from) (NP (PRP$ its) (NN director))))
+        (CC and)
+        (VP (VBD chopped) (NP (PRP it)) (PRT (RP up)))
+        (NP (PRP themselves))))
+    (, ,)
+    (CC and)
+    (S (NP (PRP it)) (VP (VBZ shows)))
+    (. .)))
+the studio
+this film
+its director
+it
+themselves
+it
+------FINISHED A SENTENCE------
+[(u'there', 'RB'), (u'might', 'MD'), (u"'ve", 'VBP'), (u'been', 'VBN'), (u'a', 'DT'), (u'pretty', 'JJ'), (u'decent', 'JJ'), (u'teen', 'JJ'), (u'mind-fuck', 'JJ'), (u'movie', 'NN'), (u'in', 'IN'), (u'here', 'RB'), (u'somewhere', 'RB'), (u',', ','), (u'but', 'CC'), (u'i', 'JJ'), (u'guess', 'NN'), (u'"', '"'), (u'the', 'DT'), (u'suits', 'NNS'), (u'"', '"'), (u'decided', 'VBD'), (u'that', 'IN'), (u'turning', 'VBG'), (u'it', 'PRP'), (u'into', 'IN'), (u'a', 'DT'), (u'music', 'NN'), (u'video', 'NN'), (u'with', 'IN'), (u'little', 'JJ'), (u'edge', 'NN'), (u',', ','), (u'would', 'MD'), (u'make', 'VB'), (u'more', 'JJR'), (u'sense', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (S
+      (NP (RB there))
+      (VP
+        (MD might)
+        (VP
+          (VBP 've)
+          (VP
+            (VBN been)
+            (NP
+              (NP
+                (DT a)
+                (JJ pretty)
+                (JJ decent)
+                (JJ teen)
+                (JJ mind-fuck)
+                (NN movie))
+              (PP (IN in) (NP (RB here) (RB somewhere))))))))
+    (, ,)
+    (CC but)
+    (S
+      (NP
+        (NP (JJ i) (NN guess))
+        (" ")
+        (NP (DT the) (NNS suits))
+        (" "))
+      (VP
+        (VBD decided)
+        (SBAR
+          (IN that)
+          (S
+            (S
+              (VP
+                (VBG turning)
+                (NP (PRP it))
+                (PP
+                  (IN into)
+                  (NP
+                    (NP (DT a) (NN music) (NN video))
+                    (PP (IN with) (NP (JJ little) (NN edge)))))))
+            (, ,)
+            (VP (MD would) (VP (VB make) (NP (JJR more) (NN sense))))))))
+    (. .)))
+there
+a pretty decent teen mind-fuck movie
+here somewhere
+i guess
+the suits
+it
+a music video
+little edge
+more sense
+------FINISHED A SENTENCE------
+[(u'the', 'DT'), (u'actors', 'NNS'), (u'are', 'VBP'), (u'pretty', 'RB'), (u'good', 'JJ'), (u'for', 'IN'), (u'the', 'DT'), (u'most', 'JJS'), (u'part', 'NN'), (u',', ','), (u'although', 'IN'), (u'wes', 'JJ'), (u'bentley', 'NN'), (u'just', 'RB'), (u'seemed', 'VBD'), (u'to', 'TO'), (u'be', 'VB'), (u'playing', 'VBG'), (u'the', 'DT'), (u'exact', 'JJ'), (u'same', 'JJ'), (u'character', 'NN'), (u'that', 'IN'), (u'he', 'PRP'), (u'did', 'VBD'), (u'in', 'IN'), (u'american', 'JJ'), (u'beauty', 'NN'), (u',', ','), (u'only', 'RB'), (u'in', 'IN'), (u'a', 'DT'), (u'new', 'JJ'), (u'neighborhood', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (NP (DT the) (NNS actors))
+    (VP
+      (VBP are)
+      (ADJP
+        (RB pretty)
+        (JJ good)
+        (PP (IN for) (NP (DT the) (JJS most) (NN part))))
+      (, ,)
+      (SBAR
+        (IN although)
+        (S
+          (NP (JJ wes) (NN bentley))
+          (ADVP (RB just))
+          (VP
+            (VBD seemed)
+            (S
+              (VP
+                (TO to)
+                (VP
+                  (VB be)
+                  (VP
+                    (VBG playing)
+                    (NP (DT the) (JJ exact) (JJ same) (NN character))
+                    (SBAR
+                      (IN that)
+                      (S
+                        (NP (PRP he))
+                        (VP
+                          (VBD did)
+                          (PP (IN in) (NP (JJ american) (NN beauty)))
+                          (, ,)
+                          (ADVP (RB only))
+                          (PP
+                            (IN in)
+                            (NP (DT a) (JJ new) (NN neighborhood))))))))))))))
+    (. .)))
+the actors
+the most part
+wes bentley
+the exact same character
+he
+american beauty
+a new neighborhood
+------FINISHED A SENTENCE------
+[(u'but', 'CC'), (u'my', 'PRP$'), (u'biggest', 'JJS'), (u'kudos', 'NN'), (u'go', 'VBP'), (u'out', 'RP'), (u'to', 'TO'), (u'sagemiller', 'VB'), (u',', ','), (u'who', 'WP'), (u'holds', 'VBZ'), (u'her', 'PRP$'), (u'own', 'JJ'), (u'throughout', 'IN'), (u'the', 'DT'), (u'entire', 'JJ'), (u'film', 'NN'), (u',', ','), (u'and', 'CC'), (u'actually', 'RB'), (u'has', 'VBZ'), (u'you', 'PRP'), (u'feeling', 'VBG'), (u'her', 'PRP$'), (u'character', 'NN'), (u"'s", 'POS'), (u'unraveling', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (CC but)
+    (NP (PRP$ my) (JJS biggest) (NN kudos))
+    (VP
+      (VBP go)
+      (PRT (RP out))
+      (S
+        (VP
+          (TO to)
+          (VP
+            (VB sagemiller)
+            (, ,)
+            (SBAR
+              (WHNP (WP who))
+              (S
+                (VP
+                  (VP
+                    (VBZ holds)
+                    (NP (PRP$ her) (JJ own))
+                    (PP
+                      (IN throughout)
+                      (NP (DT the) (JJ entire) (NN film))))
+                  (, ,)
+                  (CC and)
+                  (ADVP (RB actually))
+                  (VP
+                    (VBZ has)
+                    (S
+                      (NP (PRP you))
+                      (VP
+                        (VBG feeling)
+                        (NP
+                          (NP (PRP$ her) (NN character) (POS 's))
+                          (NN unraveling))))))))))))
+    (. .)))
+my biggest kudos
+her own
+the entire film
+you
+her character 's
+------FINISHED A SENTENCE------
+[(u'overall', 'JJ'), (u',', ','), (u'the', 'DT'), (u'film', 'NN'), (u'does', 'VBZ'), (u"n't", 'RB'), (u'stick', 'VB'), (u'because', 'IN'), (u'it', 'PRP'), (u'does', 'VBZ'), (u"n't", 'RB'), (u'entertain', 'VB'), (u',', ','), (u'it', 'PRP'), (u"'s", 'VBZ'), (u'confusing', 'VBG'), (u',', ','), (u'it', 'PRP'), (u'rarely', 'RB'), (u'excites', 'VBZ'), (u'and', 'CC'), (u'it', 'PRP'), (u'feels', 'VBZ'), (u'pretty', 'JJ'), (u'redundant', 'NN'), (u'for', 'IN'), (u'most', 'JJS'), (u'of', 'IN'), (u'its', 'PRP$'), (u'runtime', 'NN'), (u',', ','), (u'despite', 'IN'), (u'a', 'DT'), (u'pretty', 'JJ'), (u'cool', 'NN'), (u'ending', 'VBG'), (u'and', 'CC'), (u'explanation', 'NN'), (u'to', 'TO'), (u'all', 'DT'), (u'of', 'IN'), (u'the', 'DT'), (u'craziness', 'NN'), (u'that', 'WDT'), (u'came', 'VBD'), (u'before', 'IN'), (u'it', 'PRP'), (u'.', '.')]
+(ROOT
+  (S
+    (ADVP (JJ overall))
+    (, ,)
+    (S
+      (NP (DT the) (NN film))
+      (VP
+        (VBZ does)
+        (RB n't)
+        (VP
+          (VB stick)
+          (SBAR
+            (IN because)
+            (S
+              (NP (PRP it))
+              (VP (VBZ does) (RB n't) (VP (VB entertain))))))))
+    (, ,)
+    (S (NP (PRP it)) (VP (VBZ 's) (ADJP (VBG confusing))))
+    (, ,)
+    (S (NP (PRP it)) (ADVP (RB rarely)) (VP (VBZ excites)))
+    (CC and)
+    (S
+      (NP (PRP it))
+      (VP
+        (VBZ feels)
+        (NP (JJ pretty) (NN redundant))
+        (PP
+          (IN for)
+          (NP
+            (NP (JJS most))
+            (PP (IN of) (NP (PRP$ its) (NN runtime)))))
+        (, ,)
+        (PP
+          (IN despite)
+          (NP
+            (NP (NP (DT a) (JJ pretty) (NN cool)) (VP (VBG ending)))
+            (CC and)
+            (NP
+              (NP (NN explanation))
+              (PP
+                (TO to)
+                (NP
+                  (NP (DT all))
+                  (PP
+                    (IN of)
+                    (NP
+                      (NP (DT the) (NN craziness))
+                      (SBAR
+                        (WHNP (WDT that))
+                        (S
+                          (VP
+                            (VBD came)
+                            (PP (IN before) (NP (PRP it)))))))))))))))
+    (. .)))
+the film
+it
+it
+it
+it
+pretty redundant
+most
+its runtime
+a pretty cool
+explanation
+all
+the craziness
+it
+------FINISHED A SENTENCE------
+[(u'oh', 'UH'), (u',', ','), (u'and', 'CC'), (u'by', 'IN'), (u'the', 'DT'), (u'way', 'NN'), (u',', ','), (u'this', 'DT'), (u'is', 'VBZ'), (u'not', 'RB'), (u'a', 'DT'), (u'horror', 'NN'), (u'or', 'CC'), (u'teen', 'JJ'), (u'slasher', 'NN'), (u'flick', 'NN'), (u'...', ':')]
+(ROOT
+  (S
+    (INTJ (UH oh))
+    (, ,)
+    (ADVP (CC and))
+    (PP (IN by) (NP (DT the) (NN way)))
+    (, ,)
+    (NP (DT this))
+    (VP
+      (VBZ is)
+      (RB not)
+      (NP
+        (DT a)
+        (NN horror)
+        (CC or)
+        (JJ teen)
+        (NN slasher)
+        (NN flick)))
+    (: ...)))
+the way
+this
+a horror or teen slasher flick
+------FINISHED A SENTENCE------
+[(u'it', 'PRP'), (u"'s", 'VBZ'), (u'just', 'RB'), (u'packaged', 'VBN'), (u'to', 'TO'), (u'look', 'VB'), (u'that', 'DT'), (u'way', 'NN'), (u'because', 'IN'), (u'someone', 'NN'), (u'is', 'VBZ'), (u'apparently', 'RB'), (u'assuming', 'VBG'), (u'that', 'IN'), (u'the', 'DT'), (u'genre', 'NN'), (u'is', 'VBZ'), (u'still', 'RB'), (u'hot', 'JJ'), (u'with', 'IN'), (u'the', 'DT'), (u'kids', 'NNS'), (u'.', '.')]
+(ROOT
+  (S
+    (NP (PRP it))
+    (VP
+      (VBZ 's)
+      (ADJP
+        (RB just)
+        (VBN packaged)
+        (S
+          (VP
+            (TO to)
+            (VP
+              (VB look)
+              (NP (DT that) (NN way))
+              (SBAR
+                (IN because)
+                (S
+                  (NP (NN someone))
+                  (VP
+                    (VBZ is)
+                    (ADVP (RB apparently))
+                    (VP
+                      (VBG assuming)
+                      (SBAR
+                        (IN that)
+                        (S
+                          (NP (DT the) (NN genre))
+                          (VP
+                            (VBZ is)
+                            (ADVP (RB still))
+                            (ADJP
+                              (JJ hot)
+                              (PP (IN with) (NP (DT the) (NNS kids))))))))))))))))
+    (. .)))
+it
+that way
+someone
+the genre
+the kids
+------FINISHED A SENTENCE------
+[(u'it', 'PRP'), (u'also', 'RB'), (u'wrapped', 'VBD'), (u'production', 'NN'), (u'two', 'CD'), (u'years', 'NNS'), (u'ago', 'RB'), (u'and', 'CC'), (u'has', 'VBZ'), (u'been', 'VBN'), (u'sitting', 'VBG'), (u'on', 'IN'), (u'the', 'DT'), (u'shelves', 'NNS'), (u'ever', 'RB'), (u'since', 'IN'), (u'.', '.')]
+(ROOT
+  (S
+    (NP (PRP it))
+    (ADVP (RB also))
+    (VP
+      (VP
+        (VBD wrapped)
+        (NP (NN production))
+        (ADVP (NP (CD two) (NNS years)) (RB ago)))
+      (CC and)
+      (VP
+        (VBZ has)
+        (VP
+          (VBN been)
+          (VP
+            (VBG sitting)
+            (PP (IN on) (NP (DT the) (NNS shelves)))
+            (ADVP (RB ever) (IN since))))))
+    (. .)))
+it
+production
+two years
+the shelves
+------FINISHED A SENTENCE------
+[(u'whatever', 'WDT'), (u'...', ':')]
+(ROOT (NP (WDT whatever) (: ...)))
+whatever ...
+------FINISHED A SENTENCE------
+[(u'skip', 'NN'), (u'it', 'PRP'), (u'!', '.')]
+(ROOT (FRAG (NP (NN skip)) (NP (PRP it)) (. !)))
+skip
+it
+------FINISHED A SENTENCE------
+[(u'where', 'WRB'), (u"'s", 'POS'), (u'joblo', 'NN'), (u'coming', 'VBG'), (u'from', 'IN'), (u'?', '.')]
+(ROOT
+  (SBARQ
+    (WHADVP (WRB where))
+    (SQ (POS 's) (NP (NN joblo)) (VP (VBG coming) (PP (IN from))))
+    (. ?)))
+joblo
+------FINISHED A SENTENCE------
+[u"the happy bastard's quick movie review \ndamn that y2k bug .", u"it's got a head start in this movie starring jamie lee curtis and another baldwin brother ( william this time ) in a story regarding a crew of a tugboat that comes across a deserted russian tech ship that has a strangeness to it when they kick the power back on .", u'little do they know the power within . . .', u'going for the gore and bringing on a few action sequences here and there , virus still feels very empty , like a movie going for all flash and no substance .', u"we don't know why the crew was really out in the middle of nowhere , we don't know the origin of what took over the ship ( just that a big pink flashy thing hit the mir ) , and , of course , we don't know why donald sutherland is stumbling around drunkenly throughout .", u'here , it\'s just " hey , let\'s chase these people around with some robots " .', u'the acting is below average , even from the likes of curtis .', u"you're more likely to get a kick out of her work in halloween h20 .", u"sutherland is wasted and baldwin , well , he's acting like a baldwin , of course .", u"the real star here are stan winston's robot design , some schnazzy cgi , and the occasional good gore shot , like picking into someone's brain .", u"so , if robots and body parts really turn you on , here's your movie .", u"otherwise , it's pretty much a sunken ship of a movie ."]
+Overview:  [[u'the', u'happy', u'bastard', u"'s", u'quick', u'movie', u'review', u'damn', u'that', u'y2k', u'bug', u'.'], [u'it', u"'s", u'got', u'a', u'head', u'start', u'in', u'this', u'movie', u'starring', u'jamie', u'lee', u'curtis', u'and', u'another', u'baldwin', u'brother', u'(', u'william', u'this', u'time', u')', u'in', u'a', u'story', u'regarding', u'a', u'crew', u'of', u'a', u'tugboat', u'that', u'comes', u'across', u'a', u'deserted', u'russian', u'tech', u'ship', u'that', u'has', u'a', u'strangeness', u'to', u'it', u'when', u'they', u'kick', u'the', u'power', u'back', u'on', u'.'], [u'little', u'do', u'they', u'know', u'the', u'power', u'within', u'...'], [u'going', u'for', u'the', u'gore', u'and', u'bringing', u'on', u'a', u'few', u'action', u'sequences', u'here', u'and', u'there', u',', u'virus', u'still', u'feels', u'very', u'empty', u',', u'like', u'a', u'movie', u'going', u'for', u'all', u'flash', u'and', u'no', u'substance', u'.'], [u'we', u'do', u"n't", u'know', u'why', u'the', u'crew', u'was', u'really', u'out', u'in', u'the', u'middle', u'of', u'nowhere', u',', u'we', u'do', u"n't", u'know', u'the', u'origin', u'of', u'what', u'took', u'over', u'the', u'ship', u'(', u'just', u'that', u'a', u'big', u'pink', u'flashy', u'thing', u'hit', u'the', u'mir', u')', u',', u'and', u',', u'of', u'course', u',', u'we', u'do', u"n't", u'know', u'why', u'donald', u'sutherland', u'is', u'stumbling', u'around', u'drunkenly', u'throughout', u'.'], [u'here', u',', u'it', u"'s", u'just', u'"', u'hey', u',', u'let', u"'s", u'chase', u'these', u'people', u'around', u'with', u'some', u'robots', u'"', u'.'], [u'the', u'acting', u'is', u'below', u'average', u',', u'even', u'from', u'the', u'likes', u'of', u'curtis', u'.'], [u'you', u"'re", u'more', u'likely', u'to', u'get', u'a', u'kick', u'out', u'of', u'her', u'work', u'in', u'halloween', u'h20', u'.'], [u'sutherland', u'is', u'wasted', u'and', u'baldwin', u',', u'well', u',', u'he', u"'s", u'acting', u'like', u'a', u'baldwin', u',', u'of', u'course', u'.'], [u'the', u'real', u'star', u'here', u'are', u'stan', u'winsto', u"n's", u'robot', u'design', u',', u'some', u'schnazzy', u'cgi', u',', u'and', u'the', u'occasional', u'good', u'gore', u'shot', u',', u'like', u'picking', u'into', u'someone', u"'s", u'brain', u'.'], [u'so', u',', u'if', u'robots', u'and', u'body', u'parts', u'really', u'turn', u'you', u'on', u',', u'here', u"'s", u'your', u'movie', u'.'], [u'otherwise', u',', u'it', u"'s", u'pretty', u'much', u'a', u'sunken', u'ship', u'of', u'a', u'movie', u'.']]
+[(u'the', 'DT'), (u'happy', 'JJ'), (u'bastard', 'NN'), (u"'s", 'POS'), (u'quick', 'JJ'), (u'movie', 'NN'), (u'review', 'NN'), (u'damn', 'NN'), (u'that', 'WDT'), (u'y2k', 'VBZ'), (u'bug', 'NN'), (u'.', '.')]
+(ROOT
+  (NP
+    (NP
+      (NP (DT the) (JJ happy) (NN bastard) (POS 's))
+      (JJ quick)
+      (NN movie)
+      (NN review))
+    (NP
+      (NP (NN damn))
+      (SBAR (WHNP (WDT that)) (S (VP (VBZ y2k) (NP (NN bug))))))
+    (. .)))
+the happy bastard 's
+damn
+bug
+------FINISHED A SENTENCE------
+[(u'it', 'PRP'), (u"'s", 'VBZ'), (u'got', 'VBD'), (u'a', 'DT'), (u'head', 'JJ'), (u'start', 'NN'), (u'in', 'IN'), (u'this', 'DT'), (u'movie', 'NN'), (u'starring', 'VBG'), (u'jamie', 'NN'), (u'lee', 'NN'), (u'curtis', 'NN'), (u'and', 'CC'), (u'another', 'DT'), (u'baldwin', 'NN'), (u'brother', 'NN'), (u'(', '('), (u'william', 'IN'), (u'this', 'DT'), (u'time', 'NN'), (u')', ')'), (u'in', 'IN'), (u'a', 'DT'), (u'story', 'NN'), (u'regarding', 'VBG'), (u'a', 'DT'), (u'crew', 'NN'), (u'of', 'IN'), (u'a', 'DT'), (u'tugboat', 'NN'), (u'that', 'WDT'), (u'comes', 'VBZ'), (u'across', 'IN'), (u'a', 'DT'), (u'deserted', 'JJ'), (u'russian', 'JJ'), (u'tech', 'NN'), (u'ship', 'NN'), (u'that', 'WDT'), (u'has', 'VBZ'), (u'a', 'DT'), (u'strangeness', 'NN'), (u'to', 'TO'), (u'it', 'PRP'), (u'when', 'WRB'), (u'they', 'PRP'), (u'kick', 'VBP'), (u'the', 'DT'), (u'power', 'NN'), (u'back', 'RB'), (u'on', 'IN'), (u'.', '.')]
+(ROOT
+  (S
+    (NP (PRP it))
+    (VP
+      (VBZ 's)
+      (VP
+        (VBD got)
+        (NP (DT a) (JJ head) (NN start))
+        (PP
+          (IN in)
+          (NP
+            (NP (DT this) (NN movie))
+            (VP
+              (VBG starring)
+              (NP
+                (NP (NN jamie) (NN lee) (NN curtis))
+                (CC and)
+                (NP (DT another) (NN baldwin) (NN brother)))
+              (
+                (
+                  ( )
+                  (PP (IN william) (NP (NP (DT this) (NN time) ( ))))
+                  (PP
+                    (IN in)
+                    (NP
+                      (NP (DT a) (NN story))
+                      (PP
+                        (VBG regarding)
+                        (NP
+                          (NP (DT a) (NN crew))
+                          (PP
+                            (IN of)
+                            (NP
+                              (NP (DT a) (NN tugboat))
+                              (SBAR
+                                (WHNP (WDT that))
+                                (S
+                                  (VP
+                                    (VBZ comes)
+                                    (PP
+                                      (IN across)
+                                      (NP
+                                        (NP
+                                          (DT a)
+                                          (JJ deserted)
+                                          (JJ russian)
+                                          (NN tech)
+                                          (NN ship))
+                                        (SBAR
+                                          (WHNP (WDT that))
+                                          (S
+                                            (VP
+                                              (VBZ has)
+                                              (NP
+                                                (NP
+                                                  (DT a)
+                                                  (NN strangeness))
+                                                (PP
+                                                  (TO to)
+                                                  (NP (PRP it)))
+                                                (SBAR
+                                                  (WHADVP (WRB when))
+                                                  (S
+                                                    (NP (PRP they))
+                                                    (VP
+                                                      (VBP kick)
+                                                      (ADVP
+                                                        (NP
+                                                          (DT the)
+                                                          (NN power))
+                                                        (RB back))
+                                                      (PP (IN on)))))))))))))))))))))))))))
+    (. .)))
+it
+a head start
+this movie
+jamie lee curtis
+another baldwin brother
+this time
+a story
+a crew
+a tugboat
+a deserted russian tech ship
+a strangeness
+it
+they
+the power
+------FINISHED A SENTENCE------
+[(u'little', 'JJ'), (u'do', 'VBP'), (u'they', 'PRP'), (u'know', 'VB'), (u'the', 'DT'), (u'power', 'NN'), (u'within', 'IN'), (u'...', ':')]
+(ROOT
+  (S
+    (NP (JJ little))
+    (VP
+      (VBP do)
+      (S
+        (NP (PRP they))
+        (VP (VB know) (NP (DT the) (NN power)) (PP (IN within)))))
+    (: ...)))
+little
+they
+the power
+------FINISHED A SENTENCE------
+[(u'going', 'VBG'), (u'for', 'IN'), (u'the', 'DT'), (u'gore', 'NN'), (u'and', 'CC'), (u'bringing', 'VBG'), (u'on', 'IN'), (u'a', 'DT'), (u'few', 'JJ'), (u'action', 'NN'), (u'sequences', 'NNS'), (u'here', 'RB'), (u'and', 'CC'), (u'there', 'RB'), (u',', ','), (u'virus', 'NN'), (u'still', 'RB'), (u'feels', 'VBZ'), (u'very', 'RB'), (u'empty', 'JJ'), (u',', ','), (u'like', 'IN'), (u'a', 'DT'), (u'movie', 'NN'), (u'going', 'VBG'), (u'for', 'IN'), (u'all', 'DT'), (u'flash', 'NN'), (u'and', 'CC'), (u'no', 'DT'), (u'substance', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (S
+      (VP
+        (VP (VBG going) (PP (IN for) (NP (DT the) (NN gore))))
+        (CC and)
+        (VP
+          (VBG bringing)
+          (PP
+            (IN on)
+            (NP (DT a) (JJ few) (NN action) (NNS sequences)))
+          (ADVP (RB here) (CC and) (RB there)))))
+    (, ,)
+    (NP (NN virus))
+    (ADVP (RB still))
+    (VP
+      (VBZ feels)
+      (ADJP (RB very) (JJ empty))
+      (, ,)
+      (PP
+        (IN like)
+        (NP
+          (NP (DT a) (NN movie))
+          (VP
+            (VBG going)
+            (PP
+              (IN for)
+              (NP
+                (NP (DT all) (NN flash))
+                (CC and)
+                (NP (DT no) (NN substance))))))))
+    (. .)))
+the gore
+a few action sequences
+virus
+a movie
+all flash
+no substance
+------FINISHED A SENTENCE------
+[(u'we', 'PRP'), (u'do', 'VBP'), (u"n't", 'RB'), (u'know', 'VB'), (u'why', 'WRB'), (u'the', 'DT'), (u'crew', 'NN'), (u'was', 'VBD'), (u'really', 'RB'), (u'out', 'RP'), (u'in', 'IN'), (u'the', 'DT'), (u'middle', 'NN'), (u'of', 'IN'), (u'nowhere', 'RB'), (u',', ','), (u'we', 'PRP'), (u'do', 'VBP'), (u"n't", 'RB'), (u'know', 'VB'), (u'the', 'DT'), (u'origin', 'NN'), (u'of', 'IN'), (u'what', 'WP'), (u'took', 'VBD'), (u'over', 'RP'), (u'the', 'DT'), (u'ship', 'NN'), (u'(', '('), (u'just', 'RB'), (u'that', 'IN'), (u'a', 'DT'), (u'big', 'JJ'), (u'pink', 'NN'), (u'flashy', 'JJ'), (u'thing', 'NN'), (u'hit', 'VBD'), (u'the', 'DT'), (u'mir', 'NN'), (u')', ')'), (u',', ','), (u'and', 'CC'), (u',', ','), (u'of', 'IN'), (u'course', 'NN'), (u',', ','), (u'we', 'PRP'), (u'do', 'VBP'), (u"n't", 'RB'), (u'know', 'VB'), (u'why', 'WRB'), (u'donald', 'JJ'), (u'sutherland', 'NN'), (u'is', 'VBZ'), (u'stumbling', 'VBG'), (u'around', 'IN'), (u'drunkenly', 'RB'), (u'throughout', 'IN'), (u'.', '.')]
+(ROOT
+  (S
+    (S
+      (NP (PRP we))
+      (VP
+        (VBP do)
+        (RB n't)
+        (VP
+          (VB know)
+          (S
+            (SBAR
+              (WHADVP (WRB why))
+              (S
+                (NP (DT the) (NN crew))
+                (VP
+                  (VBD was)
+                  (ADVP (RB really))
+                  (ADJP (RP out))
+                  (PP
+                    (IN in)
+                    (NP
+                      (NP (DT the) (NN middle))
+                      (PP (IN of) (NP (RB nowhere))))))))
+            (, ,)
+            (NP (PRP we))
+            (VP
+              (VBP do)
+              (RB n't)
+              (VP
+                (VB know)
+                (NP
+                  (NP (DT the) (NN origin))
+                  (PP
+                    (IN of)
+                    (SBAR
+                      (WHNP (WP what))
+                      (S
+                        (VP
+                          (VBD took)
+                          (PRT (RP over))
+                          (NP (DT the) (NN ship))
+                          (
+                            (
+                              ( )
+                              (SBAR
+                                (RB just)
+                                (IN that)
+                                (S
+                                  (NP
+                                    (DT a)
+                                    (JJ big)
+                                    (NN pink)
+                                    (JJ flashy)
+                                    (NN thing))
+                                  (VP
+                                    (VBD hit)
+                                    (NP (DT the) (NN mir) ( ))))))))))))))))))
+    (, ,)
+    (CC and)
+    (PRN (, ,) (PP (IN of) (NP (NN course))) (, ,))
+    (S
+      (NP (PRP we))
+      (VP
+        (VBP do)
+        (RB n't)
+        (VP
+          (VB know)
+          (SBAR
+            (WHADVP (WRB why))
+            (S
+              (NP (JJ donald) (NN sutherland))
+              (VP
+                (VBZ is)
+                (VP
+                  (VBG stumbling)
+                  (ADVP (IN around) (RB drunkenly))
+                  (PP (IN throughout)))))))))
+    (. .)))
+we
+the crew
+the middle
+nowhere
+we
+the origin
+the ship
+a big pink flashy thing
+the mir
+course
+we
+donald sutherland
+------FINISHED A SENTENCE------
+[(u'here', 'RB'), (u',', ','), (u'it', 'PRP'), (u"'s", 'VBZ'), (u'just', 'RB'), (u'"', '"'), (u'hey', 'NN'), (u',', ','), (u'let', 'VB'), (u"'s", 'POS'), (u'chase', 'VB'), (u'these', 'DT'), (u'people', 'NNS'), (u'around', 'IN'), (u'with', 'IN'), (u'some', 'DT'), (u'robots', 'NNS'), (u'"', '"'), (u'.', '.')]
+(ROOT
+  (S
+    (ADVP (RB here))
+    (PRN
+      (, ,)
+      (S
+        (NP (PRP it))
+        (VP (VBZ 's) (ADVP (RB just)) (NP (" ") (NN hey))))
+      (, ,))
+    (VP
+      (VB let)
+      (S
+        (NP (POS 's))
+        (VP
+          (VB chase)
+          (NP (DT these) (NNS people))
+          (PP
+            (IN around)
+            (PP (IN with) (NP (DT some) (NNS robots) (" ")))))))
+    (. .)))
+it
+" hey
+'s
+these people
+some robots "
+------FINISHED A SENTENCE------
+[(u'the', 'DT'), (u'acting', 'NN'), (u'is', 'VBZ'), (u'below', 'JJ'), (u'average', 'NN'), (u',', ','), (u'even', 'RB'), (u'from', 'IN'), (u'the', 'DT'), (u'likes', 'NNS'), (u'of', 'IN'), (u'curtis', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (NP (DT the) (NN acting))
+    (VP
+      (VBZ is)
+      (NP (JJ below) (NN average))
+      (, ,)
+      (ADVP
+        (RB even)
+        (PP
+          (IN from)
+          (NP
+            (NP (DT the) (NNS likes))
+            (PP (IN of) (NP (NN curtis)))))))
+    (. .)))
+the acting
+below average
+the likes
+curtis
+------FINISHED A SENTENCE------
+[(u'you', 'PRP'), (u"'re", 'VBP'), (u'more', 'RBR'), (u'likely', 'JJ'), (u'to', 'TO'), (u'get', 'VB'), (u'a', 'DT'), (u'kick', 'NN'), (u'out', 'IN'), (u'of', 'IN'), (u'her', 'PRP$'), (u'work', 'NN'), (u'in', 'IN'), (u'halloween', 'JJ'), (u'h20', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (NP (PRP you))
+    (VP
+      (VBP 're)
+      (ADJP
+        (RBR more)
+        (JJ likely)
+        (S
+          (VP
+            (TO to)
+            (VP
+              (VB get)
+              (PP
+                (ADVP (NP (DT a) (NN kick)) (IN out))
+                (IN of)
+                (NP
+                  (NP (PRP$ her) (NN work))
+                  (PP (IN in) (NP (JJ halloween) (NN h20))))))))))
+    (. .)))
+you
+a kick
+her work
+halloween h20
+------FINISHED A SENTENCE------
+[(u'sutherland', 'NN'), (u'is', 'VBZ'), (u'wasted', 'VBN'), (u'and', 'CC'), (u'baldwin', 'NN'), (u',', ','), (u'well', 'RB'), (u',', ','), (u'he', 'PRP'), (u"'s", 'VBZ'), (u'acting', 'VBG'), (u'like', 'IN'), (u'a', 'DT'), (u'baldwin', 'NN'), (u',', ','), (u'of', 'IN'), (u'course', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (S (NP (NN sutherland)) (VP (VBZ is) (VP (VBN wasted))))
+    (CC and)
+    (S
+      (NP (NN baldwin))
+      (, ,)
+      (ADVP (RB well))
+      (, ,)
+      (NP (PRP he))
+      (VP
+        (VBZ 's)
+        (VP
+          (VBG acting)
+          (PP
+            (IN like)
+            (NP
+              (NP (DT a) (NN baldwin))
+              (, ,)
+              (PP (IN of) (NP (NN course))))))))
+    (. .)))
+sutherland
+baldwin
+he
+a baldwin
+course
+------FINISHED A SENTENCE------
+[(u'the', 'DT'), (u'real', 'JJ'), (u'star', 'NN'), (u'here', 'RB'), (u'are', 'VBP'), (u'stan', 'JJ'), (u'winsto', 'NN'), (u"n's", 'JJ'), (u'robot', 'NN'), (u'design', 'NN'), (u',', ','), (u'some', 'DT'), (u'schnazzy', 'JJ'), (u'cgi', 'NN'), (u',', ','), (u'and', 'CC'), (u'the', 'DT'), (u'occasional', 'JJ'), (u'good', 'JJ'), (u'gore', 'NN'), (u'shot', 'NN'), (u',', ','), (u'like', 'IN'), (u'picking', 'VBG'), (u'into', 'IN'), (u'someone', 'NN'), (u"'s", 'POS'), (u'brain', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (NP (DT the) (JJ real) (NN star))
+    (ADVP (RB here))
+    (VP
+      (VBP are)
+      (NP
+        (NP (JJ stan) (NN winsto) (JJ n's) (NN robot) (NN design))
+        (, ,)
+        (NP (DT some) (JJ schnazzy) (NN cgi))
+        (, ,)
+        (CC and)
+        (NP (DT the) (JJ occasional) (JJ good) (NN gore) (NN shot)))
+      (, ,)
+      (PP
+        (IN like)
+        (S
+          (VP
+            (VBG picking)
+            (PP (IN into) (NP (NP (NN someone) (POS 's)) (NN brain)))))))
+    (. .)))
+the real star
+stan winsto n's robot design
+some schnazzy cgi
+the occasional good gore shot
+someone 's
+------FINISHED A SENTENCE------
+[(u'so', 'RB'), (u',', ','), (u'if', 'IN'), (u'robots', 'NNS'), (u'and', 'CC'), (u'body', 'NN'), (u'parts', 'NNS'), (u'really', 'RB'), (u'turn', 'VBP'), (u'you', 'PRP'), (u'on', 'IN'), (u',', ','), (u'here', 'RB'), (u"'s", 'VBZ'), (u'your', 'PRP$'), (u'movie', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (RB so)
+    (, ,)
+    (SBAR
+      (IN if)
+      (S
+        (NP (NNS robots) (CC and) (NN body) (NNS parts))
+        (ADVP (RB really))
+        (VP (VBP turn) (NP (PRP you)) (PP (IN on)))))
+    (, ,)
+    (ADVP (RB here))
+    (VP (VBZ 's) (NP (PRP$ your) (NN movie)))
+    (. .)))
+robots and body parts
+you
+your movie
+------FINISHED A SENTENCE------
+[(u'otherwise', 'RB'), (u',', ','), (u'it', 'PRP'), (u"'s", 'VBZ'), (u'pretty', 'RB'), (u'much', 'JJ'), (u'a', 'DT'), (u'sunken', 'JJ'), (u'ship', 'NN'), (u'of', 'IN'), (u'a', 'DT'), (u'movie', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (ADVP (RB otherwise))
+    (, ,)
+    (NP (PRP it))
+    (VP
+      (VBZ 's)
+      (ADVP (RB pretty) (JJ much))
+      (NP
+        (NP (DT a) (JJ sunken) (NN ship))
+        (PP (IN of) (NP (DT a) (NN movie)))))
+    (. .)))
+it
+a sunken ship
+a movie
+------FINISHED A SENTENCE------
+[u'it is movies like these that make a jaded movie viewer thankful for the invention of the timex indiglo watch .', u"based on the late 1960's television show by the same name , the mod squad tells the tale of three reformed criminals under the employ of the police to go undercover .", u'however , things go wrong as evidence gets stolen and they are immediately under suspicion .', u'of course , the ads make it seem like so much more .', u"quick cuts , cool music , claire dane's nice hair and cute outfits , car chases , stuff blowing up , and the like .", u'sounds like a cool movie , does it not ?', u'after the first fifteen minutes , it quickly becomes apparent that it is not .', u"the mod squad is certainly a slick looking production , complete with nice hair and costumes , but that simply isn't enough .", u'the film is best described as a cross between an hour-long cop show and a music video , both stretched out into the span of an hour and a half .', u'and with it comes every single clich ? .', u"it doesn't really matter that the film is based on a television show , as most of the plot elements have been recycled from everything we've already seen .", u'the characters and acting is nothing spectacular , sometimes even bordering on wooden .', u'claire danes and omar epps deliver their lines as if they are bored , which really transfers onto the audience .', u'the only one to escape relatively unscathed is giovanni ribisi , who plays the resident crazy man , ultimately being the only thing worth watching .', u"unfortunately , even he's not enough to save this convoluted mess , as all the characters don't do much apart from occupying screen time .", u'with the young cast , cool clothes , nice hair , and hip soundtrack , it appears that the film is geared towards the teenage mindset .', u"despite an american 'r' rating ( which the content does not justify ) , the film is way too juvenile for the older mindset .", u'information on the characters is literally spoon-fed to the audience ( would it be that hard to show us instead of telling us ?', u'dialogue is poorly written , and the plot is extremely predictable .', u"the way the film progresses , you likely won't even care if the heroes are in any jeopardy , because you'll know they aren't .", u"basing the show on a 1960's television show that nobody remembers is of questionable wisdom , especially when one considers the target audience and the fact that the number of memorable films based on television shows can be counted on one hand ( even one that's missing a finger or two ) .", u'the number of times that i checked my watch ( six ) is a clear indication that this film is not one of them .', u"it is clear that the film is nothing more than an attempt to cash in on the teenage spending dollar , judging from the rash of really awful teen-flicks that we've been seeing as of late .", u'avoid this film at all costs .']
+Overview:  [[u'it', u'is', u'movies', u'like', u'these', u'that', u'make', u'a', u'jaded', u'movie', u'viewer', u'thankful', u'for', u'the', u'invention', u'of', u'the', u'timex', u'indiglo', u'watch', u'.'], [u'based', u'on', u'the', u'late', u'1960', u"'s", u'television', u'show', u'by', u'the', u'same', u'name', u',', u'the', u'mod', u'squad', u'tells', u'the', u'tale', u'of', u'three', u'reformed', u'criminals', u'under', u'the', u'employ', u'of', u'the', u'police', u'to', u'go', u'undercover', u'.'], [u'however', u',', u'things', u'go', u'wrong', u'as', u'evidence', u'gets', u'stolen', u'and', u'they', u'are', u'immediately', u'under', u'suspicion', u'.'], [u'of', u'course', u',', u'the', u'ads', u'make', u'it', u'seem', u'like', u'so', u'much', u'more', u'.'], [u'quick', u'cuts', u',', u'cool', u'music', u',', u'claire', u'dane', u"'s", u'nice', u'hair', u'and', u'cute', u'outfits', u',', u'car', u'chases', u',', u'stuff', u'blowing', u'up', u',', u'and', u'the', u'like', u'.'], [u'sounds', u'like', u'a', u'cool', u'movie', u',', u'does', u'it', u'not', u'?'], [u'after', u'the', u'first', u'fifteen', u'minutes', u',', u'it', u'quickly', u'becomes', u'apparent', u'that', u'it', u'is', u'not', u'.'], [u'the', u'mod', u'squad', u'is', u'certainly', u'a', u'slick', u'looking', u'production', u',', u'complete', u'with', u'nice', u'hair', u'and', u'costumes', u',', u'but', u'that', u'simply', u'is', u"n't", u'enough', u'.'], [u'the', u'film', u'is', u'best', u'described', u'as', u'a', u'cross', u'between', u'an', u'hour-long', u'cop', u'show', u'and', u'a', u'music', u'video', u',', u'both', u'stretched', u'out', u'into', u'the', u'span', u'of', u'an', u'hour', u'and', u'a', u'half', u'.'], [u'and', u'with', u'it', u'comes', u'every', u'single', u'clich', u'?', u'.'], [u'it', u'does', u"n't", u'really', u'matter', u'that', u'the', u'film', u'is', u'based', u'on', u'a', u'television', u'show', u',', u'as', u'most', u'of', u'the', u'plot', u'elements', u'have', u'been', u'recycled', u'from', u'everything', u'we', u"'ve", u'already', u'seen', u'.'], [u'the', u'characters', u'and', u'acting', u'is', u'nothing', u'spectacular', u',', u'sometimes', u'even', u'bordering', u'on', u'wooden', u'.'], [u'claire', u'danes', u'and', u'omar', u'epps', u'deliver', u'their', u'lines', u'as', u'if', u'they', u'are', u'bored', u',', u'which', u'really', u'transfers', u'onto', u'the', u'audience', u'.'], [u'the', u'only', u'one', u'to', u'escape', u'relatively', u'unscathed', u'is', u'giovanni', u'ribisi', u',', u'who', u'plays', u'the', u'resident', u'crazy', u'man', u',', u'ultimately', u'being', u'the', u'only', u'thing', u'worth', u'watching', u'.'], [u'unfortunately', u',', u'even', u'he', u"'s", u'not', u'enough', u'to', u'save', u'this', u'convoluted', u'mess', u',', u'as', u'all', u'the', u'characters', u'do', u"n't", u'do', u'much', u'apart', u'from', u'occupying', u'screen', u'time', u'.'], [u'with', u'the', u'young', u'cast', u',', u'cool', u'clothes', u',', u'nice', u'hair', u',', u'and', u'hip', u'soundtrack', u',', u'it', u'appears', u'that', u'the', u'film', u'is', u'geared', u'towards', u'the', u'teenage', u'mindset', u'.'], [u'despite', u'an', u'american', u"'", u"'r", u'rating', u'(', u'which', u'the', u'content', u'does', u'not', u'justify', u')', u',', u'the', u'film', u'is', u'way', u'too', u'juvenile', u'for', u'the', u'older', u'mindset', u'.'], [u'information', u'on', u'the', u'characters', u'is', u'literally', u'spoon-fed', u'to', u'the', u'audience', u'(', u'would', u'it', u'be', u'that', u'hard', u'to', u'show', u'us', u'instead', u'of', u'telling', u'us', u'?'], [u'dialogue', u'is', u'poorly', u'written', u',', u'and', u'the', u'plot', u'is', u'extremely', u'predictable', u'.'], [u'the', u'way', u'the', u'film', u'progresses', u',', u'you', u'likely', u'wo', u"n't", u'even', u'care', u'if', u'the', u'heroes', u'are', u'in', u'any', u'jeopardy', u',', u'because', u"you'l", u"'", u'know', u'they', u'are', u"n't", u'.'], [u'basing', u'the', u'show', u'on', u'a', u'1960', u"'s", u'television', u'show', u'that', u'nobody', u'remembers', u'is', u'of', u'questionable', u'wisdom', u',', u'especially', u'when', u'one', u'considers', u'the', u'target', u'audience', u'and', u'the', u'fact', u'that', u'the', u'number', u'of', u'memorable', u'films', u'based', u'on', u'television', u'shows', u'can', u'be', u'counted', u'on', u'one', u'hand', u'(', u'even', u'one', u'that', u"'s", u'missing', u'a', u'finger', u'or', u'two', u')', u'.'], [u'the', u'number', u'of', u'times', u'that', u'i', u'checked', u'my', u'watch', u'(', u'six', u')', u'is', u'a', u'clear', u'indication', u'that', u'this', u'film', u'is', u'not', u'one', u'of', u'them', u'.'], [u'it', u'is', u'clear', u'that', u'the', u'film', u'is', u'nothing', u'more', u'than', u'an', u'attempt', u'to', u'cash', u'in', u'on', u'the', u'teenage', u'spending', u'dollar', u',', u'judging', u'from', u'the', u'rash', u'of', u'really', u'awful', u'teen-flicks', u'that', u'we', u"'ve", u'been', u'seeing', u'as', u'of', u'late', u'.'], [u'avoid', u'this', u'film', u'at', u'all', u'costs', u'.']]
+[(u'it', 'PRP'), (u'is', 'VBZ'), (u'movies', 'NNS'), (u'like', 'IN'), (u'these', 'DT'), (u'that', 'WDT'), (u'make', 'VBP'), (u'a', 'DT'), (u'jaded', 'JJ'), (u'movie', 'NN'), (u'viewer', 'NN'), (u'thankful', 'NN'), (u'for', 'IN'), (u'the', 'DT'), (u'invention', 'NN'), (u'of', 'IN'), (u'the', 'DT'), (u'timex', 'JJ'), (u'indiglo', 'NN'), (u'watch', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (NP (PRP it))
+    (VP
+      (VBZ is)
+      (NP
+        (NP (NNS movies))
+        (PP
+          (IN like)
+          (NP
+            (NP (DT these))
+            (SBAR
+              (WHNP (WDT that))
+              (S
+                (VP
+                  (VBP make)
+                  (NP
+                    (NP
+                      (DT a)
+                      (JJ jaded)
+                      (NN movie)
+                      (NN viewer)
+                      (NN thankful))
+                    (PP
+                      (IN for)
+                      (NP
+                        (NP (DT the) (NN invention))
+                        (PP
+                          (IN of)
+                          (NP
+                            (DT the)
+                            (JJ timex)
+                            (NN indiglo)
+                            (NN watch)))))))))))))
+    (. .)))
+it
+movies
+these
+a jaded movie viewer thankful
+the invention
+the timex indiglo watch
+------FINISHED A SENTENCE------
+[(u'based', 'VBN'), (u'on', 'IN'), (u'the', 'DT'), (u'late', 'JJ'), (u'1960', 'CD'), (u"'s", 'POS'), (u'television', 'NN'), (u'show', 'NN'), (u'by', 'IN'), (u'the', 'DT'), (u'same', 'JJ'), (u'name', 'NN'), (u',', ','), (u'the', 'DT'), (u'mod', 'NN'), (u'squad', 'NN'), (u'tells', 'VBZ'), (u'the', 'DT'), (u'tale', 'NN'), (u'of', 'IN'), (u'three', 'CD'), (u'reformed', 'JJ'), (u'criminals', 'NNS'), (u'under', 'IN'), (u'the', 'DT'), (u'employ', 'NN'), (u'of', 'IN'), (u'the', 'DT'), (u'police', 'NN'), (u'to', 'TO'), (u'go', 'VB'), (u'undercover', 'RB'), (u'.', '.')]
+(ROOT
+  (S
+    (PP
+      (VBN based)
+      (PP
+        (IN on)
+        (NP
+          (NP
+            (DT the)
+            (JJ late)
+            (NP (CD 1960) (POS 's))
+            (NN television)
+            (NN show))
+          (PP (IN by) (NP (DT the) (JJ same) (NN name))))))
+    (, ,)
+    (NP (DT the) (NN mod) (NN squad))
+    (VP
+      (VBZ tells)
+      (NP
+        (NP (DT the) (NN tale))
+        (PP (IN of) (NP (CD three) (JJ reformed) (NNS criminals))))
+      (PP
+        (IN under)
+        (NP
+          (NP (DT the) (NN employ))
+          (PP
+            (IN of)
+            (NP
+              (DT the)
+              (NN police)
+              (S (VP (TO to) (VP (VB go) (ADVP (RB undercover))))))))))
+    (. .)))
+1960 's
+the same name
+the mod squad
+the tale
+three reformed criminals
+the employ
+------FINISHED A SENTENCE------
+[(u'however', 'RB'), (u',', ','), (u'things', 'NNS'), (u'go', 'VBP'), (u'wrong', 'JJ'), (u'as', 'IN'), (u'evidence', 'NN'), (u'gets', 'VBZ'), (u'stolen', 'VBN'), (u'and', 'CC'), (u'they', 'PRP'), (u'are', 'VBP'), (u'immediately', 'RB'), (u'under', 'IN'), (u'suspicion', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (ADVP (RB however))
+    (, ,)
+    (S
+      (NP (NNS things))
+      (VP
+        (VBP go)
+        (ADJP
+          (JJ wrong)
+          (SBAR
+            (IN as)
+            (S (NP (NN evidence)) (VP (VBZ gets) (VP (VBN stolen))))))))
+    (CC and)
+    (S
+      (NP (PRP they))
+      (VP
+        (VBP are)
+        (ADVP (RB immediately))
+        (PP (IN under) (NP (NN suspicion)))))
+    (. .)))
+things
+evidence
+they
+suspicion
+------FINISHED A SENTENCE------
+[(u'of', 'IN'), (u'course', 'NN'), (u',', ','), (u'the', 'DT'), (u'ads', 'NNS'), (u'make', 'VBP'), (u'it', 'PRP'), (u'seem', 'VBP'), (u'like', 'IN'), (u'so', 'RB'), (u'much', 'RB'), (u'more', 'RBR'), (u'.', '.')]
+(ROOT
+  (S
+    (PP (IN of) (NP (NN course)))
+    (, ,)
+    (NP (DT the) (NNS ads))
+    (VP
+      (VBP make)
+      (SBAR
+        (S
+          (NP (PRP it))
+          (VP
+            (VBP seem)
+            (PP (IN like) (ADVP (NP (RB so) (RB much)) (RBR more)))))))
+    (. .)))
+course
+the ads
+it
+so much
+------FINISHED A SENTENCE------
+[(u'quick', 'JJ'), (u'cuts', 'NNS'), (u',', ','), (u'cool', 'JJ'), (u'music', 'NN'), (u',', ','), (u'claire', 'VBP'), (u'dane', 'NN'), (u"'s", 'POS'), (u'nice', 'JJ'), (u'hair', 'NN'), (u'and', 'CC'), (u'cute', 'NN'), (u'outfits', 'NNS'), (u',', ','), (u'car', 'NN'), (u'chases', 'NNS'), (u',', ','), (u'stuff', 'NN'), (u'blowing', 'VBG'), (u'up', 'RP'), (u',', ','), (u'and', 'CC'), (u'the', 'DT'), (u'like', 'JJ'), (u'.', '.')]
+(ROOT
+  (S
+    (NP
+      (NP (JJ quick) (NNS cuts))
+      (, ,)
+      (NP (JJ cool) (NN music))
+      (, ,))
+    (VP
+      (VBP claire)
+      (NP
+        (NP
+          (NP (NP (NN dane) (POS 's)) (JJ nice) (NN hair))
+          (CC and)
+          (NP
+            (NP (NN cute) (NNS outfits))
+            (, ,)
+            (NP (NN car) (NNS chases))
+            (, ,)
+            (NP (NP (NN stuff)) (VP (VBG blowing) (PRT (RP up))))))
+        (, ,)
+        (CC and)
+        (NP (DT the) (JJ like))))
+    (. .)))
+quick cuts
+cool music
+dane 's
+cute outfits
+car chases
+stuff
+the like
+------FINISHED A SENTENCE------
+[(u'sounds', 'NNS'), (u'like', 'IN'), (u'a', 'DT'), (u'cool', 'JJ'), (u'movie', 'NN'), (u',', ','), (u'does', 'VBZ'), (u'it', 'PRP'), (u'not', 'RB'), (u'?', '.')]
+(ROOT
+  (S
+    (NP
+      (NP (NNS sounds))
+      (PP (IN like) (NP (DT a) (JJ cool) (NN movie))))
+    (, ,)
+    (VP (VBZ does) (NP (PRP it)) (ADVP (RB not)))
+    (. ?)))
+sounds
+a cool movie
+it
+------FINISHED A SENTENCE------
+[(u'after', 'IN'), (u'the', 'DT'), (u'first', 'JJ'), (u'fifteen', 'JJ'), (u'minutes', 'NNS'), (u',', ','), (u'it', 'PRP'), (u'quickly', 'RB'), (u'becomes', 'VBZ'), (u'apparent', 'JJ'), (u'that', 'IN'), (u'it', 'PRP'), (u'is', 'VBZ'), (u'not', 'RB'), (u'.', '.')]
+(ROOT
+  (S
+    (PP
+      (IN after)
+      (NP (DT the) (JJ first) (JJ fifteen) (NNS minutes)))
+    (, ,)
+    (NP (PRP it))
+    (ADVP (RB quickly))
+    (VP
+      (VBZ becomes)
+      (ADJP (JJ apparent))
+      (SBAR (IN that) (S (NP (PRP it)) (VP (VBZ is) (RB not)))))
+    (. .)))
+the first fifteen minutes
+it
+it
+------FINISHED A SENTENCE------
+[(u'the', 'DT'), (u'mod', 'NN'), (u'squad', 'NN'), (u'is', 'VBZ'), (u'certainly', 'RB'), (u'a', 'DT'), (u'slick', 'NN'), (u'looking', 'VBG'), (u'production', 'NN'), (u',', ','), (u'complete', 'JJ'), (u'with', 'IN'), (u'nice', 'JJ'), (u'hair', 'NN'), (u'and', 'CC'), (u'costumes', 'NNS'), (u',', ','), (u'but', 'CC'), (u'that', 'DT'), (u'simply', 'RB'), (u'is', 'VBZ'), (u"n't", 'RB'), (u'enough', 'RB'), (u'.', '.')]
+(ROOT
+  (S
+    (S
+      (NP (DT the) (NN mod) (NN squad))
+      (VP
+        (VBZ is)
+        (ADVP (RB certainly) (NP (DT a) (NN slick)))
+        (VP
+          (VBG looking)
+          (NP
+            (NP (NN production))
+            (, ,)
+            (ADJP
+              (JJ complete)
+              (PP
+                (IN with)
+                (NP (JJ nice) (NN hair) (CC and) (NNS costumes))))))))
+    (, ,)
+    (CC but)
+    (S
+      (NP (DT that))
+      (ADVP (RB simply))
+      (VP (VBZ is) (RB n't) (ADJP (RB enough))))
+    (. .)))
+the mod squad
+a slick
+production
+nice hair and costumes
+that
+------FINISHED A SENTENCE------
+[(u'the', 'DT'), (u'film', 'NN'), (u'is', 'VBZ'), (u'best', 'RB'), (u'described', 'VBN'), (u'as', 'IN'), (u'a', 'DT'), (u'cross', 'NN'), (u'between', 'IN'), (u'an', 'DT'), (u'hour-long', 'JJ'), (u'cop', 'NN'), (u'show', 'NN'), (u'and', 'CC'), (u'a', 'DT'), (u'music', 'NN'), (u'video', 'NN'), (u',', ','), (u'both', 'DT'), (u'stretched', 'VBN'), (u'out', 'RP'), (u'into', 'IN'), (u'the', 'DT'), (u'span', 'NN'), (u'of', 'IN'), (u'an', 'DT'), (u'hour', 'NN'), (u'and', 'CC'), (u'a', 'DT'), (u'half', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (NP (DT the) (NN film))
+    (VP
+      (VBZ is)
+      (ADVP (RB best))
+      (VP
+        (VBN described)
+        (PP
+          (IN as)
+          (NP
+            (NP (DT a) (NN cross))
+            (PP
+              (IN between)
+              (NP
+                (NP (DT an) (JJ hour-long) (NN cop) (NN show))
+                (CC and)
+                (NP (DT a) (NN music) (NN video))))
+            (, ,)
+            (SBAR
+              (WHNP (DT both))
+              (S
+                (VP
+                  (VBN stretched)
+                  (PRT (RP out))
+                  (PP
+                    (IN into)
+                    (NP
+                      (NP (DT the) (NN span))
+                      (PP
+                        (IN of)
+                        (NP
+                          (NP (DT an) (NN hour))
+                          (CC and)
+                          (NP (DT a) (NN half)))))))))))))
+    (. .)))
+the film
+a cross
+an hour-long cop show
+a music video
+the span
+an hour
+a half
+------FINISHED A SENTENCE------
+[(u'and', 'CC'), (u'with', 'IN'), (u'it', 'PRP'), (u'comes', 'VBZ'), (u'every', 'DT'), (u'single', 'JJ'), (u'clich', 'NN'), (u'?', '.'), (u'.', '.')]
+(ROOT
+  (FRAG
+    (CC and)
+    (SBAR
+      (IN with)
+      (S
+        (NP (PRP it))
+        (VP (VBZ comes) (NP (DT every) (JJ single) (NN clich))))
+      (. ?))
+    (. .)))
+it
+every single clich
+------FINISHED A SENTENCE------
+[(u'it', 'PRP'), (u'does', 'VBZ'), (u"n't", 'RB'), (u'really', 'RB'), (u'matter', 'VB'), (u'that', 'IN'), (u'the', 'DT'), (u'film', 'NN'), (u'is', 'VBZ'), (u'based', 'VBN'), (u'on', 'IN'), (u'a', 'DT'), (u'television', 'NN'), (u'show', 'NN'), (u',', ','), (u'as', 'IN'), (u'most', 'JJS'), (u'of', 'IN'), (u'the', 'DT'), (u'plot', 'NN'), (u'elements', 'NNS'), (u'have', 'VBP'), (u'been', 'VBN'), (u'recycled', 'VBN'), (u'from', 'IN'), (u'everything', 'NN'), (u'we', 'PRP'), (u"'ve", 'VBP'), (u'already', 'RB'), (u'seen', 'VBN'), (u'.', '.')]
+(ROOT
+  (S
+    (S
+      (NP (PRP it))
+      (VP
+        (VBZ does)
+        (RB n't)
+        (ADVP (RB really))
+        (VP
+          (VB matter)
+          (SBAR
+            (IN that)
+            (S
+              (NP (DT the) (NN film))
+              (VP
+                (VBZ is)
+                (VP
+                  (VBN based)
+                  (PP (IN on) (NP (DT a) (NN television) (NN show)))
+                  (, ,)
+                  (SBAR
+                    (IN as)
+                    (S
+                      (NP
+                        (NP (JJS most))
+                        (PP
+                          (IN of)
+                          (NP (DT the) (NN plot) (NNS elements))))
+                      (VP
+                        (VBP have)
+                        (VP
+                          (VBN been)
+                          (VP
+                            (VBN recycled)
+                            (PP (IN from) (NP (NN everything)))))))))))))))
+    (NP (PRP we))
+    (VP (VBP 've) (ADVP (RB already)) (VP (VBN seen)))
+    (. .)))
+it
+the film
+a television show
+most
+the plot elements
+everything
+we
+------FINISHED A SENTENCE------
+[(u'the', 'DT'), (u'characters', 'NNS'), (u'and', 'CC'), (u'acting', 'VBG'), (u'is', 'VBZ'), (u'nothing', 'NN'), (u'spectacular', 'JJ'), (u',', ','), (u'sometimes', 'RB'), (u'even', 'RB'), (u'bordering', 'VBG'), (u'on', 'IN'), (u'wooden', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (NP (NP (DT the) (NNS characters)) (CC and) (NP (VBG acting)))
+    (VP
+      (VBZ is)
+      (ADJP (NN nothing) (JJ spectacular))
+      (, ,)
+      (ADVP (RB sometimes))
+      (S
+        (ADVP (RB even))
+        (VP (VBG bordering) (PP (IN on) (NP (NN wooden))))))
+    (. .)))
+the characters
+acting
+wooden
+------FINISHED A SENTENCE------
+[(u'claire', 'NN'), (u'danes', 'NNS'), (u'and', 'CC'), (u'omar', 'PRP'), (u'epps', 'VBP'), (u'deliver', 'VB'), (u'their', 'PRP$'), (u'lines', 'NNS'), (u'as', 'IN'), (u'if', 'IN'), (u'they', 'PRP'), (u'are', 'VBP'), (u'bored', 'VBN'), (u',', ','), (u'which', 'WDT'), (u'really', 'RB'), (u'transfers', 'VBZ'), (u'onto', 'IN'), (u'the', 'DT'), (u'audience', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (NP (NP (NN claire) (NNS danes)) (CC and) (NP (PRP omar)))
+    (VP
+      (VBP epps)
+      (VP
+        (VB deliver)
+        (NP (PRP$ their) (NNS lines))
+        (SBAR
+          (IN as)
+          (S
+            (SBAR
+              (IN if)
+              (S (NP (PRP they)) (VP (VBP are) (ADJP (VBN bored)))))
+            (, ,)
+            (NP (WDT which))
+            (ADVP (RB really))
+            (VP
+              (VBZ transfers)
+              (PP (IN onto) (NP (DT the) (NN audience))))))))
+    (. .)))
+claire danes
+omar
+their lines
+they
+which
+the audience
+------FINISHED A SENTENCE------
+[(u'the', 'DT'), (u'only', 'JJ'), (u'one', 'CD'), (u'to', 'TO'), (u'escape', 'VB'), (u'relatively', 'RB'), (u'unscathed', 'JJ'), (u'is', 'VBZ'), (u'giovanni', 'JJ'), (u'ribisi', 'NN'), (u',', ','), (u'who', 'WP'), (u'plays', 'VBZ'), (u'the', 'DT'), (u'resident', 'NN'), (u'crazy', 'NN'), (u'man', 'NN'), (u',', ','), (u'ultimately', 'RB'), (u'being', 'VBG'), (u'the', 'DT'), (u'only', 'JJ'), (u'thing', 'NN'), (u'worth', 'JJ'), (u'watching', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (NP
+      (NP (DT the) (JJ only) (CD one))
+      (SBAR
+        (S
+          (VP
+            (TO to)
+            (VP (VB escape) (ADJP (RB relatively) (JJ unscathed)))))))
+    (VP
+      (VBZ is)
+      (NP
+        (NP (JJ giovanni) (NN ribisi))
+        (, ,)
+        (SBAR
+          (WHNP (WP who))
+          (S
+            (VP
+              (VBZ plays)
+              (NP (DT the) (NN resident) (NN crazy) (NN man))
+              (, ,)
+              (ADVP (RB ultimately))
+              (S
+                (VP
+                  (VBG being)
+                  (NP
+                    (NP (DT the) (JJ only) (NN thing))
+                    (PP (JJ worth) (NP (NN watching)))))))))))
+    (. .)))
+the only one
+giovanni ribisi
+the resident crazy man
+the only thing
+watching
+------FINISHED A SENTENCE------
+[(u'unfortunately', 'RB'), (u',', ','), (u'even', 'RB'), (u'he', 'PRP'), (u"'s", 'VBZ'), (u'not', 'RB'), (u'enough', 'RB'), (u'to', 'TO'), (u'save', 'VB'), (u'this', 'DT'), (u'convoluted', 'JJ'), (u'mess', 'NN'), (u',', ','), (u'as', 'IN'), (u'all', 'PDT'), (u'the', 'DT'), (u'characters', 'NNS'), (u'do', 'VBP'), (u"n't", 'RB'), (u'do', 'VB'), (u'much', 'RB'), (u'apart', 'VB'), (u'from', 'IN'), (u'occupying', 'VBG'), (u'screen', 'JJ'), (u'time', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (ADVP (RB unfortunately))
+    (, ,)
+    (ADVP (RB even))
+    (NP (PRP he))
+    (VP
+      (VBZ 's)
+      (RB not)
+      (ADJP
+        (RB enough)
+        (S
+          (VP
+            (TO to)
+            (VP
+              (VB save)
+              (NP (DT this) (ADJP (JJ convoluted)) (NN mess))))))
+      (, ,)
+      (SBAR
+        (IN as)
+        (S
+          (NP (PDT all) (DT the) (NNS characters))
+          (VP
+            (VBP do)
+            (RB n't)
+            (VP
+              (VB do)
+              (NP (RB much) (VB apart))
+              (PP
+                (IN from)
+                (S (VP (VBG occupying) (NP (JJ screen) (NN time))))))))))
+    (. .)))
+he
+all the characters
+much apart
+screen time
+------FINISHED A SENTENCE------
+[(u'with', 'IN'), (u'the', 'DT'), (u'young', 'JJ'), (u'cast', 'NN'), (u',', ','), (u'cool', 'JJ'), (u'clothes', 'NNS'), (u',', ','), (u'nice', 'JJ'), (u'hair', 'NN'), (u',', ','), (u'and', 'CC'), (u'hip', 'NN'), (u'soundtrack', 'NN'), (u',', ','), (u'it', 'PRP'), (u'appears', 'VBZ'), (u'that', 'IN'), (u'the', 'DT'), (u'film', 'NN'), (u'is', 'VBZ'), (u'geared', 'VBN'), (u'towards', 'IN'), (u'the', 'DT'), (u'teenage', 'NN'), (u'mindset', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (PP
+      (IN with)
+      (NP
+        (NP (DT the) (JJ young) (NN cast))
+        (, ,)
+        (NP (JJ cool) (NNS clothes))
+        (, ,)
+        (NP (JJ nice) (NN hair))
+        (, ,)
+        (CC and)
+        (NP (NN hip) (NN soundtrack))))
+    (, ,)
+    (NP (PRP it))
+    (VP
+      (VBZ appears)
+      (SBAR
+        (IN that)
+        (S
+          (NP (DT the) (NN film))
+          (VP
+            (VBZ is)
+            (VP
+              (VBN geared)
+              (PP
+                (IN towards)
+                (NP (DT the) (NN teenage) (NN mindset))))))))
+    (. .)))
+the young cast
+cool clothes
+nice hair
+hip soundtrack
+it
+the film
+the teenage mindset
+------FINISHED A SENTENCE------
+[(u'despite', 'IN'), (u'an', 'DT'), (u'american', 'JJ'), (u"'", 'POS'), (u"'r", 'NNS'), (u'rating', 'NN'), (u'(', '('), (u'which', 'WDT'), (u'the', 'DT'), (u'content', 'NN'), (u'does', 'VBZ'), (u'not', 'RB'), (u'justify', 'VB'), (u')', ')'), (u',', ','), (u'the', 'DT'), (u'film', 'NN'), (u'is', 'VBZ'), (u'way', 'NN'), (u'too', 'RB'), (u'juvenile', 'JJ'), (u'for', 'IN'), (u'the', 'DT'), (u'older', 'JJR'), (u'mindset', 'NN'), (u'.', '.')]
+(ROOT
+  (S
+    (PP
+      (IN despite)
+      (NP
+        (NP (NP (DT an) (JJ american) (POS ')) (NNS 'r) (NN rating))
+        (
+          (
+            ( )
+            (SBAR
+              (WHNP (WDT which))
+              (S
+                (NP (DT the) (NN content))
+                (VP (VBZ does) (RB not) (VP (VB justify) (NP ( ))))))))))
+    (, ,)
+    (NP (DT the) (NN film))
+    (VP
+      (VBZ is)
+      (ADVP (NN way))
+      (ADJP
+        (RB too)
+        (JJ juvenile)
+        (PP (IN for) (NP (DT the) (JJR older) (NN mindset)))))
+    (. .)))
+an american '
+the content
+
+the film
+the older mindset
+------FINISHED A SENTENCE------
+[(u'information', 'NN'), (u'on', 'IN'), (u'the', 'DT'), (u'characters', 'NNS'), (u'is', 'VBZ'), (u'literally', 'RB'), (u'spoon-fed', 'JJ'), (u'to', 'TO'), (u'the', 'DT'), (u'audience', 'NN'), (u'(', '('), (u'would', 'MD'), (u'it', 'PRP'), (u'be', 'VB'), (u'that', 'DT'), (u'hard', 'JJ'), (u'to', 'TO'), (u'show', 'VB'), (u'us', 'PRP'), (u'instead', 'RB'), (u'of', 'IN'), (u'telling', 'VBG'), (u'us', 'PRP'), (u'?', '.')]
+Traceback (most recent call last):
+  File "D:/workplace_py/TestWN/Assignment1/DataPreprocessing.py", line 146, in <module>
+    parse_using_stanfordparser(corrected_tag)
+  File "D:/workplace_py/TestWN/Assignment1/DataPreprocessing.py", line 113, in parse_using_stanfordparser
+    result = stanford_parser.tagged_parse(tokenized_sent)
+  File "C:\ProgramData\Anaconda2\lib\site-packages\nltk\parse\stanford.py", line 164, in tagged_parse
+    return next(self.tagged_parse_sents([sentence], verbose))
+  File "C:\ProgramData\Anaconda2\lib\site-packages\nltk\parse\stanford.py", line 189, in tagged_parse_sents
+    cmd, '\n'.join(' '.join(tag_separator.join(tagged) for tagged in sentence) for sentence in sentences), verbose))
+  File "C:\ProgramData\Anaconda2\lib\site-packages\nltk\parse\stanford.py", line 93, in _parse_trees_output
+    res.append(iter([self._make_tree('\n'.join(cur_lines))]))
+  File "C:\ProgramData\Anaconda2\lib\site-packages\nltk\parse\stanford.py", line 293, in _make_tree
+    return Tree.fromstring(result)
+  File "C:\ProgramData\Anaconda2\lib\site-packages\nltk\tree.py", line 640, in fromstring
+    cls._parse_error(s, 'end-of-string', close_b)
+  File "C:\ProgramData\Anaconda2\lib\site-packages\nltk\tree.py", line 679, in _parse_error
+    raise ValueError(msg)
+ValueError: Tree.read(): expected u')' but got u'end-of-string'
+            at index 602.
+                "...   (. ?)))"
+                              ^
+
+Process finished with exit code 1

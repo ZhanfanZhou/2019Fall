@@ -1,0 +1,242 @@
+C:\ProgramData\Anaconda2\python.exe D:/workplace_py/TestWN/Assignment1/DataPreprocessing.py
+=====START PROCESSING=====
+Overview:  [['John', 'ate', 'an', 'apple', '.']]
+[('John', 'NNP'), ('ate', 'VBP'), ('an', 'DT'), ('apple', 'NN'), ('.', '.')]
+(S (NP John) (VP (V ate) (NP (Det an) (N apple))) (ED .))
+(S (NP John) (VP (V ate) (NP (Det an) (N apple))) (ED .))
+------FINISHED A SENTENCE------
+Overview:  [['John', 'ate', 'the', 'apple', 'at', 'the', 'table', '.']]
+[('John', 'NNP'), ('ate', 'VBP'), ('the', 'DT'), ('apple', 'NN'), ('at', 'IN'), ('the', 'DT'), ('table', 'NN'), ('.', '.')]
+(S
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple) (PP (P at) (NP (Det the) (N table)))))
+  (ED .))
+(S
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple) (PP (P at) (Det the) (N table))))
+  (ED .))
+(S
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple) (PP (P at) (NP (Det the) (N table)))))
+  (ED .))
+(S
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple) (PP (P at) (Det the) (N table))))
+  (ED .))
+(S
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple))
+    (PP (P at) (NP (Det the) (N table))))
+  (ED .))
+(S
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple))
+    (PP (P at) (Det the) (N table)))
+  (ED .))
+(S
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple))
+    (PP (P at) (NP (Det the) (N table))))
+  (ED .))
+(S
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple))
+    (PP (P at) (Det the) (N table)))
+  (ED .))
+------FINISHED A SENTENCE------
+Overview:  [['On', 'Monday', ',', 'John', 'ate', 'the', 'apple', 'in', 'the', 'fridge', '.']]
+[('On', 'IN'), ('Monday', 'NNP'), (',', ','), ('John', 'NNP'), ('ate', 'VBP'), ('the', 'DT'), ('apple', 'NN'), ('in', 'IN'), ('the', 'DT'), ('fridge', 'NN'), ('.', '.')]
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple) (PP (P in) (NP (Det the) (N fridge)))))
+  (ED .))
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple) (PP (P in) (Det the) (N fridge))))
+  (ED .))
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple) (PP (P in) (NP (Det the) (N fridge)))))
+  (ED .))
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple) (PP (P in) (Det the) (N fridge))))
+  (ED .))
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple))
+    (PP (P in) (NP (Det the) (N fridge))))
+  (ED .))
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple))
+    (PP (P in) (Det the) (N fridge)))
+  (ED .))
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple))
+    (PP (P in) (NP (Det the) (N fridge))))
+  (ED .))
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple))
+    (PP (P in) (Det the) (N fridge)))
+  (ED .))
+------FINISHED A SENTENCE------
+Overview:  [['On', 'Monday', ',', 'John', 'ate', 'the', 'apple', 'in', 'his', 'office', '.']]
+[('On', 'IN'), ('Monday', 'NNP'), (',', ','), ('John', 'NNP'), ('ate', 'VBP'), ('the', 'DT'), ('apple', 'NN'), ('in', 'IN'), ('his', 'PRP$'), ('office', 'NN'), ('.', '.')]
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple) (PP (P in) (NP (Det his) (N office)))))
+  (ED .))
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple) (PP (P in) (Det his) (N office))))
+  (ED .))
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple) (PP (P in) (NP (Det his) (N office)))))
+  (ED .))
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple) (PP (P in) (Det his) (N office))))
+  (ED .))
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple))
+    (PP (P in) (NP (Det his) (N office))))
+  (ED .))
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple))
+    (PP (P in) (Det his) (N office)))
+  (ED .))
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple))
+    (PP (P in) (NP (Det his) (N office))))
+  (ED .))
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (Det the) (N apple))
+    (PP (P in) (Det his) (N office)))
+  (ED .))
+------FINISHED A SENTENCE------
+Overview:  [['On', 'Monday', ',', 'John', 'ate', 'refrigerator', 'apple', 'in', 'his', 'office', '.']]
+[('On', 'IN'), ('Monday', 'NNP'), (',', ','), ('John', 'NNP'), ('ate', 'NN'), ('refrigerator', 'NN'), ('apple', 'NN'), ('in', 'IN'), ('his', 'PRP$'), ('office', 'NN'), ('.', '.')]
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (N refrigerator) (N apple))
+    (PP (P in) (NP (Det his) (N office))))
+  (ED .))
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (N refrigerator) (N apple))
+    (PP (P in) (Det his) (N office)))
+  (ED .))
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (N refrigerator) (N apple))
+    (PP (P in) (NP (Det his) (N office))))
+  (ED .))
+(S
+  (PP (P On) (N Monday))
+  (NP John)
+  (VP
+    (V ate)
+    (NP (N refrigerator) (N apple))
+    (PP (P in) (Det his) (N office)))
+  (ED .))
+------FINISHED A SENTENCE------
+Overview:  [['Last', 'week', ',', 'on', 'Monday', ',', 'John', 'finally', 'took', 'the', 'apple', 'from', 'the', 'fridge', 'to', 'his', 'office', '.']]
+[('Last', 'JJ'), ('week', 'NN'), (',', ','), ('on', 'IN'), ('Monday', 'NNP'), (',', ','), ('John', 'NNP'), ('finally', 'RB'), ('took', 'VBD'), ('the', 'DT'), ('apple', 'NN'), ('from', 'IN'), ('the', 'DT'), ('fridge', 'NN'), ('to', 'TO'), ('his', 'PRP$'), ('office', 'NN'), ('.', '.')]
+------FINISHED A SENTENCE------
+Overview:  [['Last', 'Monday', ',', 'John', 'promised', 'that', 'he', 'will', 'put', 'an', 'apple', 'in', 'the', 'fridge', '.'], ['He', 'will', 'eat', 'it', 'on', 'Tuesday', 'at', 'his', 'desk', '.'], ['It', 'will', 'be', 'crunchy', '.']]
+[('Last', 'JJ'), ('Monday', 'NNP'), (',', ','), ('John', 'NNP'), ('promised', 'VBD'), ('that', 'IN'), ('he', 'PRP'), ('will', 'MD'), ('put', 'VB'), ('an', 'DT'), ('apple', 'NN'), ('in', 'IN'), ('the', 'DT'), ('fridge', 'NN'), ('.', '.')]
+Traceback (most recent call last):
+  File "D:/workplace_py/TestWN/Assignment1/DataPreprocessing.py", line 175, in <module>
+    start_validation()
+  File "D:/workplace_py/TestWN/Assignment1/DataPreprocessing.py", line 168, in start_validation
+    grammar_parser([item for item in sent if item not in [u',']])
+  File "D:/workplace_py/TestWN/Assignment1/DataPreprocessing.py", line 121, in grammar_parser
+    for tree in rd_parser.parse(sent):
+  File "C:\ProgramData\Anaconda2\lib\site-packages\nltk\parse\recursivedescent.py", line 77, in parse
+    self._grammar.check_coverage(tokens)
+  File "C:\ProgramData\Anaconda2\lib\site-packages\nltk\grammar.py", line 660, in check_coverage
+    "input words: %r." % missing)
+ValueError: Grammar does not cover some of the input words: u"'promised', 'that', 'he', 'will', 'put'".
+
+Process finished with exit code 1

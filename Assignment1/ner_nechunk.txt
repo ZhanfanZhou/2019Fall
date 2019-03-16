@@ -1,0 +1,735 @@
+C:\ProgramData\Anaconda2\python.exe D:/workplace_py/TestWN/Assignment1/DataPreprocessing.py
+=====READ IN CORPUS!=====
+                                       content_sents label        para_name  \
+0  ([plot, :, two, teen, couples, go, to, a, chur...   neg  cv000_29416.txt   
+1  ([the, happy, bastard, ', s, quick, movie, rev...   neg  cv001_19502.txt   
+2  ([it, is, movies, like, these, that, make, a, ...   neg  cv002_17424.txt   
+3  ([", quest, for, camelot, ", is, warner, bros,...   neg  cv003_12683.txt   
+4  ([synopsis, :, a, mentally, unstable, man, und...   neg  cv004_12641.txt   
+
+                                            raw_text  
+0  plot : two teen couples go to a church party ,...  
+1  the happy bastard's quick movie review \ndamn ...  
+2  it is movies like these that make a jaded movi...  
+3   " quest for camelot " is warner bros . ' firs...  
+4  synopsis : a mentally unstable man undergoing ...  
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 5 entries, 0 to 4
+Data columns (total 4 columns):
+content_sents    5 non-null object
+label            5 non-null object
+para_name        5 non-null object
+raw_text         5 non-null object
+dtypes: object(4)
+memory usage: 232.0+ bytes
+=====START PROCESSING=====
+[u'plot : two teen couples go to a church party , drink and then drive .', u'they get into an accident .', u'one of the guys dies , but his girlfriend continues to see him in her life , and has nightmares .', u"what's the deal ?", u'watch the movie and " sorta " find out . . .', u'critique : a mind-fuck movie for the teen generation that touches on a very cool idea , but presents it in a very bad package .', u"which is what makes this review an even harder one to write , since i generally applaud films which attempt to break the mold , mess with your head and such ( lost highway & memento ) , but there are good and bad ways of making all types of films , and these folks just didn't snag this one correctly .", u'they seem to have taken this pretty neat concept , but executed it terribly .', u'so what are the problems with the movie ?', u"well , its main problem is that it's simply too jumbled .", u'it starts off " normal " but then downshifts into this " fantasy " world in which you , as an audience member , have no idea what\'s going on .', u'there are dreams , there are characters coming back from the dead , there are others who look like the dead , there are strange apparitions , there are disappearances , there are a looooot of chase scenes , there are tons of weird things that happen , and most of it is simply not explained .', u"now i personally don't mind trying to unravel a film every now and then , but when all it does is give me the same clue over and over again , i get kind of fed up after a while , which is this film's biggest problem .", u"it's obviously got this big secret to hide , but it seems to want to hide it completely until its final five minutes .", u'and do they make things entertaining , thrilling or even engaging , in the meantime ?', u'not really .', u"the sad part is that the arrow and i both dig on flicks like this , so we actually figured most of it out by the half-way point , so all of the strangeness after that did start to make a little bit of sense , but it still didn't the make the film all that more entertaining .", u'i guess the bottom line with movies like this is that you should always make sure that the audience is " into it " even before they are given the secret password to enter your world of understanding .', u'i mean , showing melissa sagemiller running away from visions for about 20 minutes throughout the movie is just plain lazy !', u'okay , we get it . . .', u"there \nare people chasing her and we don't know who they are .", u'do we really need to see it over and over again ?', u'how about giving us different scenes offering further insight into all of the strangeness going down in the movie ?', u'apparently , the studio took this film away from its director and chopped it up themselves , and it shows .', u'there might\'ve been a pretty decent teen mind-fuck movie in here somewhere , but i guess " the suits " decided that turning it into a music video with little edge , would make more sense .', u'the actors are pretty good for the most part , although wes bentley just seemed to be playing the exact same character that he did in american beauty , only in a new neighborhood .', u"but my biggest kudos go out to sagemiller , who holds her own throughout the entire film , and actually has you feeling her character's unraveling .", u"overall , the film doesn't stick because it doesn't entertain , it's confusing , it rarely excites and it feels pretty redundant for most of its runtime , despite a pretty cool ending and explanation to all of the craziness that came before it .", u'oh , and by the way , this is not a horror or teen slasher flick . . .', u"it's \njust packaged to look that way because someone is apparently assuming that the genre is still hot with the kids .", u'it also wrapped production two years ago and has been sitting on the shelves ever since .', u'whatever . . .', u'skip \nit !', u"where's joblo coming from ?"]
+Overview:  [[u'plot', u':', u'two', u'teen', u'couples', u'go', u'to', u'a', u'church', u'party', u',', u'drink', u'and', u'then', u'drive', u'.'], [u'they', u'get', u'into', u'an', u'accident', u'.'], [u'one', u'of', u'the', u'guys', u'dies', u',', u'but', u'his', u'girlfriend', u'continues', u'to', u'see', u'him', u'in', u'her', u'life', u',', u'and', u'has', u'nightmares', u'.'], [u'what', u"'s", u'the', u'deal', u'?'], [u'watch', u'the', u'movie', u'and', u'"', u'sorta', u'"', u'find', u'out', u'...'], [u'critique', u':', u'a', u'mind-fuck', u'movie', u'for', u'the', u'teen', u'generation', u'that', u'touches', u'on', u'a', u'very', u'cool', u'idea', u',', u'but', u'presents', u'it', u'in', u'a', u'very', u'bad', u'package', u'.'], [u'which', u'is', u'what', u'makes', u'this', u'review', u'an', u'even', u'harder', u'one', u'to', u'write', u',', u'since', u'i', u'generally', u'applaud', u'films', u'which', u'attempt', u'to', u'break', u'the', u'mold', u',', u'mess', u'with', u'your', u'head', u'and', u'such', u'(', u'lost', u'highway', u'&', u'memento', u')', u',', u'but', u'there', u'are', u'good', u'and', u'bad', u'ways', u'of', u'making', u'all', u'types', u'of', u'films', u',', u'and', u'these', u'folks', u'just', u'did', u"n't", u'snag', u'this', u'one', u'correctly', u'.'], [u'they', u'seem', u'to', u'have', u'taken', u'this', u'pretty', u'neat', u'concept', u',', u'but', u'executed', u'it', u'terribly', u'.'], [u'so', u'what', u'are', u'the', u'problems', u'with', u'the', u'movie', u'?'], [u'well', u',', u'its', u'main', u'problem', u'is', u'that', u'it', u"'s", u'simply', u'too', u'jumbled', u'.'], [u'it', u'starts', u'off', u'"', u'normal', u'"', u'but', u'then', u'downshifts', u'into', u'this', u'"', u'fantasy', u'"', u'world', u'in', u'which', u'you', u',', u'as', u'an', u'audience', u'member', u',', u'have', u'no', u'idea', u'what', u"'s", u'going', u'on', u'.'], [u'there', u'are', u'dreams', u',', u'there', u'are', u'characters', u'coming', u'back', u'from', u'the', u'dead', u',', u'there', u'are', u'others', u'who', u'look', u'like', u'the', u'dead', u',', u'there', u'are', u'strange', u'apparitions', u',', u'there', u'are', u'disappearances', u',', u'there', u'are', u'a', u'looooot', u'of', u'chase', u'scenes', u',', u'there', u'are', u'tons', u'of', u'weird', u'things', u'that', u'happen', u',', u'and', u'most', u'of', u'it', u'is', u'simply', u'not', u'explained', u'.'], [u'now', u'i', u'personally', u'do', u"n't", u'mind', u'trying', u'to', u'unravel', u'a', u'film', u'every', u'now', u'and', u'then', u',', u'but', u'when', u'all', u'it', u'does', u'is', u'give', u'me', u'the', u'same', u'clue', u'over', u'and', u'over', u'again', u',', u'i', u'get', u'kind', u'of', u'fed', u'up', u'after', u'a', u'while', u',', u'which', u'is', u'this', u'film', u"'s", u'biggest', u'problem', u'.'], [u'it', u"'s", u'obviously', u'got', u'this', u'big', u'secret', u'to', u'hide', u',', u'but', u'it', u'seems', u'to', u'want', u'to', u'hide', u'it', u'completely', u'until', u'its', u'final', u'five', u'minutes', u'.'], [u'and', u'do', u'they', u'make', u'things', u'entertaining', u',', u'thrilling', u'or', u'even', u'engaging', u',', u'in', u'the', u'meantime', u'?'], [u'not', u'really', u'.'], [u'the', u'sad', u'part', u'is', u'that', u'the', u'arrow', u'and', u'i', u'both', u'dig', u'on', u'flicks', u'like', u'this', u',', u'so', u'we', u'actually', u'figured', u'most', u'of', u'it', u'out', u'by', u'the', u'half-way', u'point', u',', u'so', u'all', u'of', u'the', u'strangeness', u'after', u'that', u'did', u'start', u'to', u'make', u'a', u'little', u'bit', u'of', u'sense', u',', u'but', u'it', u'still', u'did', u"n't", u'the', u'make', u'the', u'film', u'all', u'that', u'more', u'entertaining', u'.'], [u'i', u'guess', u'the', u'bottom', u'line', u'with', u'movies', u'like', u'this', u'is', u'that', u'you', u'should', u'always', u'make', u'sure', u'that', u'the', u'audience', u'is', u'"', u'into', u'it', u'"', u'even', u'before', u'they', u'are', u'given', u'the', u'secret', u'password', u'to', u'enter', u'your', u'world', u'of', u'understanding', u'.'], [u'i', u'mean', u',', u'showing', u'melissa', u'sagemiller', u'running', u'away', u'from', u'visions', u'for', u'about', u'20', u'minutes', u'throughout', u'the', u'movie', u'is', u'just', u'plain', u'lazy', u'!'], [u'okay', u',', u'we', u'get', u'it', u'...'], [u'there', u'are', u'people', u'chasing', u'her', u'and', u'we', u'do', u"n't", u'know', u'who', u'they', u'are', u'.'], [u'do', u'we', u'really', u'need', u'to', u'see', u'it', u'over', u'and', u'over', u'again', u'?'], [u'how', u'about', u'giving', u'us', u'different', u'scenes', u'offering', u'further', u'insight', u'into', u'all', u'of', u'the', u'strangeness', u'going', u'down', u'in', u'the', u'movie', u'?'], [u'apparently', u',', u'the', u'studio', u'took', u'this', u'film', u'away', u'from', u'its', u'director', u'and', u'chopped', u'it', u'up', u'themselves', u',', u'and', u'it', u'shows', u'.'], [u'there', u'might', u"'ve", u'been', u'a', u'pretty', u'decent', u'teen', u'mind-fuck', u'movie', u'in', u'here', u'somewhere', u',', u'but', u'i', u'guess', u'"', u'the', u'suits', u'"', u'decided', u'that', u'turning', u'it', u'into', u'a', u'music', u'video', u'with', u'little', u'edge', u',', u'would', u'make', u'more', u'sense', u'.'], [u'the', u'actors', u'are', u'pretty', u'good', u'for', u'the', u'most', u'part', u',', u'although', u'wes', u'bentley', u'just', u'seemed', u'to', u'be', u'playing', u'the', u'exact', u'same', u'character', u'that', u'he', u'did', u'in', u'american', u'beauty', u',', u'only', u'in', u'a', u'new', u'neighborhood', u'.'], [u'but', u'my', u'biggest', u'kudos', u'go', u'out', u'to', u'sagemiller', u',', u'who', u'holds', u'her', u'own', u'throughout', u'the', u'entire', u'film', u',', u'and', u'actually', u'has', u'you', u'feeling', u'her', u'character', u"'s", u'unraveling', u'.'], [u'overall', u',', u'the', u'film', u'does', u"n't", u'stick', u'because', u'it', u'does', u"n't", u'entertain', u',', u'it', u"'s", u'confusing', u',', u'it', u'rarely', u'excites', u'and', u'it', u'feels', u'pretty', u'redundant', u'for', u'most', u'of', u'its', u'runtime', u',', u'despite', u'a', u'pretty', u'cool', u'ending', u'and', u'explanation', u'to', u'all', u'of', u'the', u'craziness', u'that', u'came', u'before', u'it', u'.'], [u'oh', u',', u'and', u'by', u'the', u'way', u',', u'this', u'is', u'not', u'a', u'horror', u'or', u'teen', u'slasher', u'flick', u'...'], [u'it', u"'s", u'just', u'packaged', u'to', u'look', u'that', u'way', u'because', u'someone', u'is', u'apparently', u'assuming', u'that', u'the', u'genre', u'is', u'still', u'hot', u'with', u'the', u'kids', u'.'], [u'it', u'also', u'wrapped', u'production', u'two', u'years', u'ago', u'and', u'has', u'been', u'sitting', u'on', u'the', u'shelves', u'ever', u'since', u'.'], [u'whatever', u'...'], [u'skip', u'it', u'!'], [u'where', u"'s", u'joblo', u'coming', u'from', u'?']]
+[(u'plot', 'NN'), (u':', ':'), (u'two', 'CD'), (u'teen', 'NN'), (u'couples', 'NNS'), (u'go', 'VBP'), (u'to', 'TO'), (u'a', 'DT'), (u'church', 'NN'), (u'party', 'NN'), (u',', ','), (u'drink', 'NN'), (u'and', 'CC'), (u'then', 'RB'), (u'drive', 'NN'), (u'.', '.')]
+(S
+  plot/NN
+  :/:
+  two/CD
+  teen/NN
+  couples/NNS
+  go/VBP
+  to/TO
+  a/DT
+  church/NN
+  party/NN
+  ,/,
+  drink/NN
+  and/CC
+  then/RB
+  drive/NN
+  ./.)
+------FINISHED A SENTENCE------
+[(u'they', 'PRP'), (u'get', 'VBP'), (u'into', 'IN'), (u'an', 'DT'), (u'accident', 'NN'), (u'.', '.')]
+(S they/PRP get/VBP into/IN an/DT accident/NN ./.)
+------FINISHED A SENTENCE------
+[(u'one', 'CD'), (u'of', 'IN'), (u'the', 'DT'), (u'guys', 'NN'), (u'dies', 'VBZ'), (u',', ','), (u'but', 'CC'), (u'his', 'PRP$'), (u'girlfriend', 'NN'), (u'continues', 'VBZ'), (u'to', 'TO'), (u'see', 'VB'), (u'him', 'PRP'), (u'in', 'IN'), (u'her', 'PRP$'), (u'life', 'NN'), (u',', ','), (u'and', 'CC'), (u'has', 'VBZ'), (u'nightmares', 'NNS'), (u'.', '.')]
+(S
+  one/CD
+  of/IN
+  the/DT
+  guys/NN
+  dies/VBZ
+  ,/,
+  but/CC
+  his/PRP$
+  girlfriend/NN
+  continues/VBZ
+  to/TO
+  see/VB
+  him/PRP
+  in/IN
+  her/PRP$
+  life/NN
+  ,/,
+  and/CC
+  has/VBZ
+  nightmares/NNS
+  ./.)
+------FINISHED A SENTENCE------
+[(u'what', 'WP'), (u"'s", 'VBZ'), (u'the', 'DT'), (u'deal', 'NN'), (u'?', '.')]
+(S what/WP 's/VBZ the/DT deal/NN ?/.)
+------FINISHED A SENTENCE------
+[(u'watch', 'VB'), (u'the', 'DT'), (u'movie', 'NN'), (u'and', 'CC'), (u'"', '"'), (u'sorta', 'VBP'), (u'"', '"'), (u'find', 'VBP'), (u'out', 'RP'), (u'...', ':')]
+(S
+  watch/VB
+  the/DT
+  movie/NN
+  and/CC
+  "/"
+  sorta/VBP
+  "/"
+  find/VBP
+  out/RP
+  .../:)
+------FINISHED A SENTENCE------
+[u"the happy bastard's quick movie review \ndamn that y2k bug .", u"it's got a head start in this movie starring jamie lee curtis and another baldwin brother ( william this time ) in a story regarding a crew of a tugboat that comes across a deserted russian tech ship that has a strangeness to it when they kick the power back on .", u'little do they know the power within . . .', u'going for the gore and bringing on a few action sequences here and there , virus still feels very empty , like a movie going for all flash and no substance .', u"we don't know why the crew was really out in the middle of nowhere , we don't know the origin of what took over the ship ( just that a big pink flashy thing hit the mir ) , and , of course , we don't know why donald sutherland is stumbling around drunkenly throughout .", u'here , it\'s just " hey , let\'s chase these people around with some robots " .', u'the acting is below average , even from the likes of curtis .', u"you're more likely to get a kick out of her work in halloween h20 .", u"sutherland is wasted and baldwin , well , he's acting like a baldwin , of course .", u"the real star here are stan winston's robot design , some schnazzy cgi , and the occasional good gore shot , like picking into someone's brain .", u"so , if robots and body parts really turn you on , here's your movie .", u"otherwise , it's pretty much a sunken ship of a movie ."]
+Overview:  [[u'the', u'happy', u'bastard', u"'s", u'quick', u'movie', u'review', u'damn', u'that', u'y2k', u'bug', u'.'], [u'it', u"'s", u'got', u'a', u'head', u'start', u'in', u'this', u'movie', u'starring', u'jamie', u'lee', u'curtis', u'and', u'another', u'baldwin', u'brother', u'(', u'william', u'this', u'time', u')', u'in', u'a', u'story', u'regarding', u'a', u'crew', u'of', u'a', u'tugboat', u'that', u'comes', u'across', u'a', u'deserted', u'russian', u'tech', u'ship', u'that', u'has', u'a', u'strangeness', u'to', u'it', u'when', u'they', u'kick', u'the', u'power', u'back', u'on', u'.'], [u'little', u'do', u'they', u'know', u'the', u'power', u'within', u'...'], [u'going', u'for', u'the', u'gore', u'and', u'bringing', u'on', u'a', u'few', u'action', u'sequences', u'here', u'and', u'there', u',', u'virus', u'still', u'feels', u'very', u'empty', u',', u'like', u'a', u'movie', u'going', u'for', u'all', u'flash', u'and', u'no', u'substance', u'.'], [u'we', u'do', u"n't", u'know', u'why', u'the', u'crew', u'was', u'really', u'out', u'in', u'the', u'middle', u'of', u'nowhere', u',', u'we', u'do', u"n't", u'know', u'the', u'origin', u'of', u'what', u'took', u'over', u'the', u'ship', u'(', u'just', u'that', u'a', u'big', u'pink', u'flashy', u'thing', u'hit', u'the', u'mir', u')', u',', u'and', u',', u'of', u'course', u',', u'we', u'do', u"n't", u'know', u'why', u'donald', u'sutherland', u'is', u'stumbling', u'around', u'drunkenly', u'throughout', u'.'], [u'here', u',', u'it', u"'s", u'just', u'"', u'hey', u',', u'let', u"'s", u'chase', u'these', u'people', u'around', u'with', u'some', u'robots', u'"', u'.'], [u'the', u'acting', u'is', u'below', u'average', u',', u'even', u'from', u'the', u'likes', u'of', u'curtis', u'.'], [u'you', u"'re", u'more', u'likely', u'to', u'get', u'a', u'kick', u'out', u'of', u'her', u'work', u'in', u'halloween', u'h20', u'.'], [u'sutherland', u'is', u'wasted', u'and', u'baldwin', u',', u'well', u',', u'he', u"'s", u'acting', u'like', u'a', u'baldwin', u',', u'of', u'course', u'.'], [u'the', u'real', u'star', u'here', u'are', u'stan', u'winsto', u"n's", u'robot', u'design', u',', u'some', u'schnazzy', u'cgi', u',', u'and', u'the', u'occasional', u'good', u'gore', u'shot', u',', u'like', u'picking', u'into', u'someone', u"'s", u'brain', u'.'], [u'so', u',', u'if', u'robots', u'and', u'body', u'parts', u'really', u'turn', u'you', u'on', u',', u'here', u"'s", u'your', u'movie', u'.'], [u'otherwise', u',', u'it', u"'s", u'pretty', u'much', u'a', u'sunken', u'ship', u'of', u'a', u'movie', u'.']]
+[(u'the', 'DT'), (u'happy', 'JJ'), (u'bastard', 'NN'), (u"'s", 'POS'), (u'quick', 'JJ'), (u'movie', 'NN'), (u'review', 'NN'), (u'damn', 'NN'), (u'that', 'WDT'), (u'y2k', 'VBZ'), (u'bug', 'NN'), (u'.', '.')]
+(S
+  the/DT
+  happy/JJ
+  bastard/NN
+  's/POS
+  quick/JJ
+  movie/NN
+  review/NN
+  damn/NN
+  that/WDT
+  y2k/VBZ
+  bug/NN
+  ./.)
+------FINISHED A SENTENCE------
+[(u'it', 'PRP'), (u"'s", 'VBZ'), (u'got', 'VBD'), (u'a', 'DT'), (u'head', 'JJ'), (u'start', 'NN'), (u'in', 'IN'), (u'this', 'DT'), (u'movie', 'NN'), (u'starring', 'VBG'), (u'jamie', 'NN'), (u'lee', 'NN'), (u'curtis', 'NN'), (u'and', 'CC'), (u'another', 'DT'), (u'baldwin', 'NN'), (u'brother', 'NN'), (u'(', '('), (u'william', 'IN'), (u'this', 'DT'), (u'time', 'NN'), (u')', ')'), (u'in', 'IN'), (u'a', 'DT'), (u'story', 'NN'), (u'regarding', 'VBG'), (u'a', 'DT'), (u'crew', 'NN'), (u'of', 'IN'), (u'a', 'DT'), (u'tugboat', 'NN'), (u'that', 'WDT'), (u'comes', 'VBZ'), (u'across', 'IN'), (u'a', 'DT'), (u'deserted', 'JJ'), (u'russian', 'JJ'), (u'tech', 'NN'), (u'ship', 'NN'), (u'that', 'WDT'), (u'has', 'VBZ'), (u'a', 'DT'), (u'strangeness', 'NN'), (u'to', 'TO'), (u'it', 'PRP'), (u'when', 'WRB'), (u'they', 'PRP'), (u'kick', 'VBP'), (u'the', 'DT'), (u'power', 'NN'), (u'back', 'RB'), (u'on', 'IN'), (u'.', '.')]
+(S
+  it/PRP
+  's/VBZ
+  got/VBD
+  a/DT
+  head/JJ
+  start/NN
+  in/IN
+  this/DT
+  movie/NN
+  starring/VBG
+  jamie/NN
+  lee/NN
+  curtis/NN
+  and/CC
+  another/DT
+  baldwin/NN
+  brother/NN
+  (/(
+  william/IN
+  this/DT
+  time/NN
+  )/)
+  in/IN
+  a/DT
+  story/NN
+  regarding/VBG
+  a/DT
+  crew/NN
+  of/IN
+  a/DT
+  tugboat/NN
+  that/WDT
+  comes/VBZ
+  across/IN
+  a/DT
+  deserted/JJ
+  russian/JJ
+  tech/NN
+  ship/NN
+  that/WDT
+  has/VBZ
+  a/DT
+  strangeness/NN
+  to/TO
+  it/PRP
+  when/WRB
+  they/PRP
+  kick/VBP
+  the/DT
+  power/NN
+  back/RB
+  on/IN
+  ./.)
+------FINISHED A SENTENCE------
+[(u'little', 'JJ'), (u'do', 'VBP'), (u'they', 'PRP'), (u'know', 'VB'), (u'the', 'DT'), (u'power', 'NN'), (u'within', 'IN'), (u'...', ':')]
+(S little/JJ do/VBP they/PRP know/VB the/DT power/NN within/IN .../:)
+------FINISHED A SENTENCE------
+[(u'going', 'VBG'), (u'for', 'IN'), (u'the', 'DT'), (u'gore', 'NN'), (u'and', 'CC'), (u'bringing', 'VBG'), (u'on', 'IN'), (u'a', 'DT'), (u'few', 'JJ'), (u'action', 'NN'), (u'sequences', 'NNS'), (u'here', 'RB'), (u'and', 'CC'), (u'there', 'RB'), (u',', ','), (u'virus', 'NN'), (u'still', 'RB'), (u'feels', 'VBZ'), (u'very', 'RB'), (u'empty', 'JJ'), (u',', ','), (u'like', 'IN'), (u'a', 'DT'), (u'movie', 'NN'), (u'going', 'VBG'), (u'for', 'IN'), (u'all', 'DT'), (u'flash', 'NN'), (u'and', 'CC'), (u'no', 'DT'), (u'substance', 'NN'), (u'.', '.')]
+(S
+  going/VBG
+  for/IN
+  the/DT
+  gore/NN
+  and/CC
+  bringing/VBG
+  on/IN
+  a/DT
+  few/JJ
+  action/NN
+  sequences/NNS
+  here/RB
+  and/CC
+  there/RB
+  ,/,
+  virus/NN
+  still/RB
+  feels/VBZ
+  very/RB
+  empty/JJ
+  ,/,
+  like/IN
+  a/DT
+  movie/NN
+  going/VBG
+  for/IN
+  all/DT
+  flash/NN
+  and/CC
+  no/DT
+  substance/NN
+  ./.)
+------FINISHED A SENTENCE------
+[(u'we', 'PRP'), (u'do', 'VBP'), (u"n't", 'RB'), (u'know', 'VB'), (u'why', 'WRB'), (u'the', 'DT'), (u'crew', 'NN'), (u'was', 'VBD'), (u'really', 'RB'), (u'out', 'RP'), (u'in', 'IN'), (u'the', 'DT'), (u'middle', 'NN'), (u'of', 'IN'), (u'nowhere', 'RB'), (u',', ','), (u'we', 'PRP'), (u'do', 'VBP'), (u"n't", 'RB'), (u'know', 'VB'), (u'the', 'DT'), (u'origin', 'NN'), (u'of', 'IN'), (u'what', 'WP'), (u'took', 'VBD'), (u'over', 'RP'), (u'the', 'DT'), (u'ship', 'NN'), (u'(', '('), (u'just', 'RB'), (u'that', 'IN'), (u'a', 'DT'), (u'big', 'JJ'), (u'pink', 'NN'), (u'flashy', 'JJ'), (u'thing', 'NN'), (u'hit', 'VBD'), (u'the', 'DT'), (u'mir', 'NN'), (u')', ')'), (u',', ','), (u'and', 'CC'), (u',', ','), (u'of', 'IN'), (u'course', 'NN'), (u',', ','), (u'we', 'PRP'), (u'do', 'VBP'), (u"n't", 'RB'), (u'know', 'VB'), (u'why', 'WRB'), (u'donald', 'JJ'), (u'sutherland', 'NN'), (u'is', 'VBZ'), (u'stumbling', 'VBG'), (u'around', 'IN'), (u'drunkenly', 'RB'), (u'throughout', 'IN'), (u'.', '.')]
+(S
+  we/PRP
+  do/VBP
+  n't/RB
+  know/VB
+  why/WRB
+  the/DT
+  crew/NN
+  was/VBD
+  really/RB
+  out/RP
+  in/IN
+  the/DT
+  middle/NN
+  of/IN
+  nowhere/RB
+  ,/,
+  we/PRP
+  do/VBP
+  n't/RB
+  know/VB
+  the/DT
+  origin/NN
+  of/IN
+  what/WP
+  took/VBD
+  over/RP
+  the/DT
+  ship/NN
+  (/(
+  just/RB
+  that/IN
+  a/DT
+  big/JJ
+  pink/NN
+  flashy/JJ
+  thing/NN
+  hit/VBD
+  the/DT
+  mir/NN
+  )/)
+  ,/,
+  and/CC
+  ,/,
+  of/IN
+  course/NN
+  ,/,
+  we/PRP
+  do/VBP
+  n't/RB
+  know/VB
+  why/WRB
+  donald/JJ
+  sutherland/NN
+  is/VBZ
+  stumbling/VBG
+  around/IN
+  drunkenly/RB
+  throughout/IN
+  ./.)
+------FINISHED A SENTENCE------
+[u'it is movies like these that make a jaded movie viewer thankful for the invention of the timex indiglo watch .', u"based on the late 1960's television show by the same name , the mod squad tells the tale of three reformed criminals under the employ of the police to go undercover .", u'however , things go wrong as evidence gets stolen and they are immediately under suspicion .', u'of course , the ads make it seem like so much more .', u"quick cuts , cool music , claire dane's nice hair and cute outfits , car chases , stuff blowing up , and the like .", u'sounds like a cool movie , does it not ?', u'after the first fifteen minutes , it quickly becomes apparent that it is not .', u"the mod squad is certainly a slick looking production , complete with nice hair and costumes , but that simply isn't enough .", u'the film is best described as a cross between an hour-long cop show and a music video , both stretched out into the span of an hour and a half .', u'and with it comes every single clich ? .', u"it doesn't really matter that the film is based on a television show , as most of the plot elements have been recycled from everything we've already seen .", u'the characters and acting is nothing spectacular , sometimes even bordering on wooden .', u'claire danes and omar epps deliver their lines as if they are bored , which really transfers onto the audience .', u'the only one to escape relatively unscathed is giovanni ribisi , who plays the resident crazy man , ultimately being the only thing worth watching .', u"unfortunately , even he's not enough to save this convoluted mess , as all the characters don't do much apart from occupying screen time .", u'with the young cast , cool clothes , nice hair , and hip soundtrack , it appears that the film is geared towards the teenage mindset .', u"despite an american 'r' rating ( which the content does not justify ) , the film is way too juvenile for the older mindset .", u'information on the characters is literally spoon-fed to the audience ( would it be that hard to show us instead of telling us ?', u'dialogue is poorly written , and the plot is extremely predictable .', u"the way the film progresses , you likely won't even care if the heroes are in any jeopardy , because you'll know they aren't .", u"basing the show on a 1960's television show that nobody remembers is of questionable wisdom , especially when one considers the target audience and the fact that the number of memorable films based on television shows can be counted on one hand ( even one that's missing a finger or two ) .", u'the number of times that i checked my watch ( six ) is a clear indication that this film is not one of them .', u"it is clear that the film is nothing more than an attempt to cash in on the teenage spending dollar , judging from the rash of really awful teen-flicks that we've been seeing as of late .", u'avoid this film at all costs .']
+Overview:  [[u'it', u'is', u'movies', u'like', u'these', u'that', u'make', u'a', u'jaded', u'movie', u'viewer', u'thankful', u'for', u'the', u'invention', u'of', u'the', u'timex', u'indiglo', u'watch', u'.'], [u'based', u'on', u'the', u'late', u'1960', u"'s", u'television', u'show', u'by', u'the', u'same', u'name', u',', u'the', u'mod', u'squad', u'tells', u'the', u'tale', u'of', u'three', u'reformed', u'criminals', u'under', u'the', u'employ', u'of', u'the', u'police', u'to', u'go', u'undercover', u'.'], [u'however', u',', u'things', u'go', u'wrong', u'as', u'evidence', u'gets', u'stolen', u'and', u'they', u'are', u'immediately', u'under', u'suspicion', u'.'], [u'of', u'course', u',', u'the', u'ads', u'make', u'it', u'seem', u'like', u'so', u'much', u'more', u'.'], [u'quick', u'cuts', u',', u'cool', u'music', u',', u'claire', u'dane', u"'s", u'nice', u'hair', u'and', u'cute', u'outfits', u',', u'car', u'chases', u',', u'stuff', u'blowing', u'up', u',', u'and', u'the', u'like', u'.'], [u'sounds', u'like', u'a', u'cool', u'movie', u',', u'does', u'it', u'not', u'?'], [u'after', u'the', u'first', u'fifteen', u'minutes', u',', u'it', u'quickly', u'becomes', u'apparent', u'that', u'it', u'is', u'not', u'.'], [u'the', u'mod', u'squad', u'is', u'certainly', u'a', u'slick', u'looking', u'production', u',', u'complete', u'with', u'nice', u'hair', u'and', u'costumes', u',', u'but', u'that', u'simply', u'is', u"n't", u'enough', u'.'], [u'the', u'film', u'is', u'best', u'described', u'as', u'a', u'cross', u'between', u'an', u'hour-long', u'cop', u'show', u'and', u'a', u'music', u'video', u',', u'both', u'stretched', u'out', u'into', u'the', u'span', u'of', u'an', u'hour', u'and', u'a', u'half', u'.'], [u'and', u'with', u'it', u'comes', u'every', u'single', u'clich', u'?', u'.'], [u'it', u'does', u"n't", u'really', u'matter', u'that', u'the', u'film', u'is', u'based', u'on', u'a', u'television', u'show', u',', u'as', u'most', u'of', u'the', u'plot', u'elements', u'have', u'been', u'recycled', u'from', u'everything', u'we', u"'ve", u'already', u'seen', u'.'], [u'the', u'characters', u'and', u'acting', u'is', u'nothing', u'spectacular', u',', u'sometimes', u'even', u'bordering', u'on', u'wooden', u'.'], [u'claire', u'danes', u'and', u'omar', u'epps', u'deliver', u'their', u'lines', u'as', u'if', u'they', u'are', u'bored', u',', u'which', u'really', u'transfers', u'onto', u'the', u'audience', u'.'], [u'the', u'only', u'one', u'to', u'escape', u'relatively', u'unscathed', u'is', u'giovanni', u'ribisi', u',', u'who', u'plays', u'the', u'resident', u'crazy', u'man', u',', u'ultimately', u'being', u'the', u'only', u'thing', u'worth', u'watching', u'.'], [u'unfortunately', u',', u'even', u'he', u"'s", u'not', u'enough', u'to', u'save', u'this', u'convoluted', u'mess', u',', u'as', u'all', u'the', u'characters', u'do', u"n't", u'do', u'much', u'apart', u'from', u'occupying', u'screen', u'time', u'.'], [u'with', u'the', u'young', u'cast', u',', u'cool', u'clothes', u',', u'nice', u'hair', u',', u'and', u'hip', u'soundtrack', u',', u'it', u'appears', u'that', u'the', u'film', u'is', u'geared', u'towards', u'the', u'teenage', u'mindset', u'.'], [u'despite', u'an', u'american', u"'", u"'r", u'rating', u'(', u'which', u'the', u'content', u'does', u'not', u'justify', u')', u',', u'the', u'film', u'is', u'way', u'too', u'juvenile', u'for', u'the', u'older', u'mindset', u'.'], [u'information', u'on', u'the', u'characters', u'is', u'literally', u'spoon-fed', u'to', u'the', u'audience', u'(', u'would', u'it', u'be', u'that', u'hard', u'to', u'show', u'us', u'instead', u'of', u'telling', u'us', u'?'], [u'dialogue', u'is', u'poorly', u'written', u',', u'and', u'the', u'plot', u'is', u'extremely', u'predictable', u'.'], [u'the', u'way', u'the', u'film', u'progresses', u',', u'you', u'likely', u'wo', u"n't", u'even', u'care', u'if', u'the', u'heroes', u'are', u'in', u'any', u'jeopardy', u',', u'because', u"you'l", u"'", u'know', u'they', u'are', u"n't", u'.'], [u'basing', u'the', u'show', u'on', u'a', u'1960', u"'s", u'television', u'show', u'that', u'nobody', u'remembers', u'is', u'of', u'questionable', u'wisdom', u',', u'especially', u'when', u'one', u'considers', u'the', u'target', u'audience', u'and', u'the', u'fact', u'that', u'the', u'number', u'of', u'memorable', u'films', u'based', u'on', u'television', u'shows', u'can', u'be', u'counted', u'on', u'one', u'hand', u'(', u'even', u'one', u'that', u"'s", u'missing', u'a', u'finger', u'or', u'two', u')', u'.'], [u'the', u'number', u'of', u'times', u'that', u'i', u'checked', u'my', u'watch', u'(', u'six', u')', u'is', u'a', u'clear', u'indication', u'that', u'this', u'film', u'is', u'not', u'one', u'of', u'them', u'.'], [u'it', u'is', u'clear', u'that', u'the', u'film', u'is', u'nothing', u'more', u'than', u'an', u'attempt', u'to', u'cash', u'in', u'on', u'the', u'teenage', u'spending', u'dollar', u',', u'judging', u'from', u'the', u'rash', u'of', u'really', u'awful', u'teen-flicks', u'that', u'we', u"'ve", u'been', u'seeing', u'as', u'of', u'late', u'.'], [u'avoid', u'this', u'film', u'at', u'all', u'costs', u'.']]
+[(u'it', 'PRP'), (u'is', 'VBZ'), (u'movies', 'NNS'), (u'like', 'IN'), (u'these', 'DT'), (u'that', 'WDT'), (u'make', 'VBP'), (u'a', 'DT'), (u'jaded', 'JJ'), (u'movie', 'NN'), (u'viewer', 'NN'), (u'thankful', 'NN'), (u'for', 'IN'), (u'the', 'DT'), (u'invention', 'NN'), (u'of', 'IN'), (u'the', 'DT'), (u'timex', 'JJ'), (u'indiglo', 'NN'), (u'watch', 'NN'), (u'.', '.')]
+(S
+  it/PRP
+  is/VBZ
+  movies/NNS
+  like/IN
+  these/DT
+  that/WDT
+  make/VBP
+  a/DT
+  jaded/JJ
+  movie/NN
+  viewer/NN
+  thankful/NN
+  for/IN
+  the/DT
+  invention/NN
+  of/IN
+  the/DT
+  timex/JJ
+  indiglo/NN
+  watch/NN
+  ./.)
+------FINISHED A SENTENCE------
+[(u'based', 'VBN'), (u'on', 'IN'), (u'the', 'DT'), (u'late', 'JJ'), (u'1960', 'CD'), (u"'s", 'POS'), (u'television', 'NN'), (u'show', 'NN'), (u'by', 'IN'), (u'the', 'DT'), (u'same', 'JJ'), (u'name', 'NN'), (u',', ','), (u'the', 'DT'), (u'mod', 'NN'), (u'squad', 'NN'), (u'tells', 'VBZ'), (u'the', 'DT'), (u'tale', 'NN'), (u'of', 'IN'), (u'three', 'CD'), (u'reformed', 'JJ'), (u'criminals', 'NNS'), (u'under', 'IN'), (u'the', 'DT'), (u'employ', 'NN'), (u'of', 'IN'), (u'the', 'DT'), (u'police', 'NN'), (u'to', 'TO'), (u'go', 'VB'), (u'undercover', 'RB'), (u'.', '.')]
+(S
+  based/VBN
+  on/IN
+  the/DT
+  late/JJ
+  1960/CD
+  's/POS
+  television/NN
+  show/NN
+  by/IN
+  the/DT
+  same/JJ
+  name/NN
+  ,/,
+  the/DT
+  mod/NN
+  squad/NN
+  tells/VBZ
+  the/DT
+  tale/NN
+  of/IN
+  three/CD
+  reformed/JJ
+  criminals/NNS
+  under/IN
+  the/DT
+  employ/NN
+  of/IN
+  the/DT
+  police/NN
+  to/TO
+  go/VB
+  undercover/RB
+  ./.)
+------FINISHED A SENTENCE------
+[(u'however', 'RB'), (u',', ','), (u'things', 'NNS'), (u'go', 'VBP'), (u'wrong', 'JJ'), (u'as', 'IN'), (u'evidence', 'NN'), (u'gets', 'VBZ'), (u'stolen', 'VBN'), (u'and', 'CC'), (u'they', 'PRP'), (u'are', 'VBP'), (u'immediately', 'RB'), (u'under', 'IN'), (u'suspicion', 'NN'), (u'.', '.')]
+(S
+  however/RB
+  ,/,
+  things/NNS
+  go/VBP
+  wrong/JJ
+  as/IN
+  evidence/NN
+  gets/VBZ
+  stolen/VBN
+  and/CC
+  they/PRP
+  are/VBP
+  immediately/RB
+  under/IN
+  suspicion/NN
+  ./.)
+------FINISHED A SENTENCE------
+[(u'of', 'IN'), (u'course', 'NN'), (u',', ','), (u'the', 'DT'), (u'ads', 'NNS'), (u'make', 'VBP'), (u'it', 'PRP'), (u'seem', 'VBP'), (u'like', 'IN'), (u'so', 'RB'), (u'much', 'RB'), (u'more', 'RBR'), (u'.', '.')]
+(S
+  of/IN
+  course/NN
+  ,/,
+  the/DT
+  ads/NNS
+  make/VBP
+  it/PRP
+  seem/VBP
+  like/IN
+  so/RB
+  much/RB
+  more/RBR
+  ./.)
+------FINISHED A SENTENCE------
+[(u'quick', 'JJ'), (u'cuts', 'NNS'), (u',', ','), (u'cool', 'JJ'), (u'music', 'NN'), (u',', ','), (u'claire', 'VBP'), (u'dane', 'NN'), (u"'s", 'POS'), (u'nice', 'JJ'), (u'hair', 'NN'), (u'and', 'CC'), (u'cute', 'NN'), (u'outfits', 'NNS'), (u',', ','), (u'car', 'NN'), (u'chases', 'NNS'), (u',', ','), (u'stuff', 'NN'), (u'blowing', 'VBG'), (u'up', 'RP'), (u',', ','), (u'and', 'CC'), (u'the', 'DT'), (u'like', 'JJ'), (u'.', '.')]
+(S
+  quick/JJ
+  cuts/NNS
+  ,/,
+  cool/JJ
+  music/NN
+  ,/,
+  claire/VBP
+  dane/NN
+  's/POS
+  nice/JJ
+  hair/NN
+  and/CC
+  cute/NN
+  outfits/NNS
+  ,/,
+  car/NN
+  chases/NNS
+  ,/,
+  stuff/NN
+  blowing/VBG
+  up/RP
+  ,/,
+  and/CC
+  the/DT
+  like/JJ
+  ./.)
+------FINISHED A SENTENCE------
+[u'quest for camelot " is warner bros .', u"first feature-length , fully-animated attempt to steal clout from disney's cartoon empire , but the mouse has no reason to be worried .", u'the only other recent challenger to their throne was last fall\'s promising , if flawed , 20th century fox production " anastasia , " but disney\'s " hercules , " with its lively cast and colorful palate , had her beat hands-down when it came time to crown 1997\'s best piece of animation .', u'this year , it\'s no contest , as " quest for camelot " is pretty much dead on arrival .', u'even the magic kingdom at its most mediocre -- that\'d be " pocahontas " for those of you keeping score -- isn\'t nearly as dull as this .', u"the story revolves around the adventures of free-spirited kayley ( voiced by jessalyn gilsig ) , the early-teen daughter of a belated knight from king arthur's round table .", u"kayley's only dream is to follow in her father's footsteps , and she gets her chance when evil warlord ruber ( gary oldman ) , an ex-round table member-gone-bad , steals arthur's magical sword excalibur and accidentally loses it in a dangerous , booby-trapped forest .", u"with the help of hunky , blind timberland-dweller garrett ( carey elwes ) and a two-headed dragon ( eric idle and don rickles ) that's always arguing with itself , kayley just might be able to break the medieval sexist mold and prove her worth as a fighter on arthur's side .", u'quest for camelot " is missing pure showmanship , an essential element if it\'s ever expected to climb to the high ranks of disney .', u'there\'s nothing here that differentiates " quest " from something you\'d see on any given saturday morning cartoon -- subpar animation , instantly forgettable songs , poorly-integrated computerized footage .', u"compare kayley and garrett's run-in with the angry ogre to herc's battle with the hydra .", u'i rest my case .', u'even the characters stink -- none of them are remotely interesting , so much that the film becomes a race to see which one can out-bland the others .', u"in the end , it's a tie -- they all win .", u"that dragon's comedy shtick is awfully cloying , but at least it shows signs of a pulse .", u'at least fans of the early-\'90s tgif television line-up will be thrilled to find jaleel " urkel " white and bronson " balki " pinchot sharing the same footage .', u"a few scenes are nicely realized ( though i'm at a loss to recall enough to be specific ) , and the actors providing the voice talent are enthusiastic ( though most are paired up with singers who don't sound a thing like them for their big musical moments -- jane seymour and celine dion ?", u'but one must strain through too much of this mess to find the good .', u'aside from the fact that children will probably be as bored watching this as adults , " quest for camelot " \'s most grievous error is its complete lack of personality .', u'and personality , we learn from this mess , goes a very long way .']
+Overview:  [[u'quest', u'for', u'camelot', u'"', u'is', u'warner', u'bros', u'.'], [u'first', u'feature-length', u',', u'fully-animated', u'attempt', u'to', u'steal', u'clout', u'from', u'disney', u"'s", u'cartoon', u'empire', u',', u'but', u'the', u'mouse', u'has', u'no', u'reason', u'to', u'be', u'worried', u'.'], [u'the', u'only', u'other', u'recent', u'challenger', u'to', u'their', u'throne', u'was', u'last', u'fall', u"'s", u'promising', u',', u'if', u'flawed', u',', u'20th', u'century', u'fox', u'production', u'"', u'anastasia', u',', u'"', u'but', u'disney', u"'s", u'"', u'hercules', u',', u'"', u'with', u'its', u'lively', u'cast', u'and', u'colorful', u'palate', u',', u'had', u'her', u'beat', u'hands-down', u'when', u'it', u'came', u'time', u'to', u'crown', u'1997', u"'s", u'best', u'piece', u'of', u'animation', u'.'], [u'this', u'year', u',', u'it', u"'s", u'no', u'contest', u',', u'as', u'"', u'quest', u'for', u'camelot', u'"', u'is', u'pretty', u'much', u'dead', u'on', u'arrival', u'.'], [u'even', u'the', u'magic', u'kingdom', u'at', u'its', u'most', u'mediocre', u'--', u'that', u"'d", u'be', u'"', u'pocahontas', u'"', u'for', u'those', u'of', u'you', u'keeping', u'score', u'--', u'is', u"n't", u'nearly', u'as', u'dull', u'as', u'this', u'.'], [u'the', u'story', u'revolves', u'around', u'the', u'adventures', u'of', u'free-spirited', u'kayley', u'(', u'voiced', u'by', u'jessalyn', u'gilsig', u')', u',', u'the', u'early-teen', u'daughter', u'of', u'a', u'belated', u'knight', u'from', u'king', u'arthur', u"'s", u'round', u'table', u'.'], [u'kayley', u"'s", u'only', u'dream', u'is', u'to', u'follow', u'in', u'her', u'father', u"'s", u'footsteps', u',', u'and', u'she', u'gets', u'her', u'chance', u'when', u'evil', u'warlord', u'ruber', u'(', u'gary', u'oldman', u')', u',', u'an', u'ex-round', u'table', u'member-gone-bad', u',', u'steals', u'arthur', u"'s", u'magical', u'sword', u'excalibur', u'and', u'accidentally', u'loses', u'it', u'in', u'a', u'dangerous', u',', u'booby-trapped', u'forest', u'.'], [u'with', u'the', u'help', u'of', u'hunky', u',', u'blind', u'timberland-dweller', u'garrett', u'(', u'carey', u'elwes', u')', u'and', u'a', u'two-headed', u'dragon', u'(', u'eric', u'idle', u'and', u'don', u'rickles', u')', u'that', u"'s", u'always', u'arguing', u'with', u'itself', u',', u'kayley', u'just', u'might', u'be', u'able', u'to', u'break', u'the', u'medieval', u'sexist', u'mold', u'and', u'prove', u'her', u'worth', u'as', u'a', u'fighter', u'on', u'arthur', u"'s", u'side', u'.'], [u'quest', u'for', u'camelot', u'"', u'is', u'missing', u'pure', u'showmanship', u',', u'an', u'essential', u'element', u'if', u'it', u"'s", u'ever', u'expected', u'to', u'climb', u'to', u'the', u'high', u'ranks', u'of', u'disney', u'.'], [u'there', u"'s", u'nothing', u'here', u'that', u'differentiates', u'"', u'quest', u'"', u'from', u'something', u'you', u"'d", u'see', u'on', u'any', u'given', u'saturday', u'morning', u'cartoon', u'--', u'subpar', u'animation', u',', u'instantly', u'forgettable', u'songs', u',', u'poorly-integrated', u'computerized', u'footage', u'.'], [u'compare', u'kayley', u'and', u'garrett', u"'s", u'run-in', u'with', u'the', u'angry', u'ogre', u'to', u'herc', u"'s", u'battle', u'with', u'the', u'hydra', u'.'], [u'i', u'rest', u'my', u'case', u'.'], [u'even', u'the', u'characters', u'stink', u'--', u'none', u'of', u'them', u'are', u'remotely', u'interesting', u',', u'so', u'much', u'that', u'the', u'film', u'becomes', u'a', u'race', u'to', u'see', u'which', u'one', u'can', u'out-bland', u'the', u'others', u'.'], [u'in', u'the', u'end', u',', u'it', u"'s", u'a', u'tie', u'--', u'they', u'all', u'win', u'.'], [u'that', u'drago', u"n's", u'comedy', u'shtick', u'is', u'awfully', u'cloying', u',', u'but', u'at', u'least', u'it', u'shows', u'signs', u'of', u'a', u'pulse', u'.'], [u'at', u'least', u'fans', u'of', u'the', u"early-'90", u"'", u'tgif', u'television', u'line-up', u'will', u'be', u'thrilled', u'to', u'find', u'jaleel', u'"', u'urkel', u'"', u'white', u'and', u'bronson', u'"', u'balki', u'"', u'pinchot', u'sharing', u'the', u'same', u'footage', u'.'], [u'a', u'few', u'scenes', u'are', u'nicely', u'realized', u'(', u'though', u"i'", u"'", u'at', u'a', u'loss', u'to', u'recall', u'enough', u'to', u'be', u'specific', u')', u',', u'and', u'the', u'actors', u'providing', u'the', u'voice', u'talent', u'are', u'enthusiastic', u'(', u'though', u'most', u'are', u'paired', u'up', u'with', u'singers', u'who', u'do', u"n't", u'sound', u'a', u'thing', u'like', u'them', u'for', u'their', u'big', u'musical', u'moments', u'--', u'jane', u'seymour', u'and', u'celine', u'dion', u'?'], [u'but', u'one', u'must', u'strain', u'through', u'too', u'much', u'of', u'this', u'mess', u'to', u'find', u'the', u'good', u'.'], [u'aside', u'from', u'the', u'fact', u'that', u'children', u'will', u'probably', u'be', u'as', u'bored', u'watching', u'this', u'as', u'adults', u',', u'"', u'quest', u'for', u'camelot', u'"', u"'s", u'most', u'grievous', u'error', u'is', u'its', u'complete', u'lack', u'of', u'personality', u'.'], [u'and', u'personality', u',', u'we', u'learn', u'from', u'this', u'mess', u',', u'goes', u'a', u'very', u'long', u'way', u'.']]
+[(u'quest', 'NN'), (u'for', 'IN'), (u'camelot', 'NN'), (u'"', '"'), (u'is', 'VBZ'), (u'warner', 'JJ'), (u'bros', 'NNS'), (u'.', '.')]
+(S quest/NN for/IN camelot/NN "/" is/VBZ warner/JJ bros/NNS ./.)
+------FINISHED A SENTENCE------
+[(u'first', 'RB'), (u'feature-length', 'NN'), (u',', ','), (u'fully-animated', 'JJ'), (u'attempt', 'NN'), (u'to', 'TO'), (u'steal', 'VB'), (u'clout', 'NN'), (u'from', 'IN'), (u'disney', 'NN'), (u"'s", 'POS'), (u'cartoon', 'NN'), (u'empire', 'NN'), (u',', ','), (u'but', 'CC'), (u'the', 'DT'), (u'mouse', 'NN'), (u'has', 'VBZ'), (u'no', 'DT'), (u'reason', 'NN'), (u'to', 'TO'), (u'be', 'VB'), (u'worried', 'VBN'), (u'.', '.')]
+(S
+  first/RB
+  feature-length/NN
+  ,/,
+  fully-animated/JJ
+  attempt/NN
+  to/TO
+  steal/VB
+  clout/NN
+  from/IN
+  disney/NN
+  's/POS
+  cartoon/NN
+  empire/NN
+  ,/,
+  but/CC
+  the/DT
+  mouse/NN
+  has/VBZ
+  no/DT
+  reason/NN
+  to/TO
+  be/VB
+  worried/VBN
+  ./.)
+------FINISHED A SENTENCE------
+[(u'the', 'DT'), (u'only', 'RB'), (u'other', 'JJ'), (u'recent', 'JJ'), (u'challenger', 'NN'), (u'to', 'TO'), (u'their', 'PRP$'), (u'throne', 'NN'), (u'was', 'VBD'), (u'last', 'JJ'), (u'fall', 'NN'), (u"'s", 'POS'), (u'promising', 'NN'), (u',', ','), (u'if', 'IN'), (u'flawed', 'VBN'), (u',', ','), (u'20th', 'JJ'), (u'century', 'NN'), (u'fox', 'NN'), (u'production', 'NN'), (u'"', '"'), (u'anastasia', 'NN'), (u',', ','), (u'"', '"'), (u'but', 'CC'), (u'disney', 'NN'), (u"'s", 'POS'), (u'"', '"'), (u'hercules', 'NNS'), (u',', ','), (u'"', '"'), (u'with', 'IN'), (u'its', 'PRP$'), (u'lively', 'JJ'), (u'cast', 'NN'), (u'and', 'CC'), (u'colorful', 'JJ'), (u'palate', 'NN'), (u',', ','), (u'had', 'VBD'), (u'her', 'PRP'), (u'beat', 'JJ'), (u'hands-down', 'JJ'), (u'when', 'WRB'), (u'it', 'PRP'), (u'came', 'VBD'), (u'time', 'NN'), (u'to', 'TO'), (u'crown', 'VB'), (u'1997', 'CD'), (u"'s", 'POS'), (u'best', 'JJS'), (u'piece', 'NN'), (u'of', 'IN'), (u'animation', 'NN'), (u'.', '.')]
+(S
+  the/DT
+  only/RB
+  other/JJ
+  recent/JJ
+  challenger/NN
+  to/TO
+  their/PRP$
+  throne/NN
+  was/VBD
+  last/JJ
+  fall/NN
+  's/POS
+  promising/NN
+  ,/,
+  if/IN
+  flawed/VBN
+  ,/,
+  20th/JJ
+  century/NN
+  fox/NN
+  production/NN
+  "/"
+  anastasia/NN
+  ,/,
+  "/"
+  but/CC
+  disney/NN
+  's/POS
+  "/"
+  hercules/NNS
+  ,/,
+  "/"
+  with/IN
+  its/PRP$
+  lively/JJ
+  cast/NN
+  and/CC
+  colorful/JJ
+  palate/NN
+  ,/,
+  had/VBD
+  her/PRP
+  beat/JJ
+  hands-down/JJ
+  when/WRB
+  it/PRP
+  came/VBD
+  time/NN
+  to/TO
+  crown/VB
+  1997/CD
+  's/POS
+  best/JJS
+  piece/NN
+  of/IN
+  animation/NN
+  ./.)
+------FINISHED A SENTENCE------
+[(u'this', 'DT'), (u'year', 'NN'), (u',', ','), (u'it', 'PRP'), (u"'s", 'VBZ'), (u'no', 'DT'), (u'contest', 'NN'), (u',', ','), (u'as', 'IN'), (u'"', '"'), (u'quest', 'NN'), (u'for', 'IN'), (u'camelot', 'NN'), (u'"', '"'), (u'is', 'VBZ'), (u'pretty', 'RB'), (u'much', 'JJ'), (u'dead', 'JJ'), (u'on', 'IN'), (u'arrival', 'NN'), (u'.', '.')]
+(S
+  this/DT
+  year/NN
+  ,/,
+  it/PRP
+  's/VBZ
+  no/DT
+  contest/NN
+  ,/,
+  as/IN
+  "/"
+  quest/NN
+  for/IN
+  camelot/NN
+  "/"
+  is/VBZ
+  pretty/RB
+  much/JJ
+  dead/JJ
+  on/IN
+  arrival/NN
+  ./.)
+------FINISHED A SENTENCE------
+[(u'even', 'RB'), (u'the', 'DT'), (u'magic', 'JJ'), (u'kingdom', 'NN'), (u'at', 'IN'), (u'its', 'PRP$'), (u'most', 'JJS'), (u'mediocre', 'NN'), (u'--', ':'), (u'that', 'IN'), (u"'d", 'MD'), (u'be', 'VB'), (u'"', '"'), (u'pocahontas', 'NNS'), (u'"', '"'), (u'for', 'IN'), (u'those', 'DT'), (u'of', 'IN'), (u'you', 'PRP'), (u'keeping', 'VBG'), (u'score', 'JJR'), (u'--', ':'), (u'is', 'VBZ'), (u"n't", 'RB'), (u'nearly', 'RB'), (u'as', 'RB'), (u'dull', 'JJ'), (u'as', 'IN'), (u'this', 'DT'), (u'.', '.')]
+(S
+  even/RB
+  the/DT
+  magic/JJ
+  kingdom/NN
+  at/IN
+  its/PRP$
+  most/JJS
+  mediocre/NN
+  --/:
+  that/IN
+  'd/MD
+  be/VB
+  "/"
+  pocahontas/NNS
+  "/"
+  for/IN
+  those/DT
+  of/IN
+  you/PRP
+  keeping/VBG
+  score/JJR
+  --/:
+  is/VBZ
+  n't/RB
+  nearly/RB
+  as/RB
+  dull/JJ
+  as/IN
+  this/DT
+  ./.)
+------FINISHED A SENTENCE------
+[u"synopsis : a mentally unstable man undergoing psychotherapy saves a boy from a potentially fatal accident and then falls in love with the boy's mother , a fledgling restauranteur .", u"unsuccessfully attempting to gain the woman's favor , he takes pictures of her and kills a number of people in his way .", u'comments : stalked is yet another in a seemingly endless string of spurned-psychos-getting-their-revenge type movies which are a stable category in the 1990s film industry , both theatrical and direct-to-video .', u"their proliferation may be due in part to the fact that they're typically inexpensive to produce ( no special effects , no big name stars ) and serve as vehicles to flash nudity ( allowing them to frequent late-night cable television ) .", u"stalked wavers slightly from the norm in one respect : the psycho never actually has an affair ; on the contrary , he's rejected rather quickly ( the psycho typically is an ex-lover , ex-wife , or ex-husband ) .", u'other than that , stalked is just another redundant entry doomed to collect dust on video shelves and viewed after midnight on cable .', u'stalked does not provide much suspense , though that is what it sets out to do .', u"interspersed throughout the opening credits , for instance , a serious-sounding narrator spouts statistics about stalkers and ponders what may cause a man to stalk ( it's implicitly implied that all stalkers are men ) while pictures of a boy are shown on the screen .", u'after these credits , a snapshot of actor jay underwood appears .', u'the narrator states that " this is the story of daryl gleason " and tells the audience that he is the stalker .', u'of course , really , this is the story of restauranteur brooke daniels .', u'if the movie was meant to be about daryl , then it should have been called stalker not stalked .', u'okay .', u'so we know who the stalker is even before the movie starts ; no guesswork required .', u'stalked proceeds , then , as it begins : obvious , obvious , obvious .', u'the opening sequence , contrived quite a bit , brings daryl and brooke ( the victim ) together .', u'daryl obsesses over brooke , follows her around , and tries to woo her .', u'ultimately rejected by her , his plans become more and more desperate and elaborate .', u'these plans include the all-time , psycho-in-love , cliche : the murdered pet .', u"for some reason , this genre's films require a dead pet to be found by the victim stalked .", u"stalked is no exception ( it's a cat this time -- found in the shower ) .", u"events like these lead to the inevitable showdown between stalker and stalked , where only one survives ( guess who it invariably always is and you'll guess the conclusion to this turkey ) .", u"stalked's cast is uniformly adequate : not anything to write home about but also not all that bad either .", u'jay underwood , as the stalker , turns toward melodrama a bit too much .', u'he overdoes it , in other words , but he still manages to be creepy enough to pass as the type of stalker the story demands .', u'maryam d\'abo , about the only actor close to being a star here ( she played the bond chick in the living daylights ) , is equally adequate as the " stalked " of the title , even though she seems too ditzy at times to be a strong , independent business-owner .', u"brooke ( d'abo ) needs to be ditzy , however , for the plot to proceed .", u'toward the end , for example , brooke has her suspicions about daryl .', u"to ensure he won't use it as another excuse to see her , brooke decides to return a toolbox he had left at her place to his house .", u'does she just leave the toolbox at the door when no one answers ?', u'of course not .', u'she tries the door , opens it , and wanders around the house .', u'when daryl returns , he enters the house , of course , so our heroine is in danger .', u'somehow , even though her car is parked at the front of the house , right by the front door , daryl is oblivious to her presence inside .', u"the whole episode places an incredible strain on the audience's suspension of disbelief and questions the validity of either character's intelligence .", u'stalked receives two stars because , even though it is highly derivative and somewhat boring , it is not so bad that it cannot be watched .', u'rated r mostly for several murder scenes and brief nudity in a strip bar , it is not as offensive as many other thrillers in this genre are .', u"if you're in the mood for a good suspense film , though , stake out something else ."]
+Overview:  [[u'synopsis', u':', u'a', u'mentally', u'unstable', u'man', u'undergoing', u'psychotherapy', u'saves', u'a', u'boy', u'from', u'a', u'potentially', u'fatal', u'accident', u'and', u'then', u'falls', u'in', u'love', u'with', u'the', u'boy', u"'s", u'mother', u',', u'a', u'fledgling', u'restauranteur', u'.'], [u'unsuccessfully', u'attempting', u'to', u'gain', u'the', u'woma', u"n's", u'favor', u',', u'he', u'takes', u'pictures', u'of', u'her', u'and', u'kills', u'a', u'number', u'of', u'people', u'in', u'his', u'way', u'.'], [u'comments', u':', u'stalked', u'is', u'yet', u'another', u'in', u'a', u'seemingly', u'endless', u'string', u'of', u'spurned-psychos-getting-their-revenge', u'type', u'movies', u'which', u'are', u'a', u'stable', u'category', u'in', u'the', u'1990s', u'film', u'industry', u',', u'both', u'theatrical', u'and', u'direct-to-video', u'.'], [u'their', u'proliferation', u'may', u'be', u'due', u'in', u'part', u'to', u'the', u'fact', u'that', u'they', u"'re", u'typically', u'inexpensive', u'to', u'produce', u'(', u'no', u'special', u'effects', u',', u'no', u'big', u'name', u'stars', u')', u'and', u'serve', u'as', u'vehicles', u'to', u'flash', u'nudity', u'(', u'allowing', u'them', u'to', u'frequent', u'late-night', u'cable', u'television', u')', u'.'], [u'stalked', u'wavers', u'slightly', u'from', u'the', u'norm', u'in', u'one', u'respect', u':', u'the', u'psycho', u'never', u'actually', u'has', u'an', u'affair', u';', u'on', u'the', u'contrary', u',', u'he', u"'s", u'rejected', u'rather', u'quickly', u'(', u'the', u'psycho', u'typically', u'is', u'an', u'ex-lover', u',', u'ex-wife', u',', u'or', u'ex-husband', u')', u'.'], [u'other', u'than', u'that', u',', u'stalked', u'is', u'just', u'another', u'redundant', u'entry', u'doomed', u'to', u'collect', u'dust', u'on', u'video', u'shelves', u'and', u'viewed', u'after', u'midnight', u'on', u'cable', u'.'], [u'stalked', u'does', u'not', u'provide', u'much', u'suspense', u',', u'though', u'that', u'is', u'what', u'it', u'sets', u'out', u'to', u'do', u'.'], [u'interspersed', u'throughout', u'the', u'opening', u'credits', u',', u'for', u'instance', u',', u'a', u'serious-sounding', u'narrator', u'spouts', u'statistics', u'about', u'stalkers', u'and', u'ponders', u'what', u'may', u'cause', u'a', u'man', u'to', u'stalk', u'(', u'it', u"'s", u'implicitly', u'implied', u'that', u'all', u'stalkers', u'are', u'men', u')', u'while', u'pictures', u'of', u'a', u'boy', u'are', u'shown', u'on', u'the', u'screen', u'.'], [u'after', u'these', u'credits', u',', u'a', u'snapshot', u'of', u'actor', u'jay', u'underwood', u'appears', u'.'], [u'the', u'narrator', u'states', u'that', u'"', u'this', u'is', u'the', u'story', u'of', u'daryl', u'gleason', u'"', u'and', u'tells', u'the', u'audience', u'that', u'he', u'is', u'the', u'stalker', u'.'], [u'of', u'course', u',', u'really', u',', u'this', u'is', u'the', u'story', u'of', u'restauranteur', u'brooke', u'daniels', u'.'], [u'if', u'the', u'movie', u'was', u'meant', u'to', u'be', u'about', u'daryl', u',', u'then', u'it', u'should', u'have', u'been', u'called', u'stalker', u'not', u'stalked', u'.'], [u'okay', u'.'], [u'so', u'we', u'know', u'who', u'the', u'stalker', u'is', u'even', u'before', u'the', u'movie', u'starts', u';', u'no', u'guesswork', u'required', u'.'], [u'stalked', u'proceeds', u',', u'then', u',', u'as', u'it', u'begins', u':', u'obvious', u',', u'obvious', u',', u'obvious', u'.'], [u'the', u'opening', u'sequence', u',', u'contrived', u'quite', u'a', u'bit', u',', u'brings', u'daryl', u'and', u'brooke', u'(', u'the', u'victim', u')', u'together', u'.'], [u'daryl', u'obsesses', u'over', u'brooke', u',', u'follows', u'her', u'around', u',', u'and', u'tries', u'to', u'woo', u'her', u'.'], [u'ultimately', u'rejected', u'by', u'her', u',', u'his', u'plans', u'become', u'more', u'and', u'more', u'desperate', u'and', u'elaborate', u'.'], [u'these', u'plans', u'include', u'the', u'all-time', u',', u'psycho-in-love', u',', u'cliche', u':', u'the', u'murdered', u'pet', u'.'], [u'for', u'some', u'reason', u',', u'this', u'genre', u"'s", u'films', u'require', u'a', u'dead', u'pet', u'to', u'be', u'found', u'by', u'the', u'victim', u'stalked', u'.'], [u'stalked', u'is', u'no', u'exception', u'(', u'it', u"'s", u'a', u'cat', u'this', u'time', u'--', u'found', u'in', u'the', u'shower', u')', u'.'], [u'events', u'like', u'these', u'lead', u'to', u'the', u'inevitable', u'showdown', u'between', u'stalker', u'and', u'stalked', u',', u'where', u'only', u'one', u'survives', u'(', u'guess', u'who', u'it', u'invariably', u'always', u'is', u'and', u"you'l", u"'", u'guess', u'the', u'conclusion', u'to', u'this', u'turkey', u')', u'.'], [u'stalked', u"'s", u'cast', u'is', u'uniformly', u'adequate', u':', u'not', u'anything', u'to', u'write', u'home', u'about', u'but', u'also', u'not', u'all', u'that', u'bad', u'either', u'.'], [u'jay', u'underwood', u',', u'as', u'the', u'stalker', u',', u'turns', u'toward', u'melodrama', u'a', u'bit', u'too', u'much', u'.'], [u'he', u'overdoes', u'it', u',', u'in', u'other', u'words', u',', u'but', u'he', u'still', u'manages', u'to', u'be', u'creepy', u'enough', u'to', u'pass', u'as', u'the', u'type', u'of', u'stalker', u'the', u'story', u'demands', u'.'], [u'maryam', u"d'ab", u"'", u',', u'about', u'the', u'only', u'actor', u'close', u'to', u'being', u'a', u'star', u'here', u'(', u'she', u'played', u'the', u'bond', u'chick', u'in', u'the', u'living', u'daylights', u')', u',', u'is', u'equally', u'adequate', u'as', u'the', u'"', u'stalked', u'"', u'of', u'the', u'title', u',', u'even', u'though', u'she', u'seems', u'too', u'ditzy', u'at', u'times', u'to', u'be', u'a', u'strong', u',', u'independent', u'business-owner', u'.'], [u'brooke', u'(', u"d'ab", u"'", u')', u'needs', u'to', u'be', u'ditzy', u',', u'however', u',', u'for', u'the', u'plot', u'to', u'proceed', u'.'], [u'toward', u'the', u'end', u',', u'for', u'example', u',', u'brooke', u'has', u'her', u'suspicions', u'about', u'daryl', u'.'], [u'to', u'ensure', u'he', u'wo', u"n't", u'use', u'it', u'as', u'another', u'excuse', u'to', u'see', u'her', u',', u'brooke', u'decides', u'to', u'return', u'a', u'toolbox', u'he', u'had', u'left', u'at', u'her', u'place', u'to', u'his', u'house', u'.'], [u'does', u'she', u'just', u'leave', u'the', u'toolbox', u'at', u'the', u'door', u'when', u'no', u'one', u'answers', u'?'], [u'of', u'course', u'not', u'.'], [u'she', u'tries', u'the', u'door', u',', u'opens', u'it', u',', u'and', u'wanders', u'around', u'the', u'house', u'.'], [u'when', u'daryl', u'returns', u',', u'he', u'enters', u'the', u'house', u',', u'of', u'course', u',', u'so', u'our', u'heroine', u'is', u'in', u'danger', u'.'], [u'somehow', u',', u'even', u'though', u'her', u'car', u'is', u'parked', u'at', u'the', u'front', u'of', u'the', u'house', u',', u'right', u'by', u'the', u'front', u'door', u',', u'daryl', u'is', u'oblivious', u'to', u'her', u'presence', u'inside', u'.'], [u'the', u'whole', u'episode', u'places', u'an', u'incredible', u'strain', u'on', u'the', u'audience', u"'s", u'suspension', u'of', u'disbelief', u'and', u'questions', u'the', u'validity', u'of', u'either', u'character', u"'s", u'intelligence', u'.'], [u'stalked', u'receives', u'two', u'stars', u'because', u',', u'even', u'though', u'it', u'is', u'highly', u'derivative', u'and', u'somewhat', u'boring', u',', u'it', u'is', u'not', u'so', u'bad', u'that', u'it', u'cannot', u'be', u'watched', u'.'], [u'rated', u'r', u'mostly', u'for', u'several', u'murder', u'scenes', u'and', u'brief', u'nudity', u'in', u'a', u'strip', u'bar', u',', u'it', u'is', u'not', u'as', u'offensive', u'as', u'many', u'other', u'thrillers', u'in', u'this', u'genre', u'are', u'.'], [u'if', u'you', u"'re", u'in', u'the', u'mood', u'for', u'a', u'good', u'suspense', u'film', u',', u'though', u',', u'stake', u'out', u'something', u'else', u'.']]
+[(u'synopsis', 'NN'), (u':', ':'), (u'a', 'DT'), (u'mentally', 'RB'), (u'unstable', 'JJ'), (u'man', 'NN'), (u'undergoing', 'VBG'), (u'psychotherapy', 'JJ'), (u'saves', 'NNS'), (u'a', 'DT'), (u'boy', 'NN'), (u'from', 'IN'), (u'a', 'DT'), (u'potentially', 'RB'), (u'fatal', 'JJ'), (u'accident', 'NN'), (u'and', 'CC'), (u'then', 'RB'), (u'falls', 'VBZ'), (u'in', 'IN'), (u'love', 'NN'), (u'with', 'IN'), (u'the', 'DT'), (u'boy', 'NN'), (u"'s", 'POS'), (u'mother', 'NN'), (u',', ','), (u'a', 'DT'), (u'fledgling', 'JJ'), (u'restauranteur', 'NN'), (u'.', '.')]
+(S
+  synopsis/NN
+  :/:
+  a/DT
+  mentally/RB
+  unstable/JJ
+  man/NN
+  undergoing/VBG
+  psychotherapy/JJ
+  saves/NNS
+  a/DT
+  boy/NN
+  from/IN
+  a/DT
+  potentially/RB
+  fatal/JJ
+  accident/NN
+  and/CC
+  then/RB
+  falls/VBZ
+  in/IN
+  love/NN
+  with/IN
+  the/DT
+  boy/NN
+  's/POS
+  mother/NN
+  ,/,
+  a/DT
+  fledgling/JJ
+  restauranteur/NN
+  ./.)
+------FINISHED A SENTENCE------
+[(u'unsuccessfully', 'RB'), (u'attempting', 'VBG'), (u'to', 'TO'), (u'gain', 'VB'), (u'the', 'DT'), (u'woma', 'NN'), (u"n's", 'NN'), (u'favor', 'NN'), (u',', ','), (u'he', 'PRP'), (u'takes', 'VBZ'), (u'pictures', 'NNS'), (u'of', 'IN'), (u'her', 'PRP$'), (u'and', 'CC'), (u'kills', 'VBZ'), (u'a', 'DT'), (u'number', 'NN'), (u'of', 'IN'), (u'people', 'NNS'), (u'in', 'IN'), (u'his', 'PRP$'), (u'way', 'NN'), (u'.', '.')]
+(S
+  unsuccessfully/RB
+  attempting/VBG
+  to/TO
+  gain/VB
+  the/DT
+  woma/NN
+  n's/NN
+  favor/NN
+  ,/,
+  he/PRP
+  takes/VBZ
+  pictures/NNS
+  of/IN
+  her/PRP$
+  and/CC
+  kills/VBZ
+  a/DT
+  number/NN
+  of/IN
+  people/NNS
+  in/IN
+  his/PRP$
+  way/NN
+  ./.)
+------FINISHED A SENTENCE------
+[(u'comments', 'NNS'), (u':', ':'), (u'stalked', 'VBN'), (u'is', 'VBZ'), (u'yet', 'RB'), (u'another', 'DT'), (u'in', 'IN'), (u'a', 'DT'), (u'seemingly', 'RB'), (u'endless', 'JJ'), (u'string', 'NN'), (u'of', 'IN'), (u'spurned-psychos-getting-their-revenge', 'JJ'), (u'type', 'NN'), (u'movies', 'NNS'), (u'which', 'WDT'), (u'are', 'VBP'), (u'a', 'DT'), (u'stable', 'JJ'), (u'category', 'NN'), (u'in', 'IN'), (u'the', 'DT'), (u'1990s', 'CD'), (u'film', 'NN'), (u'industry', 'NN'), (u',', ','), (u'both', 'DT'), (u'theatrical', 'JJ'), (u'and', 'CC'), (u'direct-to-video', 'NN'), (u'.', '.')]
+(S
+  comments/NNS
+  :/:
+  stalked/VBN
+  is/VBZ
+  yet/RB
+  another/DT
+  in/IN
+  a/DT
+  seemingly/RB
+  endless/JJ
+  string/NN
+  of/IN
+  spurned-psychos-getting-their-revenge/JJ
+  type/NN
+  movies/NNS
+  which/WDT
+  are/VBP
+  a/DT
+  stable/JJ
+  category/NN
+  in/IN
+  the/DT
+  1990s/CD
+  film/NN
+  industry/NN
+  ,/,
+  both/DT
+  theatrical/JJ
+  and/CC
+  direct-to-video/NN
+  ./.)
+------FINISHED A SENTENCE------
+[(u'their', 'PRP$'), (u'proliferation', 'NN'), (u'may', 'MD'), (u'be', 'VB'), (u'due', 'JJ'), (u'in', 'IN'), (u'part', 'NN'), (u'to', 'TO'), (u'the', 'DT'), (u'fact', 'NN'), (u'that', 'IN'), (u'they', 'PRP'), (u"'re", 'VBP'), (u'typically', 'RB'), (u'inexpensive', 'JJ'), (u'to', 'TO'), (u'produce', 'VB'), (u'(', '('), (u'no', 'DT'), (u'special', 'JJ'), (u'effects', 'NNS'), (u',', ','), (u'no', 'DT'), (u'big', 'JJ'), (u'name', 'NN'), (u'stars', 'NNS'), (u')', ')'), (u'and', 'CC'), (u'serve', 'VBP'), (u'as', 'IN'), (u'vehicles', 'NNS'), (u'to', 'TO'), (u'flash', 'VB'), (u'nudity', 'NN'), (u'(', '('), (u'allowing', 'VBG'), (u'them', 'PRP'), (u'to', 'TO'), (u'frequent', 'VB'), (u'late-night', 'JJ'), (u'cable', 'NN'), (u'television', 'NN'), (u')', ')'), (u'.', '.')]
+(S
+  their/PRP$
+  proliferation/NN
+  may/MD
+  be/VB
+  due/JJ
+  in/IN
+  part/NN
+  to/TO
+  the/DT
+  fact/NN
+  that/IN
+  they/PRP
+  're/VBP
+  typically/RB
+  inexpensive/JJ
+  to/TO
+  produce/VB
+  (/(
+  no/DT
+  special/JJ
+  effects/NNS
+  ,/,
+  no/DT
+  big/JJ
+  name/NN
+  stars/NNS
+  )/)
+  and/CC
+  serve/VBP
+  as/IN
+  vehicles/NNS
+  to/TO
+  flash/VB
+  nudity/NN
+  (/(
+  allowing/VBG
+  them/PRP
+  to/TO
+  frequent/VB
+  late-night/JJ
+  cable/NN
+  television/NN
+  )/)
+  ./.)
+------FINISHED A SENTENCE------
+[(u'stalked', 'JJ'), (u'wavers', 'NNS'), (u'slightly', 'RB'), (u'from', 'IN'), (u'the', 'DT'), (u'norm', 'NN'), (u'in', 'IN'), (u'one', 'CD'), (u'respect', 'NN'), (u':', ':'), (u'the', 'DT'), (u'psycho', 'NN'), (u'never', 'RB'), (u'actually', 'RB'), (u'has', 'VBZ'), (u'an', 'DT'), (u'affair', 'NN'), (u';', ':'), (u'on', 'IN'), (u'the', 'DT'), (u'contrary', 'JJ'), (u',', ','), (u'he', 'PRP'), (u"'s", 'VBZ'), (u'rejected', 'VBN'), (u'rather', 'RB'), (u'quickly', 'RB'), (u'(', '('), (u'the', 'DT'), (u'psycho', 'NN'), (u'typically', 'RB'), (u'is', 'VBZ'), (u'an', 'DT'), (u'ex-lover', 'JJ'), (u',', ','), (u'ex-wife', 'JJ'), (u',', ','), (u'or', 'CC'), (u'ex-husband', 'NN'), (u')', ')'), (u'.', '.')]
+(S
+  stalked/JJ
+  wavers/NNS
+  slightly/RB
+  from/IN
+  the/DT
+  norm/NN
+  in/IN
+  one/CD
+  respect/NN
+  :/:
+  the/DT
+  psycho/NN
+  never/RB
+  actually/RB
+  has/VBZ
+  an/DT
+  affair/NN
+  ;/:
+  on/IN
+  the/DT
+  contrary/JJ
+  ,/,
+  he/PRP
+  's/VBZ
+  rejected/VBN
+  rather/RB
+  quickly/RB
+  (/(
+  the/DT
+  psycho/NN
+  typically/RB
+  is/VBZ
+  an/DT
+  ex-lover/JJ
+  ,/,
+  ex-wife/JJ
+  ,/,
+  or/CC
+  ex-husband/NN
+  )/)
+  ./.)
+------FINISHED A SENTENCE------
+(S
+  (PERSON John/NNP)
+  likes/NNS
+  tuesday/NN
+  and/CC
+  jack/NN
+  loves/NNS
+  Monday/NNP)
+
+Process finished with exit code 0
